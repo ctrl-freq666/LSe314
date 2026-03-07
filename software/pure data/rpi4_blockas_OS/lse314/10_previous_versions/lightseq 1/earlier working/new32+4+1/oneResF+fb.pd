@@ -1,0 +1,42 @@
+#N canvas 235 455 848 438 10;
+#X obj 57 32 inlet;
+#X floatatom 81 253 5 0 0 0 - - -;
+#X obj -58 353 *~ 0.99;
+#X floatatom -5 278 5 0 0 0 - - -;
+#X text 52 4 wartosc z sensora do sterowania i gain i Q?? nie \, tylko
+gain;
+#X text 195 62 The creation arguments (level \, liveness \, crossover
+frequency \, HF damping) may also be supplied in four inlets as shown.
+The "liveness" (actually the internal feedback percentage) should be
+100 for infinite reverb \, 90 for longish \, and 80 for short. The
+crossover frequency and HF damping work together: at frequencies above
+crossover \, the feedback is diminished by the "damping" as a percentage.
+So zero HF damping means equal reverb time at all frequencies \, and
+100% damping means almost nothing above the crossover frequency gets
+through.;
+#X obj 43 254 f \$1;
+#X obj 44 276 mtof;
+#X obj 43 231 loadbang;
+#X text 92 268 czestotliwosc filtra wezmiemy co tercje mala czyli so
+3 midi stepy;
+#X obj -57 387 outlet~;
+#X text -57 403 audio out;
+#X obj 43 391 outlet;
+#X text 91 387 center frequency;
+#X obj 152 199 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -57 328 hip~ 9;
+#X obj -32 38 inlet~;
+#X obj -58 302 reson~ 1 100 1000;
+#X connect 0 0 17 1;
+#X connect 1 0 7 0;
+#X connect 2 0 10 0;
+#X connect 3 0 17 1;
+#X connect 6 0 7 0;
+#X connect 7 0 12 0;
+#X connect 7 0 17 2;
+#X connect 8 0 6 0;
+#X connect 14 0 6 0;
+#X connect 15 0 2 0;
+#X connect 16 0 17 0;
+#X connect 17 0 15 0;

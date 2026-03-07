@@ -1,0 +1,41 @@
+#N canvas 670 171 368 620 10;
+#X obj 48 122 inlet;
+#X obj 97 122 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 127 266 + 1;
+#X floatatom 78 298 5 0 0 0 - - -;
+#X obj 78 234 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 78 264 i;
+#X text 137 233 reset counter;
+#X msg 111 232 0;
+#X floatatom 92 356 5 0 0 0 - - -;
+#X obj 48 298 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 48 148 t b b b;
+#X obj 98 92 loadbang;
+#X obj 78 329 v SMPL_\$1_AMT;
+#X obj 78 374 s SMPL_\$1_AMT;
+#X obj 54 410 outlet;
+#X text 60 48 ARGUMENT \$1 - NAME OF SUBFOLDER;
+#X text 14 69 COUNT FILES INSIDDE \, SEND IT WITH THE SAME NAME;
+#X obj 197 100 hcs/folder_list /home/patch/Pd/SAMPLE/\$1/*, f 15;
+#X obj 77 171 hcs/folder_list /usr/local/puredata-patches/lse314/SAMPLE/\$1/*
+, f 16;
+#X connect 0 0 10 0;
+#X connect 1 0 10 0;
+#X connect 2 0 5 1;
+#X connect 3 0 12 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X connect 5 0 3 0;
+#X connect 7 0 5 1;
+#X connect 9 0 12 0;
+#X connect 10 0 9 0;
+#X connect 10 1 18 0;
+#X connect 10 2 7 0;
+#X connect 11 0 1 0;
+#X connect 12 0 8 0;
+#X connect 12 0 13 0;
+#X connect 12 0 14 0;
+#X connect 18 0 4 0;

@@ -1,0 +1,581 @@
+#N canvas 420 592 1240 739 10;
+#X obj 774 -36 - 0;
+#X obj 54 -6 metro;
+#X obj 42 -29 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 155 -7 metro;
+#X obj 155 -33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 262 -11 metro;
+#X obj 262 -37 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 347 -12 metro;
+#X obj 347 -38 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 446 -6 metro;
+#X obj 446 -36 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 549 0 metro;
+#X obj 549 -31 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 653 -7 metro;
+#X obj 653 -38 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 756 -4 metro;
+#X obj 756 -34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 864 -5 metro;
+#X obj 863 -34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 970 -3 metro;
+#X obj 969 -32 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 1087 -4 metro;
+#X obj 1087 -35 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1185 -7 metro;
+#X obj 1185 -35 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1290 -7 metro;
+#X obj 1290 -38 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1392 -2 metro;
+#X obj 1391 -30 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1495 -4 metro;
+#X obj 1496 -33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1600 -2 metro;
+#X obj 1600 -28 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 121 -117 loadbang;
+#X msg 53 -60 1;
+#X msg 98 -63 0;
+#X floatatom 99 -5 5 0 0 0 - - -;
+#X obj 86 -34 - 14;
+#X obj 182 -30 - 12;
+#X obj 284 -39 - 10;
+#X obj 365 -39 - 8;
+#X obj 465 -39 - 6;
+#X obj 569 -31 - 4;
+#X obj 675 -40 - 2;
+#X obj 886 -36 + 2;
+#X obj 988 -33 + 4;
+#X obj 1108 -35 + 6;
+#X obj 1203 -37 + 8;
+#X obj 1310 -39 + 10;
+#X obj 1411 -32 + 12;
+#X obj 1517 -35 + 14;
+#X obj 1626 -32 + 16;
+#X text 1354 -79 mainMETRO - od niego odejmujemy i dodajemy;
+#X text 173 -726 from main seq patch;
+#X obj 137 -91 r initMULmetro;
+#X obj 1566 -531 r MASTERclk;
+#X floatatom 1633 -471 5 220 5000 0 - - -;
+#X obj 1633 -54 int;
+#X obj 73 -580 s tempoFROM16poly;
+#X text 782 -551 make one with manual control over individual metros!!!
+;
+#X obj 1566 -505 moses 1000;
+#X obj 1525 -299 outlet;
+#X text 1575 -303 clock central;
+#X floatatom 1645 -5 5 0 0 0 - - -;
+#X obj 461 -331 gate;
+#X obj 463 -356 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text 173 -748 ignore manual if other seqmode chosen;
+#X obj 731 -421 + 1;
+#X obj 697 -397 i;
+#X obj 696 -348 clip 0 16;
+#X obj 729 -398 % 16;
+#X obj 671 -282 gate;
+#X obj 670 -303 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X floatatom 497 -332 5 0 0 0 - - -;
+#X floatatom 708 -282 5 0 0 0 - - -;
+#X obj 86 -269 gate 16;
+#X obj 86 -244 i;
+#X obj 261 -249 i;
+#X obj 399 -241 i;
+#X obj 481 -239 i;
+#X obj 571 -239 i;
+#X obj 643 -239 i;
+#X obj 723 -240 i;
+#X obj 799 -239 i;
+#X obj 877 -243 i;
+#X obj 967 -245 i;
+#X obj 1141 -244 i;
+#X obj 1058 -242 i;
+#X obj 1259 -244 i;
+#X obj 1374 -244 i;
+#X obj 1477 -238 i;
+#X obj 1604 -238 i;
+#X obj 696 -371 + 1;
+#X obj 486 -360 r TEMPOmanualVAL;
+#X obj 508 -492 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 477 -695 vradio 15 1 0 7 empty empty empty 0 -8 0 10 -262144
+-1 -1 4;
+#X obj 486 -743 loadbang;
+#X msg 487 -720 1;
+#X obj 477 -767 r SUBseqMODE;
+#X obj 337 -445 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 415 -448 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 473 -446 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 846 -396 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 543 -444 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 300 -538 sel 1;
+#X obj 457 -418 sel 2;
+#X obj 815 -416 sel 3;
+#X text 293 -311 automatically stop when different submode selected
+;
+#X msg 119 -632 1;
+#X obj 107 -718 change;
+#X obj 86 -714 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 187 -691 1 0 0 0 - - -;
+#X obj 73 -693 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 105 -745 r seqMODE;
+#X text 40 -767 from rotary switch;
+#X obj 455 -497 gate 6;
+#X obj 871 -418 sel 5;
+#X obj 160 -688 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 452 -582 gate;
+#X msg 300 -513 1;
+#X msg 331 -513 0;
+#X obj 451 -601 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 594 -445 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 653 -451 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 529 -495 CLOCK FROM MAIN SEQUENCER COTROL;
+#X floatatom 417 -579 1 0 0 0 - - -;
+#X msg 185 -627 0;
+#X msg 871 -396 1;
+#X msg 902 -395 0;
+#X obj 334 -489 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 306 -489 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 933 -396 t b b;
+#X obj 107 -693 sel 5;
+#X obj 494 -525 r SEQmode5;
+#X obj 139 -668 t b b b;
+#X msg 155 -630 0;
+#X obj 73 -664 t b b b;
+#X msg 89 -630 1;
+#X text 1024 -728 rozkmin to gmatwanine - jak manual mode to wylaczamy
+metra i jak seq mode inny to tez \, jak ten seq mode i trigger auto
+to wlacz metra!!! -poradze sobie subSEQpacz;
+#X text 497 -680 1 sub pacz auto start from mainseq;
+#X text 495 -666 2 sub pacz - manual control over all metros - tempo
+;
+#X text 508 -655 kontroluje ostatni pot \, ten sam co led brightness
+;
+#X msg 458 -388 1;
+#X msg 493 -387 0;
+#X obj 1570 -452 gate;
+#X obj 1570 -477 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X floatatom 1651 -212 5 0 0 0 - - -;
+#X obj 23 -232 sel 1;
+#X obj 218 -248 sel 2;
+#X obj 355 -242 sel 3;
+#X obj 438 -239 sel 4;
+#X obj 519 -240 sel 5;
+#X obj 601 -239 sel 6;
+#X obj 678 -240 sel 7;
+#X obj 757 -241 sel 8;
+#X obj 833 -242 sel 9;
+#X obj 909 -244 sel 10;
+#X obj 995 -245 sel 11;
+#X obj 1528 -239 sel 16;
+#X obj 1410 -242 sel 15;
+#X obj 1316 -242 sel 14;
+#X obj 1205 -244 sel 13;
+#X obj 1090 -247 sel 12;
+#X text 1362 -186 to sie nadaje na abstraction!!!!;
+#X text 747 -282 controling this metro;
+#X floatatom 495 -579 1 0 0 0 - - -;
+#X text 993 -634 ogarnij ten pacz - zrub abstraktions itp;
+#X text 1034 -396 troche nie dziala to tak jak zamierzalem - bo jak
+zmieniasz na kontorle innego metra to przestaje grac to ktore kontrolowales
+wlasnie \, ale jak szybko sie zmieni te kroki to zostaja co pomiektore
+metra i to brzmi zajebiscie \; -) - jednak nie kurewa!!! popraw - zrub
+z abstraktions czy co;
+#X obj 697 -314 speedlim 100;
+#X text 786 -313 to make it clumsy on purpose;
+#X text 1034 -300 moznaby dodac swicz ktory decyduje czy dane metro
+jest on czy of;
+#X obj 63 -173 r MANUALmetroONoff;
+#X obj 20 -146 gate;
+#X obj 20 -169 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 58 -203 0;
+#X msg 25 -204 1;
+#X obj 236 -172 r MANUALmetroONoff;
+#X obj 211 -147 gate;
+#X obj 210 -168 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 241 -203 0;
+#X msg 215 -203 1;
+#X obj 334 -142 gate;
+#X obj 342 -166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 373 -201 0;
+#X msg 347 -201 1;
+#X obj 377 -169 r MANUALmetroONoff;
+#X obj 378 -127 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text 581 -1088 arguments to abstraction: \$1 which metro are we
+contorlling (1-16);
+#X text 583 -1060 \$2 - which led are we switching on of 1-16;
+#X text 629 -1074 switch on manual contorl of this metro!!!;
+#X obj 782 -1029 r TEMPOmanualVAL;
+#X text 801 -998 tempo;
+#X floatatom 797 -970 5 0 0 0 - - -;
+#X obj 653 -954 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 622 -1037 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X floatatom 714 -1194 5 0 0 0 - - -;
+#X obj 654 -999 oneMANUALmetro 5 3;
+#X obj 420 -382 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 529 -384 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 439 -925 gate;
+#X text 203 -959 dont send clock to this subpatch if different mode
+is on;
+#X floatatom 481 -922 1 0 0 0 - - -;
+#X text 482 -919 subSEQ;
+#X text -92 -920 store and recol sub seq mode so that when we change
+the main seq mode to this one it can be automatically recallled \,
+otherwise we dont know where we are!!!;
+#X obj 400 -981 i;
+#X obj 399 -1004 t b f;
+#X obj 435 -891 sel 2;
+#X msg 436 -861 1;
+#X msg 471 -860 0;
+#X obj 398 -855 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 507 -857 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1075 -1013 r TEMPOmanualVAL;
+#X text 1094 -982 tempo;
+#X floatatom 1090 -954 5 0 0 0 - - -;
+#X obj 946 -938 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 915 -1021 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 947 -983 oneMANUALmetro 12 6;
+#X floatatom 997 -1152 5 0 0 0 - - -;
+#X obj 35 -482 gate;
+#X obj 25 -533 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 1600 27 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 1654 114 255;
+#X msg 1624 113 3;
+#X obj 1600 56 t b b b;
+#X obj 1596 83 del 500;
+#X msg 1597 110 0;
+#X floatatom 1684 60 5 1 1000 0 - - -;
+#X obj 1681 -91 loadbang;
+#X msg 1686 -64 100;
+#X text 1615 36 after how long led will turn off;
+#X text 1731 59 & clk to offset;
+#X text 1733 47 seqMod;
+#X obj 1595 130 OneLedClear 45;
+#X obj 1683 -6 * 1000;
+#X obj 1684 17 + 10;
+#X obj 1682 -32 r LEDdelFACTOR;
+#X connect 0 0 15 1;
+#X connect 2 0 1 0;
+#X connect 4 0 3 0;
+#X connect 6 0 5 0;
+#X connect 8 0 7 0;
+#X connect 10 0 9 0;
+#X connect 12 0 11 0;
+#X connect 14 0 13 0;
+#X connect 16 0 15 0;
+#X connect 18 0 17 0;
+#X connect 20 0 19 0;
+#X connect 22 0 21 0;
+#X connect 24 0 23 0;
+#X connect 26 0 25 0;
+#X connect 28 0 27 0;
+#X connect 30 0 29 0;
+#X connect 31 0 220 0;
+#X connect 32 0 31 0;
+#X connect 33 0 35 0;
+#X connect 34 0 2 0;
+#X connect 34 0 4 0;
+#X connect 34 0 6 0;
+#X connect 34 0 8 0;
+#X connect 34 0 10 0;
+#X connect 34 0 12 0;
+#X connect 34 0 14 0;
+#X connect 34 0 16 0;
+#X connect 34 0 18 0;
+#X connect 34 0 20 0;
+#X connect 34 0 22 0;
+#X connect 34 0 24 0;
+#X connect 34 0 26 0;
+#X connect 34 0 28 0;
+#X connect 34 0 30 0;
+#X connect 34 0 32 0;
+#X connect 35 0 32 0;
+#X connect 35 0 30 0;
+#X connect 35 0 28 0;
+#X connect 35 0 26 0;
+#X connect 35 0 24 0;
+#X connect 35 0 22 0;
+#X connect 35 0 20 0;
+#X connect 35 0 18 0;
+#X connect 35 0 16 0;
+#X connect 35 0 14 0;
+#X connect 35 0 12 0;
+#X connect 35 0 10 0;
+#X connect 35 0 8 0;
+#X connect 35 0 6 0;
+#X connect 35 0 4 0;
+#X connect 35 0 2 0;
+#X connect 37 0 1 1;
+#X connect 37 0 36 0;
+#X connect 38 0 3 1;
+#X connect 39 0 5 1;
+#X connect 40 0 7 1;
+#X connect 41 0 9 1;
+#X connect 42 0 11 1;
+#X connect 43 0 13 1;
+#X connect 44 0 17 1;
+#X connect 45 0 19 1;
+#X connect 46 0 21 1;
+#X connect 47 0 23 1;
+#X connect 48 0 25 1;
+#X connect 49 0 27 1;
+#X connect 50 0 29 1;
+#X connect 51 0 31 1;
+#X connect 51 0 63 0;
+#X connect 54 0 35 0;
+#X connect 55 0 60 0;
+#X connect 56 0 57 0;
+#X connect 57 0 0 0;
+#X connect 57 0 37 0;
+#X connect 57 0 38 0;
+#X connect 57 0 39 0;
+#X connect 57 0 40 0;
+#X connect 57 0 41 0;
+#X connect 57 0 42 0;
+#X connect 57 0 43 0;
+#X connect 57 0 44 0;
+#X connect 57 0 45 0;
+#X connect 57 0 46 0;
+#X connect 57 0 47 0;
+#X connect 57 0 48 0;
+#X connect 57 0 49 0;
+#X connect 57 0 50 0;
+#X connect 57 0 51 0;
+#X connect 60 1 56 0;
+#X connect 60 1 144 1;
+#X connect 64 0 73 0;
+#X connect 64 0 75 1;
+#X connect 65 0 64 0;
+#X connect 65 0 196 1;
+#X connect 65 0 216 1;
+#X connect 67 0 70 0;
+#X connect 68 0 67 0;
+#X connect 68 0 92 0;
+#X connect 69 0 168 0;
+#X connect 70 0 68 1;
+#X connect 71 0 74 0;
+#X connect 71 0 75 0;
+#X connect 71 0 147 0;
+#X connect 71 0 148 0;
+#X connect 71 0 149 0;
+#X connect 71 0 150 0;
+#X connect 71 0 151 0;
+#X connect 71 0 152 0;
+#X connect 71 0 153 0;
+#X connect 71 0 154 0;
+#X connect 71 0 155 0;
+#X connect 71 0 156 0;
+#X connect 71 0 157 0;
+#X connect 71 0 158 0;
+#X connect 71 0 162 0;
+#X connect 71 0 161 0;
+#X connect 71 0 160 0;
+#X connect 71 0 159 0;
+#X connect 71 0 196 2;
+#X connect 72 0 71 0;
+#X connect 75 0 76 0;
+#X connect 75 1 77 0;
+#X connect 75 2 78 0;
+#X connect 75 3 79 0;
+#X connect 75 4 80 0;
+#X connect 75 5 81 0;
+#X connect 75 6 82 0;
+#X connect 75 7 83 0;
+#X connect 75 8 84 0;
+#X connect 75 9 85 0;
+#X connect 75 10 86 0;
+#X connect 75 11 87 0;
+#X connect 75 12 88 0;
+#X connect 75 13 89 0;
+#X connect 75 14 90 0;
+#X connect 75 15 91 0;
+#X connect 76 0 1 1;
+#X connect 77 0 3 1;
+#X connect 78 0 5 1;
+#X connect 79 0 7 1;
+#X connect 80 0 9 1;
+#X connect 81 0 11 1;
+#X connect 82 0 13 1;
+#X connect 83 0 15 1;
+#X connect 84 0 17 1;
+#X connect 85 0 19 1;
+#X connect 86 0 23 1;
+#X connect 87 0 21 1;
+#X connect 88 0 25 1;
+#X connect 89 0 27 1;
+#X connect 90 0 29 1;
+#X connect 91 0 146 0;
+#X connect 91 0 31 1;
+#X connect 92 0 69 0;
+#X connect 93 0 64 1;
+#X connect 95 0 118 1;
+#X connect 95 0 165 0;
+#X connect 95 0 204 1;
+#X connect 96 0 97 0;
+#X connect 97 0 95 0;
+#X connect 98 0 95 0;
+#X connect 104 0 119 0;
+#X connect 104 1 120 0;
+#X connect 105 0 142 0;
+#X connect 105 0 197 0;
+#X connect 105 1 143 0;
+#X connect 105 1 198 0;
+#X connect 106 1 102 0;
+#X connect 108 0 121 0;
+#X connect 109 0 111 0;
+#X connect 109 0 132 0;
+#X connect 113 0 109 0;
+#X connect 113 0 110 0;
+#X connect 115 0 99 0;
+#X connect 115 1 100 0;
+#X connect 115 1 68 0;
+#X connect 115 2 101 0;
+#X connect 115 3 103 0;
+#X connect 115 4 122 0;
+#X connect 115 5 123 0;
+#X connect 116 0 127 0;
+#X connect 116 1 128 0;
+#X connect 116 1 131 0;
+#X connect 118 0 104 0;
+#X connect 118 0 105 0;
+#X connect 118 0 106 0;
+#X connect 118 0 115 0;
+#X connect 118 0 125 0;
+#X connect 118 0 116 0;
+#X connect 119 0 130 0;
+#X connect 119 0 34 0;
+#X connect 119 0 145 0;
+#X connect 120 0 129 0;
+#X connect 120 0 35 0;
+#X connect 120 0 145 0;
+#X connect 121 0 118 0;
+#X connect 126 0 121 0;
+#X connect 132 0 112 0;
+#X connect 132 0 136 0;
+#X connect 132 1 117 0;
+#X connect 132 1 134 0;
+#X connect 133 0 94 0;
+#X connect 133 0 115 1;
+#X connect 134 0 58 0;
+#X connect 134 1 135 0;
+#X connect 134 2 126 0;
+#X connect 135 0 35 0;
+#X connect 135 0 196 0;
+#X connect 135 0 205 0;
+#X connect 135 0 216 0;
+#X connect 136 0 58 0;
+#X connect 136 1 137 0;
+#X connect 136 2 108 0;
+#X connect 137 0 196 0;
+#X connect 137 0 205 0;
+#X connect 137 0 216 0;
+#X connect 137 0 218 1;
+#X connect 142 0 65 0;
+#X connect 142 0 72 0;
+#X connect 143 0 65 0;
+#X connect 143 0 72 0;
+#X connect 144 0 61 0;
+#X connect 144 0 57 0;
+#X connect 145 0 144 0;
+#X connect 147 0 175 0;
+#X connect 147 1 174 0;
+#X connect 148 0 180 0;
+#X connect 148 1 179 0;
+#X connect 149 0 184 0;
+#X connect 149 1 183 0;
+#X connect 168 0 71 1;
+#X connect 171 0 172 1;
+#X connect 172 0 2 0;
+#X connect 173 0 172 0;
+#X connect 174 0 173 0;
+#X connect 175 0 173 0;
+#X connect 176 0 177 1;
+#X connect 177 0 4 0;
+#X connect 178 0 177 0;
+#X connect 179 0 178 0;
+#X connect 180 0 178 0;
+#X connect 181 0 6 0;
+#X connect 182 0 181 0;
+#X connect 183 0 182 0;
+#X connect 184 0 182 0;
+#X connect 185 0 181 1;
+#X connect 185 0 186 0;
+#X connect 190 0 192 0;
+#X connect 190 0 196 3;
+#X connect 194 0 196 1;
+#X connect 195 0 196 2;
+#X connect 196 0 193 0;
+#X connect 199 0 201 0;
+#X connect 199 0 206 0;
+#X connect 204 0 199 1;
+#X connect 205 0 204 0;
+#X connect 205 1 199 0;
+#X connect 206 0 207 0;
+#X connect 206 0 209 0;
+#X connect 206 1 208 0;
+#X connect 206 1 210 0;
+#X connect 211 0 213 0;
+#X connect 211 0 216 3;
+#X connect 215 0 216 1;
+#X connect 216 0 214 0;
+#X connect 217 0 216 2;
+#X connect 218 0 34 0;
+#X connect 219 0 218 0;
+#X connect 220 0 223 0;
+#X connect 221 0 232 1;
+#X connect 222 0 232 0;
+#X connect 223 0 224 0;
+#X connect 223 1 222 0;
+#X connect 223 2 221 0;
+#X connect 224 0 225 0;
+#X connect 225 0 232 1;
+#X connect 226 0 224 1;
+#X connect 227 0 228 0;
+#X connect 228 0 226 0;
+#X connect 233 0 234 0;
+#X connect 234 0 226 0;
+#X connect 235 0 233 0;

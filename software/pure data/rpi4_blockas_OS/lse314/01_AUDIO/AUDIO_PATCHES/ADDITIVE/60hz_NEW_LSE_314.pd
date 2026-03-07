@@ -1,0 +1,214 @@
+#N canvas 270 51 1082 818 10;
+#X obj 612 75 receive WaveList;
+#X obj 647 184 send HarmWaveForm;
+#X obj 538 611 t b f;
+#X obj 486 612 t b f;
+#X obj 434 612 t b f;
+#X obj 383 612 t b f;
+#X obj 331 612 t b f;
+#X obj 280 612 t b f;
+#X obj 228 612 t b f;
+#X obj 584 725 nbx 4 18 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-137954 -1 -1 0 256;
+#X obj 530 725 nbx 4 18 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-137954 -1 -1 0 256;
+#X obj 476 725 nbx 4 18 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-137954 -1 -1 0 256;
+#X obj 423 725 nbx 4 18 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-137954 -1 -1 0 256;
+#X obj 369 725 nbx 4 18 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-137954 -1 -1 0 256;
+#X obj 209 698 unpack float float float float float float float float
+;
+#X obj 316 725 nbx 4 18 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-137954 -1 -1 0 256;
+#X obj 262 725 nbx 4 18 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-137954 -1 -1 0 256;
+#X obj 209 726 nbx 4 18 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-137954 -1 -1 1 256;
+#X obj 670 742 s harm;
+#X msg 670 714 0;
+#X obj 670 691 bng 15 250 50 0 empty empty empty 17 7 0 10 -261682
+-1 -1;
+#X obj 538 558 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 486 558 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 434 558 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 383 558 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 331 558 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 280 558 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 228 558 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 178 558 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 39 256;
+#X obj 486 584 f;
+#X obj 434 584 f;
+#X obj 383 584 f;
+#X obj 331 584 f;
+#X obj 280 584 f;
+#X obj 228 584 f;
+#X obj 178 584 f;
+#X obj 584 245 cnv 15 198 138 empty empty empty 20 12 0 14 -204800
+-66577 0;
+#N canvas 0 50 474 324 (subpatch) 0;
+#X array HarmWaveForm 4099 float 0;
+#X coords 0 1 4098 -1 200 140 1;
+#X restore 583 245 graph;
+#X obj 257 345 phasor~;
+#X obj 42 358 nbx 4 18 -1e+37 1e+37 0 1 empty empty empty 0 -8 0 10
+-204800 -1 -1 310 256;
+#X obj 257 399 tabread4~ HarmWaveForm;
+#X obj 42 386 tabosc4~ HarmWaveForm;
+#N canvas 326 152 961 600 normalize-list 0;
+#X obj 266 340 send WaveList;
+#X obj 432 170 abs;
+#X obj 453 193 max;
+#X floatatom 453 219 5 0 0 0 - - -, f 5;
+#X obj 379 119 t l l;
+#X obj 379 302 outlet;
+#X obj 379 89 inlet;
+#X text 391 266 Divide by biggest absolute value;
+#X text 375 342 We dont need to send the normalized values to the table.
+;
+#X obj 379 243 list-abs/list-math /;
+#X obj 432 142 zexy/minmax;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 9 1;
+#X connect 4 0 9 0;
+#X connect 4 1 10 0;
+#X connect 6 0 4 0;
+#X connect 9 0 5 0;
+#X connect 9 0 0 0;
+#X connect 10 0 1 0;
+#X connect 10 1 2 1;
+#X restore 209 673 pd normalize-list;
+#X obj 612 103 prepend sinesum 4096;
+#X obj 313 427 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -204800
+-1 -1 0 1;
+#N canvas 0 50 237 305 ganho 0;
+#X obj 79 176 *~;
+#X obj 67 208 dac~;
+#X obj 108 146 line~;
+#X msg 108 120 \$1 10;
+#X obj 108 94 pow 4;
+#X obj 108 67 inlet;
+#X obj 79 36 inlet~;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 2 0 0 1;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 0 0;
+#X restore 257 453 pd ganho;
+#X obj 98 413 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -204800
+-1 -1 0 1;
+#N canvas 0 50 237 305 ganho 0;
+#X obj 79 176 *~;
+#X obj 67 208 dac~;
+#X obj 108 146 line~;
+#X msg 108 120 \$1 10;
+#X obj 108 94 pow 4;
+#X obj 108 67 inlet;
+#X obj 79 36 inlet~;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 2 0 0 1;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 0 0;
+#X restore 42 439 pd ganho;
+#X text 223 380 =;
+#X obj 257 310 nbx 4 18 -1e+37 1e+37 0 1 empty empty empty 0 -8 0 10
+-204800 -1 -1 300 256;
+#X text 566 243 1;
+#X text 561 364 -1;
+#X text 689 688 Reset;
+#X obj 257 372 *~ 4098;
+#X text 25 237 we can also use [phasor~] to read tables by connecting
+it to [tabread4~] \, just multiply its output to the table size minus
+one and voilá! The difference is that you can now read any table size.
+;
+#X text 205 786 We also normalize the values just so it is easier to
+see their proportional relationship. Furthermore \, we also normalize
+the table with the "normalize" comand (so its values range from -1
+to 1).;
+#X text 301 749 --- normalized list ---;
+#X text 272 526 ---- Partial Amplitude List ----;
+#X text 24 52 In this example \, we're generating a list of 8 partials
+and sending it with the "Sinesum 4096" comand to a table. This interprets
+the list of values as amplitudes of a harmonic series and generates
+a harmonic waveform on the table with 4096 points plus 3 \, where the
+last 3 points are equal to the first ones.;
+#X obj 612 127 t b a;
+#X msg 612 154 normalize 1;
+#X text 199 861 ============================================================
+;
+#X text 23 165 This is because the [tabosc4~] (a table oscillator)
+needs a table size to be a power of 2 plus 3 like that \, so it can
+can read the table with interpolation. You can then store any waveform
+on a text file and load it into an array.;
+#X text 321 373 table size - 1;
+#X obj 209 639 pack float float float float float float float float
+float float float float float float float float;
+#X connect 0 0 43 0;
+#X connect 2 0 29 0;
+#X connect 2 1 64 7;
+#X connect 3 0 30 0;
+#X connect 3 1 64 6;
+#X connect 4 0 31 0;
+#X connect 4 1 64 5;
+#X connect 5 0 32 0;
+#X connect 5 1 64 4;
+#X connect 6 0 33 0;
+#X connect 6 1 64 3;
+#X connect 7 0 34 0;
+#X connect 7 1 64 2;
+#X connect 8 0 35 0;
+#X connect 8 1 64 1;
+#X connect 14 0 17 0;
+#X connect 14 1 16 0;
+#X connect 14 2 15 0;
+#X connect 14 3 13 0;
+#X connect 14 4 12 0;
+#X connect 14 5 11 0;
+#X connect 14 6 10 0;
+#X connect 14 7 9 0;
+#X connect 19 0 18 0;
+#X connect 20 0 19 0;
+#X connect 21 0 2 0;
+#X connect 22 0 29 0;
+#X connect 23 0 30 0;
+#X connect 24 0 31 0;
+#X connect 25 0 32 0;
+#X connect 26 0 33 0;
+#X connect 27 0 34 0;
+#X connect 28 0 35 0;
+#X connect 29 0 3 0;
+#X connect 30 0 4 0;
+#X connect 31 0 5 0;
+#X connect 32 0 6 0;
+#X connect 33 0 7 0;
+#X connect 34 0 8 0;
+#X connect 35 0 64 0;
+#X connect 38 0 53 0;
+#X connect 39 0 41 0;
+#X connect 40 0 45 0;
+#X connect 41 0 47 0;
+#X connect 42 0 14 0;
+#X connect 43 0 59 0;
+#X connect 44 0 45 1;
+#X connect 46 0 47 1;
+#X connect 49 0 38 0;
+#X connect 53 0 40 0;
+#X connect 59 0 60 0;
+#X connect 59 1 1 0;
+#X connect 60 0 1 0;
+#X connect 64 0 42 0;

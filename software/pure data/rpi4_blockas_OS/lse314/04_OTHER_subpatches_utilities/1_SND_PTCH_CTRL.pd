@@ -1,0 +1,135 @@
+#N canvas 14 61 1379 822 12;
+#X text 194 233 0-1;
+#X text 193 48 0-1;
+#X obj 35 455 print;
+#X obj 35 430 spigot;
+#X obj 68 401 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 254 15 r PTCH\$1_CTRL_LIST;
+#X text 55 17 INPUT CTRL LIST NORMALIZED;
+#X obj 255 80 vsl 10 50 0 1 0 0 PTCH\$1_PAR_A1 empty A1 0 -9 0 10 -128992
+-258113 -1 0 1;
+#X obj 370 80 vsl 10 50 0 1 0 0 PTCH\$1_PAR_A2 empty A2 0 -9 0 10 -128992
+-258113 -1 0 1;
+#X text 76 96 PROPERTIES SEND;
+#X text 43 116 PTCH\$1_PAR_A1 \, A2 \, D1 \, D2...;
+#X obj 487 80 vsl 10 50 0 1 0 0 PTCH\$1_PAR_A3 empty A3 0 -9 0 10 -128992
+-258113 -1 0 1;
+#X obj 249 210 r PTCH\$1_PAR_A1;
+#X obj 364 210 r PTCH\$1_PAR_A2;
+#X obj 480 210 r PTCH\$1_PAR_A3;
+#X obj 634 115 bng 15 250 50 0 PTCH\$1_PAR_D1B empty D1B 17 7 0 10
+-128992 -258113 -1;
+#X obj 583 69 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X floatatom 249 233 5 0 0 0 - - -;
+#X floatatom 364 233 5 0 0 0 - - -;
+#X floatatom 480 233 5 0 0 0 - - -;
+#X floatatom 603 114 1 0 0 0 D1 - PTCH#1_PAR_D1;
+#X obj 971 91 vsl 10 50 0 1 0 0 PTCH\$1_PAR_A4 empty A4 0 -9 0 10 -128992
+-258113 -1 0 1;
+#X floatatom 971 229 5 0 0 0 - - -;
+#X obj 971 206 r PTCH\$1_PAR_A4;
+#X obj 254 45 unpack f f f f f f f f, f 117;
+#X obj 598 210 r PTCH\$1_PAR_D1;
+#X obj 598 231 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X obj 598 249 r PTCH\$1_PAR_D1B;
+#X obj 598 272 bng 15 250 50 0 empty empty D1B 17 7 0 10 -128992 -258113
+-1;
+#X obj 741 118 bng 15 250 50 0 PTCH\$1_PAR_D2B empty D2B 17 7 0 10
+-128992 -258113 -1;
+#X obj 700 72 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X floatatom 720 117 1 0 0 0 D2 - PTCH#1_PAR_D2;
+#X obj 711 231 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X obj 711 272 bng 15 250 50 0 empty empty D2B 17 7 0 10 -128992 -258113
+-1;
+#X obj 711 210 r PTCH\$1_PAR_D2;
+#X obj 711 249 r PTCH\$1_PAR_D2B;
+#X obj 867 117 bng 15 250 50 0 PTCH\$1_PAR_D3B empty D3B 17 7 0 10
+-128992 -258113 -1;
+#X obj 816 71 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X floatatom 836 116 1 0 0 0 D3 - PTCH#1_PAR_D3;
+#X obj 1190 120 bng 15 250 50 0 PTCH\$1_PAR_D4B empty D4B 17 7 0 10
+-128992 -258113 -1;
+#X obj 1119 74 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X floatatom 1139 119 1 0 0 0 D4 - PTCH#1_PAR_D4;
+#X obj 1139 84 1_ARD_DIG_BTN 2 0, f 9;
+#X text 411 18 TEMPLATE FOR ALL SND PATCHES - INPUT = LIST (2 POTS
+\, 1 BTN);
+#X obj 832 231 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X obj 833 273 bng 15 250 50 0 empty empty D3B 17 7 0 10 -128992 -258113
+-1;
+#X obj 1123 228 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X obj 1122 270 bng 15 250 50 0 empty empty D4B 17 7 0 10 -128992 -258113
+-1;
+#X obj 832 210 r PTCH\$1_PAR_D3;
+#X obj 833 249 r PTCH\$1_PAR_D3B;
+#X obj 1123 207 r PTCH\$1_PAR_D4;
+#X obj 1122 247 r PTCH\$1_PAR_D24;
+#X text 133 287 RENAME \, REMAP;
+#X text 115 309 CTRL AUDIO PATCH;
+#X obj 634 494 r LDRS_INV_10_SMT_list;
+#X obj 634 516 maxlib/listfunnel;
+#X text 133 353 INS FROM LDRS;
+#X obj 806 473 tgl 15 0 empty light_gate LG 0 8 0 14 -4034 -258113
+-4160 0 1;
+#X obj 878 536 bng 15 50 25 0 LGB_PTCH\$1 empty LGB 17 7 0 10 -4034
+-4160 -1;
+#X obj 937 515 hsl 100 15 0 1 0 0 empty 01_TRESH 01_F_TRSHLD 2 8 0
+10 -33289 -258113 -262144 0 1;
+#X obj 879 513 sel 1;
+#X obj 806 493 t f f, f 11;
+#X obj 806 535 tgl 15 0 LG_PTCH\$1 empty LG_PTCH 0 8 0 14 -4034 -258113
+-4160 0 1;
+#X text 934 497 0-1 BRIGHTEST;
+#X floatatom 1048 514 5 0 0 2 MIN_SENS min_sens -;
+#X obj 720 82 1_ARD_DIG_BTN 1 0, f 9;
+#X obj 603 79 1_ARD_DIG_BTN 1 0, f 9;
+#X obj 836 81 1_ARD_DIG_BTN 1 0, f 9;
+#X floatatom 578 132 1 0 0 0 D1 - PTCH#1_PAR_D1;
+#X text 846 7 well - IT WON'T WORK FOR NOW BECAUSE EACH PATCH HAS DIFFERENT
+SET OF INPUT CONTROLS \, BUT LATER MAYBE OK;
+#X connect 3 0 2 0;
+#X connect 4 0 3 1;
+#X connect 5 0 24 0;
+#X connect 12 0 17 0;
+#X connect 13 0 18 0;
+#X connect 14 0 19 0;
+#X connect 23 0 22 0;
+#X connect 24 0 7 0;
+#X connect 24 1 8 0;
+#X connect 24 2 11 0;
+#X connect 24 3 16 0;
+#X connect 24 3 66 0;
+#X connect 24 4 30 0;
+#X connect 24 4 65 0;
+#X connect 24 5 37 0;
+#X connect 24 5 67 0;
+#X connect 25 0 26 0;
+#X connect 27 0 28 0;
+#X connect 34 0 32 0;
+#X connect 35 0 33 0;
+#X connect 42 0 41 0;
+#X connect 42 1 39 0;
+#X connect 48 0 44 0;
+#X connect 49 0 45 0;
+#X connect 50 0 46 0;
+#X connect 51 0 47 0;
+#X connect 54 0 55 0;
+#X connect 57 0 61 0;
+#X connect 60 0 58 0;
+#X connect 61 0 62 0;
+#X connect 61 1 60 0;
+#X connect 65 0 31 0;
+#X connect 65 1 29 0;
+#X connect 66 0 20 0;
+#X connect 66 1 15 0;
+#X connect 67 0 38 0;
+#X connect 67 1 36 0;

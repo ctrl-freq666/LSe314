@@ -1,0 +1,19 @@
+#N canvas 1873 533 634 364 10;
+#X obj 146 249 throw~ f1;
+#X obj 145 224 *~ 0.1;
+#X obj 144 92 inlet~;
+#X obj 217 92 inlet;
+#X text 138 72 input signal;
+#X text 203 142 center freq;
+#X text 176 109 gain;
+#X text 345 84 list sets gain \, cf \, q (works unless there are any
+signal inputs for filter parameters);
+#X text 156 209 filtered output;
+#X floatatom 177 128 0 0 0 0 - - -;
+#X text 263 161 Q: Try range of 1-100;
+#X obj 146 187 reson~ 1 \$1 100;
+#X connect 1 0 0 0;
+#X connect 2 0 11 0;
+#X connect 3 0 9 0;
+#X connect 9 0 11 1;
+#X connect 11 0 1 0;

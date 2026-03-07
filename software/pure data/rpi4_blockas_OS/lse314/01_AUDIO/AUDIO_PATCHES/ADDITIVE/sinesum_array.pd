@@ -1,0 +1,312 @@
+#N canvas 239 64 1051 809 10;
+#X declare -stdlib "/home/ccrma/pd-externals/else";
+#X msg 225 407 normalize;
+#X text 186 89 two;
+#X text 219 116 three;
+#X text 124 42 1 sinusoid;
+#X text 10 362 The "normalize" command normalizes the maximum value
+to 1!;
+#X text 482 166 32;
+#X msg 14 41 sinesum 4096 1;
+#X msg 42 89 sinesum 4096 0.5 0.5;
+#X msg 46 117 sinesum 4096 0.3 0.5 0.3;
+#X msg 22 63 sinesum 512 -1;
+#X obj 14 238 send kac_sin_harm;
+#X msg 15 285 \; kac_sin_harm sinesum 4096 0.03 0.03 0.03 0.03 0.03
+0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03
+0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 \,
+normalize;
+#X msg 53 146 sinesum 4096 -0.03 -0.03 -0.03 -0.03 0.03 0.03 0.03 0.03
+0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03
+0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 \, normalize;
+#X obj 225 434 send kac_sin_harm;
+#X obj 23 557 nbx 4 18 -1e+37 1e+37 0 1 empty empty empty 0 -8 0 10
+-228856 -1 -1 63 256;
+#N canvas 270 75 955 530 theory_from_example 0;
+#X text 20 15 "sinesum" is useful to draw waveforms for a wavetable
+oscilator. It generates waveforms by summing sine functions as if they
+were sine components of a harmonic series.;
+#X text 19 69 The first argument of the "sinesum" command is the table
+size (if the table is not set at this size \, it will be resized to
+it). After that we have a number of elements that will define the number
+of sine components \, from the first element of the harmonic series
+and up. The number values are the amplitudes of each sine component
+(from 0 to 1). Negative values indicate a phase change of 180 degrees.
+;
+#X obj 5 216 mtof;
+#X obj 136 317 *~;
+#X obj 165 230 sequencer 42 40 40 45 40 49 52 52 45 43 43 47 50 54
+55 55, f 29;
+#X text 464 21 In this example we use [tabosc4~] \, a native object
+that uses an array as a waveform. We generate a waveform with the "sinesum"
+message sent to an array \, which needs an array size that's a power
+of two (512 in this case) and a list of partials (8 of them in this
+example)., f 63;
+#X text 464 415 Test the resulting sound below with a frequency input
+or from a sequencer driving [tabosc4~]., f 63;
+#X text 464 176 Note that after sending the list of partials \, we
+do normalize the array. A subpatch also normalizes the partials for
+us to visualize the normalized values of each partial., f 63;
+#X text 464 289 The details about interpolation and guard points are
+presented later in this tutorial \, but know for now this interpolation
+type uses 4 points - hence the "4" in [tabosc4~]. Also note that none
+of this information about extra points is needed for the patch \, this
+is just technical details in the background., f 63;
+#X text 464 97 Play with the number boxes to the right. Each box represents
+the amplitude of a partial from our partials list. The drawn waveform
+is composed as a sum of this list of 8 partials. The sinesum message
+generates waveforms in arrays from a list of amplitudes for each partial.
+The first value is the table size., f 63;
+#X text 464 226 Sinesum generates arrays with "extra points" (in this
+example \, 512 points plus 3) \, which also called "guard points".
+These extra points are needed for interpolation in [tabosc4~] \, so
+the 'sinesum' command is specially designed for [tabosc4~]., f 63
+;
+#X text 464 366 Another detail is that 'sinesum' only generates tables
+whose size is a power of two (plus 3 points). So [tabosc4~] can only
+read tables with such possible sizes., f 63;
+#X obj 154 182 else/tempo -on 240;
+#X obj 154 283 envgen~ 50 1 150 1 50 0;
+#X obj 5 246 tabosc4~ kac_sin_harm;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array kac_sin_harm 4099 float 4;
+#X coords 0 -1 4098 1 200 140 1 0 0;
+#X restore 33 373 graph;
+#X connect 2 0 14 0;
+#X connect 4 0 2 0;
+#X connect 12 0 4 0;
+#X connect 12 0 13 0;
+#X connect 13 0 3 1;
+#X connect 14 0 3 0;
+#X restore 225 526 pd theory_from_example;
+#X obj 23 583 mtof;
+#X obj 405 27 //declare -lib else;
+#X obj 418 66 declare -stdlib "/home/ccrma/pd-externals/else";
+#X obj 23 738 dac~;
+#X floatatom 126 665 5 0 1 0 - - -, f 5;
+#X obj 24 689 *~ 0.1, f 15;
+#X obj 23 603 tabosc4~ kac_sin_harm;
+#X obj 300 671 print;
+#N canvas 0 51 1425 807 change_harm_from_tutorial 0;
+#X obj 194 510 s harm;
+#X msg 194 485 0;
+#X obj 325 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 279 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 233 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 187 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 142 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 96 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 50 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 23 121 cnv 1 1 1 empty empty 1st 0 0 0 14 -262144 -66577 0;
+#X obj 58 121 cnv 1 1 1 empty empty 2nd 0 0 0 14 -262144 -66577 0;
+#X obj 112 121 cnv 1 1 1 empty empty 3rd 0 0 0 14 -262144 -66577 0
+;
+#X obj 150 121 cnv 1 1 1 empty empty 4th 0 0 0 14 -262144 -66577 0
+;
+#X obj 196 121 cnv 1 1 1 empty empty 5th 0 0 0 14 -262144 -66577 0
+;
+#X obj 242 121 cnv 1 1 1 empty empty 6th 0 0 0 14 -262144 -66577 0
+;
+#X obj 290 121 cnv 1 1 1 empty empty 7th 0 0 0 14 -262144 -66577 0
+;
+#X obj 335 121 cnv 1 1 1 empty empty 8th 0 0 0 14 -262144 -66577 0
+;
+#X obj 5 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10 -191672
+-1 -1 0 256;
+#X msg 5 488 normalize;
+#X obj 5 421 list trim;
+#X obj 5 453 t b a, f 12;
+#X text 221 485 Reset;
+#X obj 5 378 list prepend sinesum 4096, f 12;
+#X obj 5 519 send kac_sin_harm;
+#X obj 5 193 else/pack2 float float float float float float float float
+float float float float float float float float float float float float
+float float float float float float float float float float float float
+, f 203;
+#X obj 277 476 list length;
+#X floatatom 277 498 5 0 0 0 - - -, f 5;
+#X obj 691 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 645 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 29 256;
+#X obj 599 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 553 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 508 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 462 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 416 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 388 121 cnv 1 1 1 empty empty 1st 0 0 0 14 -262144 -66577 0
+;
+#X obj 424 121 cnv 1 1 1 empty empty 2nd 0 0 0 14 -262144 -66577 0
+;
+#X obj 478 121 cnv 1 1 1 empty empty 3rd 0 0 0 14 -262144 -66577 0
+;
+#X obj 516 121 cnv 1 1 1 empty empty 4th 0 0 0 14 -262144 -66577 0
+;
+#X obj 562 121 cnv 1 1 1 empty empty 5th 0 0 0 14 -262144 -66577 0
+;
+#X obj 608 121 cnv 1 1 1 empty empty 6th 0 0 0 14 -262144 -66577 0
+;
+#X obj 656 121 cnv 1 1 1 empty empty 7th 0 0 0 14 -262144 -66577 0
+;
+#X obj 701 121 cnv 1 1 1 empty empty 8th 0 0 0 14 -262144 -66577 0
+;
+#X obj 370 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 40 256;
+#X obj 1057 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 13 256;
+#X obj 1011 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 965 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 919 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 16 256;
+#X obj 874 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 828 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 782 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 755 121 cnv 1 1 1 empty empty 1st 0 0 0 14 -262144 -66577 0
+;
+#X obj 790 121 cnv 1 1 1 empty empty 2nd 0 0 0 14 -262144 -66577 0
+;
+#X obj 844 121 cnv 1 1 1 empty empty 3rd 0 0 0 14 -262144 -66577 0
+;
+#X obj 882 121 cnv 1 1 1 empty empty 4th 0 0 0 14 -262144 -66577 0
+;
+#X obj 928 121 cnv 1 1 1 empty empty 5th 0 0 0 14 -262144 -66577 0
+;
+#X obj 974 121 cnv 1 1 1 empty empty 6th 0 0 0 14 -262144 -66577 0
+;
+#X obj 1022 121 cnv 1 1 1 empty empty 7th 0 0 0 14 -262144 -66577 0
+;
+#X obj 1067 121 cnv 1 1 1 empty empty 8th 0 0 0 14 -262144 -66577 0
+;
+#X obj 736 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 1423 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 1377 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 1331 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 1285 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 1240 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 51 256;
+#X obj 1194 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 1148 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X obj 1120 121 cnv 1 1 1 empty empty 1st 0 0 0 14 -262144 -66577 0
+;
+#X obj 1156 121 cnv 1 1 1 empty empty 2nd 0 0 0 14 -262144 -66577 0
+;
+#X obj 1210 121 cnv 1 1 1 empty empty 3rd 0 0 0 14 -262144 -66577 0
+;
+#X obj 1248 121 cnv 1 1 1 empty empty 4th 0 0 0 14 -262144 -66577 0
+;
+#X obj 1294 121 cnv 1 1 1 empty empty 5th 0 0 0 14 -262144 -66577 0
+;
+#X obj 1340 121 cnv 1 1 1 empty empty 6th 0 0 0 14 -262144 -66577 0
+;
+#X obj 1388 121 cnv 1 1 1 empty empty 7th 0 0 0 14 -262144 -66577 0
+;
+#X obj 1433 121 cnv 1 1 1 empty empty 8th 0 0 0 14 -262144 -66577 0
+;
+#X obj 1102 135 nbx 4 18 -1e+37 1e+37 0 0 empty harm empty 0 -8 0 10
+-191672 -1 -1 0 256;
+#X connect 1 0 0 0;
+#X connect 2 0 24 7;
+#X connect 3 0 24 6;
+#X connect 4 0 24 5;
+#X connect 5 0 24 4;
+#X connect 6 0 24 3;
+#X connect 7 0 24 2;
+#X connect 8 0 24 1;
+#X connect 17 0 24 0;
+#X connect 18 0 23 0;
+#X connect 19 0 20 0;
+#X connect 19 0 25 0;
+#X connect 20 0 18 0;
+#X connect 20 1 23 0;
+#X connect 22 0 19 0;
+#X connect 24 0 22 0;
+#X connect 25 0 26 0;
+#X connect 27 0 24 15;
+#X connect 28 0 24 14;
+#X connect 29 0 24 13;
+#X connect 30 0 24 12;
+#X connect 31 0 24 11;
+#X connect 32 0 24 10;
+#X connect 33 0 24 9;
+#X connect 42 0 24 8;
+#X connect 43 0 24 23;
+#X connect 44 0 24 22;
+#X connect 45 0 24 21;
+#X connect 46 0 24 20;
+#X connect 47 0 24 19;
+#X connect 48 0 24 18;
+#X connect 49 0 24 17;
+#X connect 58 0 24 16;
+#X connect 59 0 24 31;
+#X connect 60 0 24 30;
+#X connect 61 0 24 29;
+#X connect 62 0 24 28;
+#X connect 63 0 24 27;
+#X connect 64 0 24 26;
+#X connect 65 0 24 25;
+#X connect 74 0 24 24;
+#X restore 501 108 pd change_harm_from_tutorial;
+#X obj 311 631 r ldr_list_10;
+#X text 498 618 to control amplitudes of partials;
+#X text 497 597 expect list of 32 values between 0-1;
+#X floatatom 442 493 5 0 1 0 - - -, f 5;
+#X obj 442 510 pack2 f 0 f f f f f f f f, f 63;
+#X floatatom 490 492 5 0 1 0 - - -, f 5;
+#X floatatom 539 492 5 0 1 0 - - -, f 5;
+#X floatatom 588 493 5 0 1 0 - - -, f 5;
+#X floatatom 636 492 5 0 1 0 - - -, f 5;
+#X floatatom 685 493 5 0 1 0 - - -, f 5;
+#X floatatom 734 492 5 0 1 0 - - -, f 5;
+#X floatatom 782 492 5 0 1 0 - - -, f 5;
+#X floatatom 831 492 5 0 1 0 - - -, f 5;
+#X floatatom 880 492 5 0 1 0 - - -, f 5;
+#X msg 442 532 \; kac_sin_harm sinesum 4096 \$1 \$2 \$3 \$4 \$5 \$6
+\$7 \$8 \$9 \$10 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03
+0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03 0.03;
+#X connect 0 0 13 0;
+#X connect 6 0 10 0;
+#X connect 7 0 10 0;
+#X connect 8 0 10 0;
+#X connect 9 0 10 0;
+#X connect 12 0 10 0;
+#X connect 14 0 16 0;
+#X connect 16 0 22 0;
+#X connect 20 0 21 1;
+#X connect 21 0 19 0;
+#X connect 21 0 19 1;
+#X connect 22 0 21 0;
+#X connect 28 0 29 0;
+#X connect 29 0 39 0;
+#X connect 30 0 29 1;
+#X connect 31 0 29 2;
+#X connect 32 0 29 3;
+#X connect 33 0 29 4;
+#X connect 34 0 29 5;
+#X connect 35 0 29 6;
+#X connect 36 0 29 7;
+#X connect 37 0 29 8;
+#X connect 38 0 29 9;

@@ -1,0 +1,15 @@
+#N canvas 159 224 601 284 10;
+#X obj 216 129 print;
+#X obj 101 19 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 78 226 print;
+#X obj 78 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 216 74 hcs/folder_list;
+#X obj 78 173 hcs/folder_list /home/ccrma/pd/sample/KIKS/*;
+#X msg 290 39 symbol /home/ccrma/pd/sample/FX/*;
+#X connect 1 0 4 0;
+#X connect 3 0 5 0;
+#X connect 4 0 0 0;
+#X connect 5 0 2 0;
+#X connect 6 0 4 1;

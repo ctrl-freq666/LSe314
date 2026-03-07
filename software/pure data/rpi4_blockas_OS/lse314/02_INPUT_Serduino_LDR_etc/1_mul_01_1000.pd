@@ -1,0 +1,13 @@
+#N canvas 109 537 287 272 10;
+#X obj 26 47 inlet;
+#X obj 26 160 outlet;
+#X text 84 160 scaled out value;
+#X text 86 49 incoming value;
+#X text 82 75 upscale for compare;
+#X obj 26 71 * -1000;
+#X obj 26 93 + 1000;
+#X obj 26 115 int;
+#X connect 0 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 1 0;

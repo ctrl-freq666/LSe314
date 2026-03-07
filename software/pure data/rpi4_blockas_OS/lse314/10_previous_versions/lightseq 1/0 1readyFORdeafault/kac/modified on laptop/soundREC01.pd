@@ -1,0 +1,104 @@
+#N canvas 74 276 1123 488 10;
+#X obj -43 -138 adc~;
+#X text -18 68 audio in;
+#X text 188 91 the actual recording takes place here;
+#X obj 123 92 writesf~;
+#X msg 150 -110 open KacSampel01.wav \, start;
+#X msg 500 30 start;
+#X msg 192 50 stop;
+#X msg 164 7 open KacSampel02.wav;
+#X text 305 5 create a new 16-bit soundfile;
+#X text 578 5 [writesf~] creates a subthread whose task is to write
+audio streams to disk. You need not provide any disk access time between
+"open" and "start" \, but between "stop" and the next "open" you must
+give the object time to flush all the output to disk.;
+#X msg 184 29 start;
+#X text 230 31 start recording;
+#X text 330 -109 create a file and start recoding in one message!;
+#X obj 104 -21 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 123 -22 stop;
+#X msg 501 9 open 666.wav;
+#X text 158 -22 stop recording / write to disc \, after 1 second;
+#X obj -43 70 +~;
+#X obj 123 -134 t b b;
+#X text 235 50 stop recording;
+#X text 643 -150 its also good to stop the file on purpose (have a
+button for bothstarting and stopping);
+#X obj -43 -118 *~ 10;
+#X obj -43 48 *~;
+#X obj -13 -39 rand~;
+#X obj -28 17 +~;
+#X text 648 -203 If DSP is not on \, nothing happens \, make sure its
+on before recording a sample;
+#X obj -28 -64 *~ 0.9;
+#X text 647 -177 old sampel gets overwritten by the new one if we use
+the same name;
+#X obj 122 185 readsf~;
+#X msg 308 124 open KacSampel01.wav \, 1;
+#X msg 182 146 0;
+#X msg 122 124 start;
+#X msg 122 147 stop;
+#X text 211 123 start playback;
+#X text 211 145 stop it;
+#X msg 182 125 1;
+#X text 197 187 bang when finished playing;
+#X obj 181 137 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 122 238 dac~;
+#X obj 122 213 *~ 0.99;
+#X text 466 124 play the file you recorded...;
+#X obj 123 -57 delay 1500;
+#X text 196 -60 how long do we want the sampel = delay value;
+#X msg 648 -81 \; pd dsp 1 \;;
+#X msg 648 -43 \; pd dsp 0 \;;
+#X obj -27 -198 r pd;
+#X obj 8 -195 route dsp;
+#X text 100 -193 1 if dsp on 0 if off;
+#X obj 123 -158 gate;
+#X text 161 -159 dsp is on and button is pressed - lets record a sampel
+;
+#X obj 76 -193 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X text 378 -198 to record a sampel;
+#X obj 265 -195 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 288 -197 r rec-trigger;
+#X text 258 -180 only record sample if the DSP is on!!!;
+#X obj -28 -86 cycle~ 12;
+#X obj -13 -17 *~ 0.3;
+#X connect 0 0 21 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 0;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;
+#X connect 10 0 3 0;
+#X connect 14 0 3 0;
+#X connect 15 0 3 0;
+#X connect 17 0 3 0;
+#X connect 18 0 41 0;
+#X connect 18 1 4 0;
+#X connect 21 0 22 0;
+#X connect 22 0 17 0;
+#X connect 23 0 56 0;
+#X connect 24 0 22 1;
+#X connect 26 0 24 0;
+#X connect 28 0 39 0;
+#X connect 28 1 37 0;
+#X connect 29 0 28 0;
+#X connect 30 0 28 0;
+#X connect 31 0 28 0;
+#X connect 32 0 28 0;
+#X connect 35 0 28 0;
+#X connect 39 0 38 0;
+#X connect 39 0 38 1;
+#X connect 41 0 13 0;
+#X connect 41 0 14 0;
+#X connect 45 0 46 0;
+#X connect 46 0 48 0;
+#X connect 46 0 50 0;
+#X connect 48 0 18 0;
+#X connect 52 0 48 1;
+#X connect 53 0 48 1;
+#X connect 55 0 26 0;
+#X connect 56 0 24 1;

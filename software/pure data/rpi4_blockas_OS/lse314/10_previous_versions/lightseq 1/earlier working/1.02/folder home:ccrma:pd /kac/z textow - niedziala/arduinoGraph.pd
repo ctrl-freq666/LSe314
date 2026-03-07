@@ -1,0 +1,72 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf400
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs24 \cf0 PureData\
+\
+\
+#N canvas 489 35 983 572 10;\
+#X declare -lib moocow;\
+#X obj 198 190 comport 1 9600;\
+#X obj 281 85 select 0 1;\
+#X obj 287 52 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1\
+1;\
+#X msg 287 132 close;\
+#X msg 418 139 ports;\
+#X obj 279 220 route ports;\
+#X obj 279 246 print port_list;\
+#X text 472 138 will print out available ports to message window;\
+#X text 308 51 toggle to start/stop;\
+#X text 42 99 read serial buffer every 10ms;\
+#X msg 31 120 pollintervall 10;\
+#X obj 191 230 select 10 13;\
+#X floatatom 183 366 5 0 0 0 - - -;\
+#N canvas 0 22 450 300 (subpatch) 0;\
+#X array Graph 255 float 0;\
+#X coords 0 1023 254 0 200 140 1;\
+#X restore 275 360 graph;\
+#X msg 166 478 \\; Graph \\$1 \\$2;\
+#X obj 168 453 pack 0 0;\
+#X obj 184 392 t b f;\
+#X obj 188 283 zl group 4;\
+#X obj -61 120 import moocow;\
+#X obj 183 316 bytes2any;\
+#X obj -62 82 loadbang;\
+#X text -166 245 If you get newline (ASCII 10) \\, send the list. If\
+you get return (ASCII 13) do nothing. Any other value \\, add to the\
+list;\
+#X text 44 368 arduio's analog input;\
+#X text 249 315 Convert integer to ASCII;\
+#X text -154 141 read serial buffer every 10ms;\
+#X obj 166 421 counter 0 254;\
+#X text -204 -29 Graph This patch takes a string \\, containing ASCII\
+formatted number from 0 to 1023 \\, with a carriage return and linefeed\
+at the end. It converts the string to an integer and graphs it. Sept\
+27 \\, 2010 by Scott Fitzgerald and Dan Mikesell \\, based off the Dimmer\
+Max/MSP example by David Mellis \\, Tom Igoe and Scott Fitzgerald;\
+#X msg 337 134 open 4;\
+#X connect 0 0 11 0;\
+#X connect 0 1 5 0;\
+#X connect 1 0 3 0;\
+#X connect 1 1 27 0;\
+#X connect 2 0 1 0;\
+#X connect 3 0 0 0;\
+#X connect 4 0 0 0;\
+#X connect 5 0 6 0;\
+#X connect 10 0 0 0;\
+#X connect 11 0 17 0;\
+#X connect 11 2 17 0;\
+#X connect 12 0 16 0;\
+#X connect 15 0 14 0;\
+#X connect 16 0 25 0;\
+#X connect 16 1 15 1;\
+#X connect 17 0 19 0;\
+#X connect 19 0 12 0;\
+#X connect 20 0 18 0;\
+#X connect 20 0 10 0;\
+#X connect 25 0 15 0;\
+#X connect 27 0 0 0;\
+}

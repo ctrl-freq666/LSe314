@@ -1,0 +1,22 @@
+#N canvas 835 188 481 563 10;
+#X obj 37 30 loadbang;
+#X msg 37 53 location /home/ccrma/pd/sample/KIKS;
+#X obj 37 342 t s b;
+#X obj 37 467 soundfiler;
+#X msg 37 444 read -resize \$1 \$2;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array kac_smpl 22018 float 2;
+#X coords 0 1 22018 -1 200 140 1;
+#X restore 245 388 graph;
+#X obj 37 421 pack s s;
+#X msg 72 368 symbol kac_smpl;
+#X obj 37 116 playlist all 200 200 {Helvetica 10 bold} #457782 yellow
+black red;
+#X connect 0 0 1 0;
+#X connect 1 0 8 0;
+#X connect 2 0 6 0;
+#X connect 2 1 7 0;
+#X connect 4 0 3 0;
+#X connect 6 0 4 0;
+#X connect 7 0 6 1;
+#X connect 8 0 2 0;

@@ -1,0 +1,58 @@
+#N canvas 0 54 930 265 12;
+#X text 130 77 0-1;
+#X obj 615 74 bng 15 250 50 0 empty FX_P\$1_PAR_D1B D1B 17 7 0 10 -4034
+-1 -1;
+#X obj 564 73 tgl 15 0 empty FX_P\$1_PAR_D1 D1 17 7 0 10 -4034 -1 -1
+0 1;
+#X obj 186 81 hsl 50 10 0 1 0 0 empty FX_P\$1_PAR_A1 A1 -20 6 0 10
+-128992 -4034 -1 3396 1;
+#X obj 288 79 hsl 50 10 0 1 0 0 empty FX_P\$1_PAR_A2 A2 -20 6 0 10
+-128992 -4034 -1 2734 1;
+#X obj 383 79 hsl 50 10 0 1 0 0 empty FX_P\$1_PAR_A3 A3 -20 6 0 10
+-128992 -4034 -1 3391 1;
+#X obj 478 79 hsl 50 10 0 1 0 0 empty FX_P\$1_PAR_A4 A4 -20 6 0 10
+-128992 -4034 -1 2448 1;
+#X obj 691 72 bng 15 250 50 0 empty FX_P\$1_PAR_D2B D2B 17 7 0 10 -4034
+-1 -1;
+#X obj 655 73 tgl 15 0 empty FX_P\$1_PAR_D2 D2 17 7 0 10 -4034 -1 -1
+0 1;
+#X obj 786 74 bng 15 250 50 0 empty FX_P\$1_PAR_D3B D3B 17 7 0 10 -4034
+-1 -1;
+#X obj 755 73 tgl 15 0 empty FX_P\$1_PAR_D3 D3 17 7 0 10 -4034 -1 -1
+0 1;
+#X text 25 162 CTRL AUDIOFX PATCH;
+#X obj 183 169 outlet a1;
+#X obj 183 115 * \$2;
+#X obj 285 114 * \$3;
+#X obj 285 169 outlet a2;
+#X obj 380 118 * \$4;
+#X obj 475 121 * \$5;
+#X obj 380 168 outlet a3;
+#X obj 475 171 outlet a4;
+#X obj 564 170 outlet d1;
+#X obj 655 169 outlet d2;
+#X obj 755 169 outlet d3;
+#X text 260 27 arguments:;
+#X text 335 27 \$1 = fx patch number;
+#X obj 755 112 1_ARD_DIG_BTN \$7 1, f 10;
+#X text 583 116 c ounter;
+#X text 761 143 c ounter;
+#X text 262 42 \$2-\$5 = scale factor A1-A4;
+#X text 601 37 \$6-\$7 = counter D2 \, D3;
+#X text 120 118 REMAP;
+#X floatatom 607 148 5 0 0 0 - - -;
+#X obj 655 112 1_ARD_DIG_BTN \$6 1, f 9;
+#X connect 2 0 20 0;
+#X connect 3 0 13 0;
+#X connect 4 0 14 0;
+#X connect 5 0 16 0;
+#X connect 6 0 17 0;
+#X connect 8 0 32 0;
+#X connect 10 0 25 0;
+#X connect 13 0 12 0;
+#X connect 14 0 15 0;
+#X connect 16 0 18 0;
+#X connect 17 0 19 0;
+#X connect 25 0 22 0;
+#X connect 32 0 21 0;
+#X connect 32 0 31 0;

@@ -1,0 +1,681 @@
+#N canvas 90 164 1305 625 12;
+#N canvas 48 425 1263 367 manage_samples 0;
+#X obj 953 258 soundfiler;
+#X floatatom 953 282 10 0 0 0 - - -;
+#X obj 952 308 s samplelength;
+#X text 1027 261 Size of loaded sound in samples;
+#X obj 953 188 bng 15 250 50 0 empty empty empty 17 7 0 10 -4160 -1
+-1;
+#X obj 953 208 openpanel;
+#X text 988 186 Load a file from disk into mysound;
+#X msg 953 233 read -resize \$1 kacsound;
+#X obj 86 214 bng 15 250 50 0 empty load_smpl_at_start load_smpl_at_start
+17 7 0 10 -262144 -1 -1;
+#X obj 357 157 bng 15 250 50 0 empty load_smpl_at_start load_smpl_at_start
+17 7 0 10 -262144 -1 -1;
+#X text 85 197 LOAD/MANAGE samples;
+#X text 344 208 load sample 2;
+#N canvas 548 207 733 480 manage_FX_SMPLS_2 0;
+#X obj 58 139 loadbang;
+#X obj 58 161 del 5000;
+#X text 53 120 symbol: Sample name;
+#X obj 200 273 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 222 393 smpgranu2;
+#X msg 126 424 /usr/local/puredata-patches/lse314/SAMPLE/FX/FX_SMPL0108.wav
+;
+#X msg 363 392 125699;
+#X text 84 392 name of sample;
+#X text 408 392 duration;
+#X text 54 96 outputs info about sample;
+#X text 54 107 arg-table sample name;
+#X text 227 276 2 get sample info;
+#X msg 58 233 sample smpgranu2;
+#X obj 523 371 s smp2Len;
+#X obj 72 424 outlet;
+#X obj 72 369 cyclone/prepend set;
+#X obj 222 369 cyclone/prepend set;
+#X obj 364 368 cyclone/prepend set;
+#X obj 329 238 t b a;
+#X text 371 237 1 load sample;
+#X obj 302 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 328 53 inlet;
+#X obj 370 95 + 1;
+#X obj 328 104 i;
+#X obj 370 117 %, f 6;
+#X text 120 59 bang to load new sample;
+#X obj 328 146 + 100;
+#X obj 329 194 cyclone/prepend read;
+#X text 192 28 get sampl amount from MANAGE SAMPLES subpachg;
+#X floatatom 421 81 5 0 0 0 - - -;
+#X obj 409 59 r SMPL_FX_AMT;
+#X obj 200 323 tof/sample_unpack;
+#X obj 398 268 tof/sample smpgranu2;
+#X msg 99 204 /home/ccrma/pd/sample/Rim2.wav;
+#X floatatom 270 158 5 0 0 0 - - -;
+#X msg 328 168 /usr/local/puredata-patches/lse314/SAMPLE/FX/FX_SMPL0\$1.wav
+;
+#X connect 0 0 1 0;
+#X connect 1 0 12 0;
+#X connect 1 0 33 0;
+#X connect 3 0 31 0;
+#X connect 12 0 31 0;
+#X connect 15 0 5 0;
+#X connect 16 0 4 0;
+#X connect 17 0 6 0;
+#X connect 18 0 3 0;
+#X connect 18 1 32 0;
+#X connect 20 0 23 0;
+#X connect 21 0 23 0;
+#X connect 22 0 24 0;
+#X connect 23 0 22 0;
+#X connect 23 0 26 0;
+#X connect 23 0 34 0;
+#X connect 24 0 23 1;
+#X connect 26 0 35 0;
+#X connect 27 0 18 0;
+#X connect 30 0 29 0;
+#X connect 30 0 24 1;
+#X connect 31 1 15 0;
+#X connect 31 1 14 0;
+#X connect 31 2 16 0;
+#X connect 31 6 13 0;
+#X connect 31 6 17 0;
+#X connect 35 0 27 0;
+#X restore 325 241 pd manage_FX_SMPLS_2;
+#X obj 554 218 bng 15 250 50 0 empty load_smpl_at_start load_smpl_at_start
+17 7 0 10 -262144 -1 -1;
+#X text 572 201 load sample 3;
+#N canvas 327 207 893 587 manage_SNR_SMPLS_3 0;
+#X obj 58 159 loadbang;
+#X obj 58 181 del 5000;
+#X text 53 140 symbol: Sample name;
+#X obj 200 273 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 363 392 139444;
+#X text 84 392 name of sample;
+#X text 408 392 duration;
+#X text 54 116 outputs info about sample;
+#X text 54 127 arg-table sample name;
+#X text 227 276 2 get sample info;
+#X obj 26 438 outlet;
+#X obj 72 369 cyclone/prepend set;
+#X obj 222 369 cyclone/prepend set;
+#X obj 364 368 cyclone/prepend set;
+#X obj 329 238 t b a;
+#X text 371 237 1 load sample;
+#X obj 302 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 328 53 inlet;
+#X obj 370 95 + 1;
+#X obj 328 104 i;
+#X obj 370 117 %, f 6;
+#X text 120 59 bang to load new sample;
+#X obj 328 146 + 100;
+#X obj 329 210 cyclone/prepend read;
+#X text 463 58 get sampl amount from MANAGE SAMPLES subpachg;
+#X floatatom 419 81 5 0 0 0 - - -;
+#X obj 409 29 r SMPL_SNRS_AMT, f 20;
+#X msg 58 253 sample smpgranu3;
+#X obj 523 371 s smp3Len;
+#X msg 222 393 smpgranu3;
+#X obj 200 333 tof/sample_unpack;
+#X obj 398 268 tof/sample smpgranu3;
+#X msg 73 211 /home/ccrma/pd/sample/Rim2.wav;
+#X msg 126 424 /usr/local/puredata-patches/lse314/SAMPLE/SNRS/SNR_SMPL0122.wav
+;
+#X msg 328 168 /usr/local/puredata-patches/lse314/SAMPLE/SNRS/SNR_SMPL0\$1.wav
+;
+#X connect 0 0 1 0;
+#X connect 1 0 27 0;
+#X connect 1 0 32 0;
+#X connect 3 0 30 0;
+#X connect 11 0 33 0;
+#X connect 12 0 29 0;
+#X connect 13 0 4 0;
+#X connect 14 0 3 0;
+#X connect 14 1 31 0;
+#X connect 16 0 19 0;
+#X connect 17 0 19 0;
+#X connect 18 0 20 0;
+#X connect 19 0 18 0;
+#X connect 19 0 22 0;
+#X connect 20 0 19 1;
+#X connect 22 0 34 0;
+#X connect 23 0 14 0;
+#X connect 26 0 25 0;
+#X connect 26 0 20 1;
+#X connect 27 0 30 0;
+#X connect 30 1 11 0;
+#X connect 30 1 10 0;
+#X connect 30 2 12 0;
+#X connect 30 6 13 0;
+#X connect 30 6 28 0;
+#X connect 32 0 14 0;
+#X connect 34 0 23 0;
+#X restore 554 241 pd manage_SNR_SMPLS_3;
+#N canvas 162 207 976 472 manage_VOICE_SMPLS_4 0;
+#X obj 148 119 loadbang;
+#X obj 148 141 del 5000;
+#X text 143 100 symbol: Sample name;
+#X obj 200 273 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 126 424 /usr/local/puredata-patches/lse314/SAMPLE/VOICE/VC_SMPL0102.wav
+;
+#X msg 417 392 114335;
+#X text 138 392 name of sample;
+#X text 462 392 duration;
+#X text 144 76 outputs info about sample;
+#X text 144 87 arg-table sample name;
+#X text 239 272 2 get sample info;
+#X obj 40 367 outlet;
+#X obj 126 369 cyclone/prepend set;
+#X obj 276 369 cyclone/prepend set;
+#X obj 418 368 cyclone/prepend set;
+#X obj 459 238 t b a;
+#X text 501 237 1 load sample;
+#X obj 432 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 458 53 inlet;
+#X obj 500 85 + 1;
+#X obj 458 104 i;
+#X obj 500 107 %, f 6;
+#X text 210 59 bang to load new sample;
+#X obj 458 146 + 100;
+#X obj 460 207 cyclone/prepend read;
+#X text 152 24 get sampl amount from MANAGE SAMPLES subpachg;
+#X msg 276 393 smpgranu4;
+#X floatatom 554 86 5 0 0 0 - - -;
+#X obj 539 28 r SMPL_VOICE_AMT, f 17;
+#X obj 577 371 s smp4Len;
+#X msg 148 223 sample smpgranu4;
+#X obj 200 333 tof/sample_unpack;
+#X obj 528 268 tof/sample smpgranu4;
+#X msg 61 172 usr/local/puredata-patches/lse314/SAMPLE/VOICE/Rim2.wav
+, f 30;
+#X msg 458 168 /usr/local/puredata-patches/lse314/SAMPLE/VOICE/VC_SMPL0\$1.wav
+, f 64;
+#X connect 0 0 1 0;
+#X connect 1 0 30 0;
+#X connect 1 0 33 0;
+#X connect 3 0 31 0;
+#X connect 12 0 4 0;
+#X connect 13 0 26 0;
+#X connect 14 0 5 0;
+#X connect 15 0 3 0;
+#X connect 15 1 32 0;
+#X connect 17 0 20 0;
+#X connect 18 0 20 0;
+#X connect 19 0 21 0;
+#X connect 20 0 19 0;
+#X connect 20 0 23 0;
+#X connect 21 0 20 1;
+#X connect 23 0 34 0;
+#X connect 24 0 15 0;
+#X connect 28 0 27 0;
+#X connect 28 0 21 1;
+#X connect 30 0 31 0;
+#X connect 31 1 12 0;
+#X connect 31 1 11 0;
+#X connect 31 2 13 0;
+#X connect 31 6 14 0;
+#X connect 31 6 29 0;
+#X connect 33 0 15 0;
+#X connect 34 0 24 0;
+#X restore 763 241 pd manage_VOICE_SMPLS_4;
+#X text 758 198 load sample 4;
+#X obj 763 215 bng 15 250 50 0 empty load_smpl_at_start load_smpl_at_start
+17 7 0 10 -262144 -1 -1;
+#X obj 938 55 loadbang \; load_smpl_at_start bang;
+#X msg 938 112 \; load_smpl_at_start bang;
+#X obj 938 91 del 5000;
+#X text 791 8 bang to load new sample;
+#X obj 389 116 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 57 35 inlet smpl_cat_sel;
+#X obj 798 36 inlet B_new_smpl;
+#X obj 206 88 cyclone/gate 4 1, f 85;
+#X obj 614 118 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 804 116 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 216 113 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 818 76 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 554 307 soundfiler;
+#X obj 1165 307 print;
+#X obj 1165 288 spigot;
+#X obj 1204 267 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 76 307 soundfiler;
+#X obj 325 307 soundfiler;
+#X obj 763 307 soundfiler;
+#X msg 76 281 read -resize \$1 smpgranu1a;
+#X msg 325 281 read -resize \$1 smpgranu2a;
+#X msg 554 281 read -resize \$1 smpgranu3a;
+#X msg 763 281 read -resize \$1 smpgranu4a;
+#N canvas 316 239 868 455 manage_PERC_SMPLS1 0;
+#X obj 82 20 loadbang;
+#X obj 82 42 del 5000;
+#X text 436 248 Inlet 1;
+#X text 455 227 read symbol: Read sound file into the sample's tables
+;
+#X text 430 301 Loads a sound file (wav) as a sample;
+#X text 12 307 symbol: Sample name;
+#X text 430 327 Argument 1;
+#X text 430 339 Argument 2 (optional):;
+#X text 429 352 symbol: Sound file to read into the sample's tables
+when created;
+#X text 430 314 and puts into smpgranu table;
+#X obj 100 249 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 86 383 /usr/local/puredata-patches/lse314/SAMPLE//PERC/PERC_SMPL_0101.wav
+;
+#X obj 287 317 prepend set;
+#X msg 287 339 109816;
+#X text 86 344 name of sample;
+#X text 175 362 name of table in which s is stored;
+#X text 331 291 duration;
+#X text 12 320 outputs info about sample;
+#X text 13 294 arg-table sample name;
+#X obj 399 203 t b a;
+#X text 441 202 1 load sample;
+#X text 192 242 2 get sample info;
+#X obj 372 22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 398 18 inlet;
+#X obj 5 373 outlet;
+#X obj 87 360 prepend set;
+#X obj 194 318 prepend set;
+#X floatatom 497 61 5 0 0 0 - - -;
+#X obj 427 48 + 1;
+#X text 190 24 bang to load new sample;
+#X text 514 325 symbol: Sample name;
+#X obj 398 111 + 100;
+#X obj 399 173 cyclone/prepend read;
+#X text 549 51 get sampl amount from MANAGE SAMPLES subpachg;
+#X msg 82 113 sample smpgranu1;
+#X msg 194 342 smpgranu1;
+#X obj 337 340 s smp1Len;
+#X obj 82 272 tof/sample_unpack, f 31;
+#X obj 426 265 tof/sample smpgranu1;
+#X msg 141 157 /home/ccrma/pd/sample/Rim2.wav;
+#X floatatom 359 103 5 0 0 0 - - -;
+#X obj 398 85 % 28, f 6;
+#X obj 398 49 i;
+#X msg 398 133 /usr/local/puredata-patches/lse314/SAMPLE//PERC/PERC_SMPL_0\$1.wav
+;
+#X obj 479 17 r SMPL_PERC_AMT;
+#X connect 0 0 1 0;
+#X connect 1 0 34 0;
+#X connect 1 0 39 0;
+#X connect 10 0 37 0;
+#X connect 12 0 13 0;
+#X connect 19 0 10 0;
+#X connect 19 1 38 0;
+#X connect 22 0 42 0;
+#X connect 23 0 42 0;
+#X connect 25 0 11 0;
+#X connect 26 0 35 0;
+#X connect 28 0 42 1;
+#X connect 31 0 43 0;
+#X connect 32 0 19 0;
+#X connect 34 0 37 0;
+#X connect 37 1 25 0;
+#X connect 37 1 24 0;
+#X connect 37 2 26 0;
+#X connect 37 6 12 0;
+#X connect 37 6 36 0;
+#X connect 39 0 19 0;
+#X connect 41 0 31 0;
+#X connect 41 0 40 0;
+#X connect 42 0 28 0;
+#X connect 42 0 41 0;
+#X connect 43 0 32 0;
+#X connect 44 0 27 0;
+#X connect 44 0 41 1;
+#X restore 76 240 pd manage_PERC_SMPLS1;
+#X text 332 17 UWAGA - SAMPLE SA W DWOCH MIEJSCACH;
+#X msg 334 35 /home/patch/Pd/SAMPLE/;
+#X msg 334 55 /usr/local/puredata-patches/lse314/SAMPLE/;
+#X floatatom 57 58 5 0 0 0 - - -;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 7 0;
+#X connect 7 0 0 0;
+#X connect 8 0 42 0;
+#X connect 9 0 12 0;
+#X connect 12 0 39 0;
+#X connect 13 0 15 0;
+#X connect 15 0 40 0;
+#X connect 16 0 41 0;
+#X connect 18 0 16 0;
+#X connect 19 0 21 0;
+#X connect 21 0 20 0;
+#X connect 24 0 26 0;
+#X connect 24 0 46 0;
+#X connect 25 0 26 1;
+#X connect 25 0 30 0;
+#X connect 26 0 29 0;
+#X connect 26 0 42 0;
+#X connect 26 1 23 0;
+#X connect 26 1 12 0;
+#X connect 26 2 27 0;
+#X connect 26 2 15 0;
+#X connect 26 3 28 0;
+#X connect 26 3 16 0;
+#X connect 33 0 32 0;
+#X connect 34 0 33 1;
+#X connect 38 0 35 0;
+#X connect 39 0 36 0;
+#X connect 40 0 31 0;
+#X connect 41 0 37 0;
+#X connect 42 0 38 0;
+#X restore 689 84 pd manage_samples;
+#X f 21;
+#N canvas 768 450 450 300 smpl_cat_select 0;
+#X obj 81 62 + 1;
+#X obj 39 62 i;
+#X obj 39 104 %, f 4;
+#X obj 39 144 + 1;
+#X obj 39 22 inlet;
+#X obj 141 34 loadbang;
+#X obj 141 56 del 500;
+#X floatatom 129 162 5 0 0 0 - - -;
+#X obj 39 190 outlet;
+#X obj 213 59 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 141 76 v SMPL_CATGORY_P3;
+#X obj 155 216 print smpl_cat_p3;
+#X floatatom 161 98 5 0 0 0 - - -;
+#X text 132 181 smpl cat;
+#X obj 133 251 s SMPL_LED_CTRL, f 21;
+#X obj 219 23 r smpl_amt;
+#X text 318 32 at load dynamic;
+#X connect 0 0 1 1;
+#X connect 1 0 0 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 7 0;
+#X connect 3 0 8 0;
+#X connect 3 0 11 0;
+#X connect 3 0 14 0;
+#X connect 4 0 1 0;
+#X connect 5 0 6 0;
+#X connect 6 0 10 0;
+#X connect 9 0 10 0;
+#X connect 10 0 2 1;
+#X connect 10 0 12 0;
+#X connect 15 0 9 0;
+#X restore 689 54 pd smpl_cat_select;
+#X obj 173 163 r smp1Len;
+#X floatatom 173 181 10 0 0 0 - - -;
+#X floatatom 381 183 10 0 0 0 - - -;
+#X obj 381 165 r smp2Len;
+#X floatatom 598 181 9 0 0 0 - - -;
+#X obj 598 163 r smp3Len;
+#X floatatom 804 182 10 0 0 0 - - -;
+#X obj 804 164 r smp4Len;
+#X obj 90 544 throw~ ch3pre;
+#X obj 379 559 throw~ PATCH3L;
+#X obj 706 571 throw~ PATCH3R;
+#X obj 1004 208 oneARDinCOMPARE 0.1;
+#X floatatom 1004 191 5 0 0 0 - patch3level -;
+#X obj 283 255 hsl 50 15 0 1 0 0 empty 01_L_1 BTM_R 2 8 0 10 -261234
+-258113 -262144 3675 1;
+#X obj 175 254 tgl 15 0 empty LG_L_1 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 495 254 hsl 50 15 0 1 0 0 empty 01_L_2 3RD_R 2 8 0 10 -261234
+-258113 -262144 2450 1;
+#X obj 381 254 tgl 15 0 empty LG_L_2 empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 708 254 hsl 50 15 0 1 0 0 empty 01_L_3 2ND_R 2 8 0 10 -261234
+-258113 -262144 1837 1;
+#X obj 600 254 tgl 15 0 empty LG_L_3 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 911 244 hsl 50 15 0 1 0 0 empty 01_L_4 TOP_R 2 8 0 10 -261234
+-258113 -262144 3062 1;
+#X obj 803 245 tgl 15 0 empty LG_L_4 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text 61 276 AUDIO PACZ;
+#X text 42 546 OUTPUT:;
+#X text 64 251 INPUT FROM LDRS;
+#X obj 689 27 bng 24 250 50 0 empty SPL_TYP_SEL SPL_TYPE 17 7 0 10
+-4034 -1 -1;
+#X obj 832 22 bng 15 250 50 0 LOAD_SMPL empty LOAD_SMPL 17 7 0 10 -258113
+-1 -1;
+#X obj 833 44 bng 25 250 50 0 empty LOAD_SMPL LOAD_SMPL 17 7 0 10 -4034
+-1 -1;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array smpgranu1a 109816 float 2;
+#X coords 0 1 109816 -1 105 15 1 0 0;
+#X restore 173 212 graph;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array smpgranu2a 125699 float 2;
+#X coords 0 1 125699 -1 105 15 1 0 0;
+#X restore 381 213 graph;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array smpgranu3a 139444 float 2;
+#X coords 0 1 139444 -1 105 15 1 0 0;
+#X restore 598 211 graph;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array smpgranu4a 114335 float 2;
+#X coords 0 1 114335 -1 105 15 1 0 0;
+#X restore 803 214 graph;
+#X floatatom 245 358 5 0 0 1 playhead_1 - playhead_1;
+#X obj 245 337 snapshot~;
+#X obj 1004 319 metro 100;
+#X obj 984 289 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 176 212 hsl 100 15 0 1 0 0 empty playhead_1 empty -2 -8 0 10
+-261682 -258113 -1 131 1;
+#X obj 454 337 snapshot~;
+#X obj 671 337 snapshot~;
+#X obj 872 337 snapshot~;
+#X obj 1021 263 loadbang;
+#X msg 1021 286 1;
+#X floatatom 245 255 5 0 0 0 - - -;
+#X floatatom 454 358 5 0 0 1 playhead_2 - playhead_2;
+#X floatatom 671 357 5 0 0 1 playhead_3 - playhead_3;
+#X floatatom 872 357 5 0 0 1 playhead_4 - playhead_4;
+#X obj 384 213 hsl 100 15 0 1 0 0 empty playhead_2 empty -2 -8 0 10
+-261682 -258113 -1 0 1;
+#X obj 601 211 hsl 100 15 0 1 0 0 empty playhead_3 empty -2 -8 0 10
+-261682 -258113 -1 43 1;
+#X obj 806 214 hsl 100 15 0 1 0 0 empty playhead_4 empty -2 -8 0 10
+-261682 -258113 -1 0 1;
+#X text 64 560 fx send pre/post;
+#X obj 174 464 MIXER:CHANNELSTRIPS/1_PAN_STEREO_IN, f 18;
+#X obj 380 469 MIXER:CHANNELSTRIPS/1_PAN_STEREO_IN, f 18;
+#X text 84 573 CHANNEL STRIP;
+#X obj 601 474 MIXER:CHANNELSTRIPS/1_PAN_STEREO_IN, f 18;
+#X obj 804 469 MIXER:CHANNELSTRIPS/1_PAN_STEREO_IN, f 18;
+#X obj 282 428 hsl 50 15 0 1 0 0 empty 01_L_1 BTM_R 2 8 0 10 -261234
+-258113 -262144 3675 1;
+#X floatatom 290 449 5 0 0 0 - - -;
+#X text 293 413 PAN;
+#X obj 488 429 hsl 50 15 0 1 0 0 empty 01_L_2 3RD_R 2 8 0 10 -261234
+-258113 -262144 2450 1;
+#X obj 709 433 hsl 50 15 0 1 0 0 empty 01_L_3 2ND_R 2 8 0 10 -261234
+-258113 -262144 1837 1;
+#X obj 912 428 hsl 50 15 0 1 0 0 empty 01_L_4 TOP_R 2 8 0 10 -261234
+-258113 -262144 3062 1;
+#X obj 1109 259 sel 0;
+#X msg 1109 282 0;
+#X text 501 412 PAN;
+#X text 721 418 PAN;
+#X text 921 413 PAN;
+#X obj 1109 305 s stop;
+#X text 1078 331 stop hanging snds;
+#X text 1078 341 in abstraction;
+#X obj 175 279 1_GRN_STR_314b 1, f 18;
+#X obj 803 278 1_GRN_STR_314b 4, f 18;
+#X text 76 241 4 LIGHT GATES;
+#X text 191 253 1=PLAY;
+#X obj 280 307 bng 25 250 50 0 empty empty DONE 17 7 0 20 -258113 -1
+-1;
+#X text 504 318 PAN;
+#X obj 492 307 bng 25 250 50 0 empty empty DONE 17 7 0 20 -258113 -1
+-1;
+#X text 718 317 PAN;
+#X obj 706 306 bng 25 250 50 0 empty empty DONE 17 7 0 20 -258113 -1
+-1;
+#X text 920 317 PAN;
+#X obj 908 306 bng 25 250 50 0 empty empty DONE 17 7 0 20 -258113 -1
+-1;
+#X obj 616 27 bng 15 250 50 0 SPL_TYP_SEL empty SMPL_TYPE 17 7 0 10
+-258113 -1 -1;
+#N canvas 382 118 436 357 info_extra_granul 0;
+#X text 7 206 Wazne - ten sampler pliki stereo traktuje inaczej \,
+obydwa maja inne parametry/brzmienia \, dlatego so dwa utlety. Pliki
+modo daja dwa razy to samo;
+#X text 8 159 Inlet 1 \, float: Start/stop playing looped sample;
+#X text 8 169 Inlet 1 \, grain float: Configure grain length (# of
+samples);
+#X msg 10 143 grain 360;
+#X text 8 189 Inlet 3 \, float: Duration in milliseconds;
+#X text 8 179 Inlet 2 \, float: Pitch (1=original pitch);
+#X text 7 261 ARRAYS HAVE TO HAVE DIFFERENT NAMES - OTHERWISE WE GET
+AN ERROY ARRAY NO METHOD FOR RETURN;
+#X text 9 113 light gate - per row - not needed - 1/0 is starting stopping
+it already \, redundancy and clicks!;
+#X text 9 68 WHEN WE BANG AND PLAY SAMPLE AND NEXT BANG IS BEFORE THE
+SAMPLE IS FINISHED WE GET CLICKS - WE HAVE TO USE 1/0 TO AVOID CLICKS
+\, EVEN THOUGH WITH BANG IT SOUNDS COOLER;
+#X text 9 16 IT WON'T WORK FOR NOW BECAUSE EACH PATCH HAS DIFFERENT
+SET OF INPUT CONTROLS \, BUT LATER yes when we HAVE THE SAME SET OF
+CTRL;
+#X restore 953 21 pd info_extra_granul;
+#X obj 1173 314 switch~;
+#X floatatom 1196 289 2 0 0 0 - - -;
+#X text 1213 288 dsp;
+#X obj 1173 282 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 1173 258 1_ARD_COMPARE 0.1;
+#X obj 1004 231 t f f f, f 36;
+#X text 39 48 local;
+#X text 34 36 REMAP \, RENAME;
+#X text 35 68 SEND TO PATCH;
+#X text 117 82 duration - influence playback speed;
+#X obj 151 47 s LEN_factor;
+#X obj 252 44 s PITCH_factor;
+#X text 151 65 grain size factor +;
+#X text 294 64 PITCH;
+#X text 430 56 SMPL PLEJBAK STYLE;
+#X text 400 70 0/1 VS B - AVOID CLICKS?;
+#X obj 400 58 tgl 15 0 SMPL_PL_STYLE D2 D2 17 7 0 10 -258113 -1 -1
+1 1;
+#X text 400 80 SEND TO SUBPATCH;
+#X text 400 90 NOT ALWAYS NECESSARY;
+#X obj 174 416 *~ 0.99;
+#X obj 211 436 *~ 0.99;
+#X obj 380 427 *~ 0.99;
+#X obj 419 447 *~ 0.99;
+#X obj 601 422 *~ 0.99;
+#X obj 634 442 *~ 0.99;
+#X obj 804 425 *~ 0.99;
+#X obj 838 447 *~ 0.99;
+#X obj 58 298 *~ 0.5;
+#X obj 110 299 *~ 0.5;
+#X obj 460 32 bng 15 250 50 0 empty PTCH3_PAR_D1B D1B 17 7 0 10 -4034
+-33289 -1;
+#X obj 399 32 tgl 15 0 empty PTCH3_PAR_D1 D1 17 7 0 10 -4034 -1 -1
+1 1;
+#X obj 255 30 hsl 50 10 0 1 0 0 empty PTCH3_PAR_A2 A2 -2 -8 0 10 -128992
+-4034 -4160 2232 1;
+#X obj 154 34 hsl 50 10 0 1 0 0 empty PTCH3_PAR_A1 A1 -2 -8 0 10 -162280
+-4034 -4160 4891 1;
+#X obj 526 31 tgl 15 0 empty PTCH3_PAR_D2 D2 17 7 0 10 -4034 -1 -1
+0 1;
+#X obj 561 32 bng 15 250 50 0 empty PTCH3_PAR_D2B D2B 17 7 0 10 -4034
+-33289 -1;
+#X obj 601 275 1_GRN_STR_314_CP 3;
+#X obj 381 276 1_GRN_STR_314 2, f 19;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 5 0 4 0;
+#X connect 7 0 6 0;
+#X connect 9 0 8 0;
+#X connect 13 0 88 0;
+#X connect 14 0 13 0;
+#X connect 15 0 43 0;
+#X connect 15 0 70 1;
+#X connect 16 0 70 0;
+#X connect 17 0 119 1;
+#X connect 18 0 119 0;
+#X connect 19 0 118 1;
+#X connect 20 0 118 0;
+#X connect 21 0 71 1;
+#X connect 22 0 71 0;
+#X connect 26 0 1 0;
+#X connect 28 0 0 1;
+#X connect 34 0 33 0;
+#X connect 35 0 34 0;
+#X connect 35 0 38 0;
+#X connect 35 0 39 0;
+#X connect 36 0 35 0;
+#X connect 38 0 44 0;
+#X connect 39 0 45 0;
+#X connect 40 0 46 0;
+#X connect 41 0 42 0;
+#X connect 42 0 35 0;
+#X connect 51 0 11 0;
+#X connect 51 1 12 0;
+#X connect 52 0 11 0;
+#X connect 52 1 12 0;
+#X connect 54 0 11 0;
+#X connect 54 1 12 0;
+#X connect 55 0 11 0;
+#X connect 55 1 12 0;
+#X connect 56 0 57 0;
+#X connect 56 0 51 2;
+#X connect 59 0 52 2;
+#X connect 60 0 54 2;
+#X connect 61 0 55 2;
+#X connect 62 0 63 0;
+#X connect 63 0 67 0;
+#X connect 70 0 102 0;
+#X connect 70 0 111 0;
+#X connect 70 1 103 0;
+#X connect 70 1 110 0;
+#X connect 70 2 34 0;
+#X connect 70 3 74 0;
+#X connect 71 0 108 0;
+#X connect 71 0 111 0;
+#X connect 71 1 109 0;
+#X connect 71 1 110 0;
+#X connect 71 2 40 0;
+#X connect 71 3 80 0;
+#X connect 84 0 83 0;
+#X connect 86 0 83 0;
+#X connect 87 0 86 0;
+#X connect 88 0 35 0;
+#X connect 88 1 62 0;
+#X connect 88 2 87 0;
+#X connect 102 0 51 0;
+#X connect 103 0 51 1;
+#X connect 104 0 52 0;
+#X connect 105 0 52 1;
+#X connect 106 0 54 0;
+#X connect 107 0 54 1;
+#X connect 108 0 55 0;
+#X connect 109 0 55 1;
+#X connect 110 0 10 0;
+#X connect 111 0 10 0;
+#X connect 113 0 99 0;
+#X connect 114 0 94 0;
+#X connect 115 0 93 0;
+#X connect 118 0 106 0;
+#X connect 118 0 111 0;
+#X connect 118 1 107 0;
+#X connect 118 1 110 0;
+#X connect 118 2 39 0;
+#X connect 118 3 78 0;
+#X connect 119 0 104 0;
+#X connect 119 0 111 0;
+#X connect 119 1 105 0;
+#X connect 119 1 110 0;
+#X connect 119 2 38 0;

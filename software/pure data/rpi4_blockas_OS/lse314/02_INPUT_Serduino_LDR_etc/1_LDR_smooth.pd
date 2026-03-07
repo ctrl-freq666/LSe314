@@ -1,0 +1,12 @@
+#N canvas 424 326 502 211 10;
+#X obj 22 17 inlet;
+#X text 158 19 incoming sensor value;
+#X obj 22 114 outlet;
+#X text 80 114 scaled out value;
+#X text 166 72 smooth value (float 0-1);
+#X text 149 86 im blizsza zera tym wolniej sie rusza;
+#X obj 138 44 r smooth_factor_ldrs;
+#X obj 22 80 mapping/smooth \$2;
+#X connect 0 0 7 0;
+#X connect 6 0 7 1;
+#X connect 7 0 2 0;

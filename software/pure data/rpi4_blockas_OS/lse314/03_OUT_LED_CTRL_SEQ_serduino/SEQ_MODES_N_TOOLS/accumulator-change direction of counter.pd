@@ -1,0 +1,23 @@
+#N canvas 1373 368 552 305 10;
+#X msg 33 50 1;
+#X msg 73 49 -1;
+#X obj 33 93 +;
+#X obj 68 94 f;
+#X floatatom 33 131 5 0 0 0 - - -;
+#X text 107 45 A similar construct to a counter is the accumulator
+or integrator. This reverses the positions of f and + to create an
+integrator that stores the sum of all previous number messages sent
+to it. Such an arrangement is useful for turning “up and down”
+messages from an input controller into a position. Whether to use a
+counter or accu- mulator is a subtle choice. Although you can change
+the increment step of the counter by placing a new value on the right
+inlet of + it will not take effect until the previous value in f has
+been used. An accumulator on the other hand can be made to jump different
+intervals immediately by the value sent to it. Note the important difference
+\, an accumulator takes floats as an input while a counter takes bang
+messages.;
+#X connect 0 0 2 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 1;

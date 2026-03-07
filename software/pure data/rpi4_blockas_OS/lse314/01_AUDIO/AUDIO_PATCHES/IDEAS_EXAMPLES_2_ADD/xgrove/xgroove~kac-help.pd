@@ -1,0 +1,246 @@
+#N canvas 546 207 890 592 10;
+#X obj 180 233 hsl 128 15 0.5 2 1 1 empty empty speed 0 -8 0 10 -225271
+-1 -1 12700 1;
+#X msg 600 204 loop \$1;
+#X obj 35 467 dac~;
+#X text 317 256 min/max points;
+#X msg 35 227 all;
+#X obj 377 419 bng 15 250 50 0 empty empty empty 0 -6 0 8 -228992 -1
+-1;
+#X obj 459 305 print A;
+#X obj 35 445 *~;
+#X obj 45 369 hsl 128 15 0.0001 1 1 0 empty empty volume -2 -6 0 8
+-261689 -1 -1 0 1;
+#X obj 42 386 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -6 0 10
+-261689 -1 -1 0 256;
+#X text 516 304 print attributes;
+#X obj 375 315 bng 15 250 50 0 empty empty loop_bang 0 -6 0 8 -262131
+-1 -1;
+#X obj 204 314 nbx 5 14 0 1e+37 0 1 empty empty min 0 -6 0 10 -262131
+-1 -1 0 256;
+#X obj 289 312 nbx 5 14 0 1e+37 0 1 empty empty max 0 -6 0 10 -262131
+-1 -1 1 256;
+#X obj 318 239 nbx 5 14 0 1e+37 0 1 empty empty min 0 -6 0 10 -225271
+-1 -1 0 256;
+#X obj 459 256 nbx 5 14 0 1 0 1 empty empty max 0 -6 0 10 -225271 -1
+-1 1 256;
+#X obj 35 248 r to-g;
+#X obj 600 226 s to-g;
+#X obj 42 423 line~;
+#X msg 42 403 \$1 50;
+#X obj 177 251 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -6 0 10
+-225271 -1 -1 2 256;
+#X obj 645 462 import xsample;
+#X obj 35 282 xgroove~ kacbuf, f 61;
+#X obj 375 337 s end;
+#X obj 37 24 r end;
+#X obj 318 191 * 0.001;
+#X obj 459 209 * 0.001;
+#X obj 318 169 random 500;
+#X obj 459 169 random 500;
+#X obj 459 189 + 500;
+#X obj 377 462 s smp_len;
+#X text 395 418 load smpl/buf;
+#X floatatom 452 463 15 0 0 0 - - -;
+#N canvas 397 307 951 624 buffers 0;
+#X obj 39 72 inlet;
+#X obj 89 72 loadbang;
+#X obj 247 175 soundfiler;
+#X obj 71 203 soundfiler;
+#X obj 39 334 array size kacbuf;
+#X obj 215 100 t b b;
+#X obj 215 73 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 51 179 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 39 103 t b b;
+#X obj 159 73 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#N canvas 0 51 450 300 (subpatch) 0;
+#X array kacbuf 19287 float 0;
+#X coords 0 1 19286 -1 300 150 1 0 0;
+#X restore 37 434 graph;
+#N canvas 0 51 450 300 (subpatch) 0;
+#X array kacbuf1 13425 float 0;
+#X coords 0 1 13424 -1 300 150 1 0 0;
+#X restore 345 436 graph;
+#X msg 508 284 set kacbuf1;
+#X msg 421 282 set kacbuf;
+#X text 593 272 change buffers dynamically - no gliczes !;
+#X text 593 286 samples must be preloaded;
+#X obj 421 322 s to-g;
+#X obj 215 335 array size kacbuf1;
+#X obj 421 206 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 421 226 t b b;
+#X obj 476 205 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 476 225 t b b;
+#X text 92 53 load samples to buffers;
+#X obj 39 386 outlet buffer size;
+#X msg 71 125 read -resize /usr/local/puredata-patches/lse314/SAMPLE/KIKS/KC_SMPL0100.wav
+kacbuf, f 19;
+#X msg 247 122 read -resize /usr/local/puredata-patches/lse314/SAMPLE/KIKS/KC_SMPL0108.wav
+kacbuf1;
+#X connect 0 0 8 0;
+#X connect 1 0 8 0;
+#X connect 4 0 23 0;
+#X connect 5 0 17 0;
+#X connect 5 1 25 0;
+#X connect 6 0 5 0;
+#X connect 7 0 4 0;
+#X connect 8 0 4 0;
+#X connect 8 1 24 0;
+#X connect 9 0 8 0;
+#X connect 12 0 16 0;
+#X connect 13 0 16 0;
+#X connect 17 0 23 0;
+#X connect 18 0 19 0;
+#X connect 19 0 4 0;
+#X connect 19 1 13 0;
+#X connect 20 0 21 0;
+#X connect 21 0 17 0;
+#X connect 21 1 12 0;
+#X connect 24 0 3 0;
+#X connect 25 0 2 0;
+#X restore 377 440 pd buffers;
+#X obj 37 48 spigot, f 10;
+#X obj 104 23 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 652 170 tgl 15 1 empty empty LOOP_MODE_FWD/PP 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 600 185 + 1;
+#X floatatom 205 353 5 0 1 0 - - -;
+#X msg 205 372 min \$1;
+#X obj 205 394 s to-g;
+#X floatatom 289 351 5 0 1 0 - - -;
+#X obj 289 392 s to-g;
+#X msg 289 370 max \$1;
+#X msg 204 332 set \$1;
+#X msg 289 331 set \$1;
+#X obj 132 25 hsl 500 10 0 1 0 0 empty bufpos BUFPOS -2 -8 0 10 -151817
+-258113 -1 0 1;
+#X floatatom 129 45 5 0 0 0 - - -;
+#N canvas 0 78 265 184 playhead 0;
+#X obj 164 28 loadbang;
+#X obj 88 80 snapshot~;
+#X obj 164 54 metro 50;
+#X obj 152 132 s bufpos;
+#X obj 88 132 outlet;
+#X obj 88 24 inlet~;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 1 0;
+#X connect 5 0 1 0;
+#X restore 119 306 pd playhead;
+#X obj 600 168 decide;
+#X obj 569 188 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 0 207 450 300 initial 0;
+#X msg 35 66 units \$1;
+#X text 84 91 buffer size;
+#X obj 35 89 s to-g;
+#X obj 34 20 loadbang;
+#X msg 34 42 1;
+#X obj 195 41 bng 15 250 50 0 empty empty empty 20 8 0 8 -258699 -1
+-1;
+#X msg 205 61 stop;
+#X msg 288 42 reset;
+#X text 217 38 start;
+#X text 245 59 stop;
+#X msg 283 66 help;
+#X text 247 95 set buffer;
+#X obj 195 93 s to-g;
+#X connect 0 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 5 0 12 0;
+#X connect 6 0 12 0;
+#X connect 7 0 12 0;
+#X connect 10 0 12 0;
+#X restore 645 441 pd initial;
+#X obj 35 152 bng 15 250 50 0 empty empty empty 20 8 0 8 -258699 -1
+-1;
+#X msg 59 170 stop;
+#X text 57 149 start;
+#X obj 35 194 s to-g;
+#X obj 36 71 t b b b b b, f 81;
+#X obj 177 135 random 100;
+#X obj 177 157 * 0.01;
+#X obj 177 179 + 0.5;
+#X obj 177 201 line 0 50;
+#X obj 600 114 spigot, f 10;
+#X obj 667 96 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 459 117 spigot, f 10;
+#X obj 526 99 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 318 115 spigot, f 10;
+#X obj 385 98 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 177 112 spigot, f 10;
+#X obj 244 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X connect 0 0 20 0;
+#X connect 1 0 17 0;
+#X connect 4 0 22 0;
+#X connect 5 0 33 0;
+#X connect 7 0 2 0;
+#X connect 7 0 2 1;
+#X connect 8 0 9 0;
+#X connect 9 0 19 0;
+#X connect 11 0 23 0;
+#X connect 12 0 44 0;
+#X connect 13 0 45 0;
+#X connect 14 0 22 1;
+#X connect 15 0 22 2;
+#X connect 16 0 22 0;
+#X connect 18 0 7 1;
+#X connect 19 0 18 0;
+#X connect 20 0 22 0;
+#X connect 22 0 7 0;
+#X connect 22 1 48 0;
+#X connect 22 2 12 0;
+#X connect 22 3 13 0;
+#X connect 22 4 11 0;
+#X connect 22 5 6 0;
+#X connect 24 0 34 0;
+#X connect 25 0 14 0;
+#X connect 26 0 15 0;
+#X connect 27 0 25 0;
+#X connect 28 0 29 0;
+#X connect 29 0 26 0;
+#X connect 33 0 32 0;
+#X connect 33 0 30 0;
+#X connect 34 0 56 0;
+#X connect 35 0 34 1;
+#X connect 36 0 37 0;
+#X connect 37 0 1 0;
+#X connect 38 0 39 0;
+#X connect 39 0 40 0;
+#X connect 41 0 43 0;
+#X connect 43 0 42 0;
+#X connect 44 0 38 0;
+#X connect 45 0 41 0;
+#X connect 46 0 47 0;
+#X connect 49 0 37 0;
+#X connect 49 0 50 0;
+#X connect 52 0 55 0;
+#X connect 53 0 55 0;
+#X connect 56 1 67 0;
+#X connect 56 2 65 0;
+#X connect 56 3 63 0;
+#X connect 56 4 61 0;
+#X connect 57 0 58 0;
+#X connect 58 0 59 0;
+#X connect 59 0 60 0;
+#X connect 60 0 0 0;
+#X connect 61 0 49 0;
+#X connect 62 0 61 1;
+#X connect 63 0 28 0;
+#X connect 64 0 63 1;
+#X connect 65 0 27 0;
+#X connect 66 0 65 1;
+#X connect 67 0 57 0;
+#X connect 68 0 67 1;

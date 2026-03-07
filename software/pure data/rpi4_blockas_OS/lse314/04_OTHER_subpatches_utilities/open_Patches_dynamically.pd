@@ -1,0 +1,6 @@
+#N canvas 473 568 450 300 12;
+#X obj 6 42 pdcontrol;
+#X msg 6 6 dir;
+#X msg 6 67 \; pd open;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;

@@ -1,0 +1,80 @@
+#N canvas 272 37 609 579 10;
+#X text -1710 -17 0 dec = 48 asci 1 dec = 49 2 dec = 50 3 dec = 51
+4 = == 52 5 ======53 6 54 7 55 8 56 9 57 32 === space;
+#X msg -1414 294 close;
+#X text -1708 10 1szy int to od 0 do 47 - numer kanalu 2 to od 0 do
+4095 na koncu 1;
+#X obj -1631 64 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg -1484 320 baud 115200;
+#X msg -1407 323 baud 9800;
+#X obj -1712 121 counter 2 0 15;
+#X msg -1472 271 pollintervall 10;
+#X msg -1364 298 devices;
+#X msg -1343 319 ports;
+#X obj -1710 147 * 3;
+#X obj -1626 292 t l;
+#X obj -1679 311 print;
+#X obj -1712 194 moocow/any2bytes 128 -1;
+#X obj -1707 168 + 0;
+#X floatatom -1673 144 5 0 0 0 - - -;
+#X obj -1554 188 moocow/any2bytes 128 -1;
+#X floatatom -1552 131 5 0 0 0 - - -;
+#X obj -1636 266 zl join;
+#X obj -1660 225 Append 32;
+#X obj -1485 229 Append 10;
+#X obj -1634 92 metro 100;
+#X obj -1663 346 comport 1 115200;
+#X msg -1462 292 open 2;
+#X text -1603 129 channel;
+#X text -1480 147 value;
+#X text -1711 243 add asci in front of serial message;
+#X text -1586 210 add ascii n/ end of line character at the end of
+message;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array 48values 48 float 3;
+#A 0 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000
+4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000
+4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000 4000
+4000 4000 4000 4000 4000 4000 4000;
+#X coords 0 0 48 4095 200 140 1 0 0;
+#X restore -1679 393 graph;
+#X obj -1273 286 tabwrite 48values;
+#X obj -1225 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X floatatom -1274 227 5 0 0 0 - - -;
+#X obj -1306 90 counter 2 0 47;
+#X obj -1279 205 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -1228 61 metro 100;
+#X obj -1235 153 t f b;
+#X obj -1415 521 tabread 48values;
+#X connect 1 0 22 0;
+#X connect 3 0 21 0;
+#X connect 4 0 22 0;
+#X connect 5 0 22 0;
+#X connect 6 0 10 0;
+#X connect 7 0 22 0;
+#X connect 8 0 22 0;
+#X connect 9 0 22 0;
+#X connect 10 0 14 0;
+#X connect 11 0 22 0;
+#X connect 13 0 19 0;
+#X connect 14 0 13 0;
+#X connect 15 0 14 1;
+#X connect 16 0 20 0;
+#X connect 17 0 16 0;
+#X connect 18 0 12 0;
+#X connect 18 0 11 0;
+#X connect 19 0 18 0;
+#X connect 20 0 18 1;
+#X connect 21 0 6 0;
+#X connect 21 0 17 0;
+#X connect 23 0 22 0;
+#X connect 30 0 34 0;
+#X connect 31 0 29 0;
+#X connect 32 0 35 0;
+#X connect 33 0 31 0;
+#X connect 34 0 32 0;
+#X connect 35 0 29 1;
+#X connect 35 1 33 0;

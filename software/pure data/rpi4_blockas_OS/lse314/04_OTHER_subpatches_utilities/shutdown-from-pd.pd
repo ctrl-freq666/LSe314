@@ -1,0 +1,13 @@
+#N canvas 164 283 386 296 10;
+#X obj 102 127 print STDOUT;
+#X obj 169 104 print DONE;
+#X msg 63 57 ls;
+#X msg 102 57 shutdown -h now;
+#X text 11 11 How to halt the kit directly from pd...;
+#X text 95 166 Edgar Berdahl;
+#X text 95 180 11/28/11;
+#X obj 102 81 ggee/shell;
+#X connect 2 0 7 0;
+#X connect 3 0 7 0;
+#X connect 7 0 0 0;
+#X connect 7 1 1 0;

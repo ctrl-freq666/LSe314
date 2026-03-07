@@ -1,0 +1,284 @@
+#N canvas 52 57 1076 315 12;
+#X text 435 25 ABSTRACTION FRO SENDING SEQ CTRL TO SPECIFIC SEQ MODES
+;
+#X text 435 42 \$1 = SEQ MODE;
+#X obj 759 129 spigot, f 21;
+#X obj 245 58 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 47 138 spigot, f 33;
+#X obj 305 138 s SQ\$1_ON_OFF;
+#X obj 331 109 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 295 168 r SEQ_MODE_SQ\$1;
+#X floatatom 295 190 5 0 0 0 - - -;
+#X obj 428 134 r SEQ_START_SQ\$1;
+#X floatatom 428 156 5 0 0 0 - - -;
+#X obj 549 134 r SEQ_END_SQ\$1;
+#X floatatom 549 156 5 0 0 0 - - -;
+#N canvas 0 54 1644 597 analog_seq_ctrls 0;
+#X obj 44 23 inlet;
+#X obj 1097 245 1_ard_norm_a_as_digit 1;
+#X obj 431 70 unpack f f f f f f f f f f f f f f f f, f 83;
+#X obj 160 350 s GLOBAL_SENS_TRESH, f 9;
+#X obj 621 429 s 01_SLEW;
+#X obj 621 383 i;
+#X floatatom 646 386 5 0 0 0 - - -;
+#X obj 621 361 - 5;
+#X obj 621 338 * 1000;
+#X obj 621 406 clip 0 1000;
+#X floatatom 654 319 5 0 0 0 - - -;
+#X obj 654 296 r 01-SLEW-MAX;
+#X obj 984 406 s smooth;
+#X floatatom 975 325 5 0 0 0 - - -;
+#X floatatom 1011 376 5 0 0 0 - - -;
+#X obj 984 351 - 1;
+#X obj 984 374 abs;
+#X obj 52 126 s RGB_AVAL;
+#X obj 1107 300 s RGB;
+#X text 1161 343 g;
+#X text 1102 344 r;
+#X text 1127 343 b;
+#X msg 1097 364 43;
+#X msg 1157 364 46;
+#X msg 1127 364 18;
+#X obj 1097 398 s RGBB;
+#X msg 1097 381 color \$1;
+#X msg 1180 380 size \$1;
+#X floatatom 1179 329 5 0 0 0 - - -;
+#X msg 1180 363 40;
+#X msg 1200 363 60;
+#X obj 1097 321 sel 1 2 3;
+#X obj 1097 270 1_ARD_DIG_BTN 3 1;
+#X floatatom 1220 270 5 0 0 0 - - -;
+#X obj 1210 114 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 231 404 s DELLED;
+#X floatatom 59 327 5 0 0 0 - - -;
+#X obj 1126 210 s DELLED_SEL;
+#X obj 1124 88 1_ard_norm_a_as_digit 1;
+#X obj 1126 183 1_ARD_DIG_BTN 3 1;
+#X floatatom 1216 206 5 0 0 0 - - -;
+#X obj 1126 158 1_ard_norm_a_as_digit 1;
+#X obj 988 238 1_ard_norm_a_as_digit 1, f 13;
+#X obj 988 271 sel 1;
+#X floatatom 320 382 5 0 0 0 - - -;
+#X floatatom 60 189 5 0 0 0 - - -;
+#X obj 536 420 s MSTR_CLCK;
+#X floatatom 535 393 5 0 0 0 - - -;
+#X obj 988 297 bng 15 250 50 0 SEQ_ALL_LED_OFF empty LED_OFF 15 8 0
+15 -258113 -1 -4160;
+#X obj 1129 118 tgl 15 0 ledgato empty LEGATO 17 7 0 10 -258113 -1
+-1 0 1;
+#X obj 764 438 s SEQ_MODE;
+#X floatatom 777 407 5 0 0 0 - - -;
+#X floatatom 932 458 5 0 0 0 - - -;
+#X floatatom 433 417 5 0 0 0 - - -;
+#X floatatom 76 323 5 0 0 0 - - -;
+#X obj 66 280 1_ARD_ROT_SW_FROM_10_NORM 8 0, f 15;
+#X obj 870 474 nbx 1 20 -1e+37 1e+37 0 0 POLY_SQ\$1 empty poly_sq\$1
+-35 11 0 15 -258113 -1 -1 7 256;
+#X obj 893 406 + 1;
+#X obj 893 378 int;
+#X obj 893 428 change;
+#X obj 769 320 int;
+#X obj 769 372 change;
+#X obj 769 288 + 0.5;
+#X obj 769 343 + 1;
+#X obj 893 314 * 7;
+#X obj 893 337 + 0.5;
+#X obj 769 248 * 5;
+#X floatatom 69 107 5 0 0 0 - - -;
+#X obj 552 274 *;
+#X obj 1304 147 vradio 25 1 0 4 leddel_mode empty DELMODE 0 -8 0 15
+-258113 -258113 -1 1;
+#X obj 400 445 s SEQ_END_SQ\$1;
+#X obj 45 351 s SEQ_START_SQ\$1;
+#X obj 22 212 s RNDM_CLCK_SQ\$1;
+#X floatatom 863 124 5 0 0 0 - - -;
+#X obj 299 419 s SEQ_SWING_SQ\$1;
+#X obj 423 374 1_ARD_ROT_SW_FROM_10_NORM 8 1, f 15;
+#X connect 0 0 2 0;
+#X connect 1 0 33 0;
+#X connect 1 0 32 0;
+#X connect 2 0 67 0;
+#X connect 2 1 45 0;
+#X connect 2 1 72 0;
+#X connect 2 2 55 0;
+#X connect 2 5 44 0;
+#X connect 2 5 74 0;
+#X connect 2 6 75 0;
+#X connect 2 10 64 0;
+#X connect 2 10 73 0;
+#X connect 5 0 6 0;
+#X connect 5 0 9 0;
+#X connect 7 0 5 0;
+#X connect 8 0 7 0;
+#X connect 9 0 4 0;
+#X connect 10 0 8 1;
+#X connect 11 0 10 0;
+#X connect 15 0 16 0;
+#X connect 16 0 14 0;
+#X connect 16 0 12 0;
+#X connect 22 0 26 0;
+#X connect 23 0 26 0;
+#X connect 24 0 26 0;
+#X connect 26 0 25 0;
+#X connect 27 0 25 0;
+#X connect 28 0 27 0;
+#X connect 29 0 27 0;
+#X connect 30 0 27 0;
+#X connect 31 0 29 0;
+#X connect 31 0 22 0;
+#X connect 31 1 30 0;
+#X connect 31 1 24 0;
+#X connect 31 2 23 0;
+#X connect 32 0 18 0;
+#X connect 32 0 31 0;
+#X connect 38 0 34 0;
+#X connect 38 0 49 0;
+#X connect 39 0 40 0;
+#X connect 39 0 69 0;
+#X connect 41 0 39 0;
+#X connect 42 0 43 0;
+#X connect 43 0 48 0;
+#X connect 55 0 54 0;
+#X connect 55 0 71 0;
+#X connect 57 0 59 0;
+#X connect 58 0 57 0;
+#X connect 59 0 56 0;
+#X connect 59 0 52 0;
+#X connect 60 0 63 0;
+#X connect 61 0 51 0;
+#X connect 61 0 50 0;
+#X connect 62 0 60 0;
+#X connect 63 0 61 0;
+#X connect 64 0 65 0;
+#X connect 65 0 58 0;
+#X connect 66 0 62 0;
+#X connect 68 0 46 0;
+#X connect 75 0 53 0;
+#X connect 75 0 70 0;
+#X restore 47 174 pd analog_seq_ctrls;
+#X obj 275 36 hradio 15 1 0 8 empty SEQ_MODE SEQ_MODE 0 -8 0 10 -258113
+-1 -4160 6;
+#X obj 275 83 t f f, f 69;
+#N canvas 271 469 1147 366 dig_seq_ctrl 1;
+#X obj 346 26 inlet;
+#X obj 481 245 bng 15 250 50 0 empty empty TAP_T_SQ\$1 17 7 0 10 -258113
+-1 -1;
+#X obj 808 124 tgl 10 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 714 128 tgl 10 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 530 126 tgl 10 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 458 116 tgl 10 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 388 126 tgl 10 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 350 60 unpack 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0, f 86;
+#X floatatom 728 194 5 0 0 0 - - -;
+#X obj 711 148 1_ARD_DIG_SW 1, f 8;
+#X obj 822 222 s MST_CLK_ON;
+#X obj 387 148 1_ARD_DIG_BTN, f 7;
+#X obj 712 243 tgl 15 0 LOOP_SQ\$1 empty LOOP_SQ\$1 17 7 0 18 -258113
+-4160 -1 1 1;
+#X obj 808 148 1_ARD_DIG_BTN 4 1;
+#X obj 234 167 value seq_trig_modes;
+#X floatatom 244 189 5 0 0 0 - - -;
+#X obj 301 146 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 234 146 loadbang;
+#X obj 93 223 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 219 215 5 0 0 0 - - -;
+#X obj 118 191 1_ARD_DIG_BTN 3 1;
+#X obj 118 221 hradio 15 1 1 4 SEQ_TRIG_MODE empty TRIG_MODE 0 8 0
+10 -258113 -4034 -258113 1;
+#X obj 531 195 tgl 15 0 RNDM_CLCK_ON_SQ\$1 empty RNDM_CLCK_ON_SQ\$1
+17 7 0 10 -260097 -1 -1 1 1;
+#X obj 530 153 1_ARD_DIG_SW 1;
+#X text 675 280 for now rndm clock takes over the functionality of
+dir switch;
+#X obj 427 208 bng 15 250 50 0 BANG_SQ\$1 empty BANG_SQ\$1 17 7 0 10
+-258113 -1 -1;
+#X obj 931 186 bng 15 250 50 0 SUB_SEQ_MODE_SQ\$1 empty SUB_SEQ_MODE_SQ\$1
+17 7 0 10 -258113 -1 -1;
+#X obj 509 217 tgl 15 0 T_T_SQ\$1 empty TAP_T_SQ\$1 17 7 0 10 -258113
+-1 -1 1 1;
+#X obj 458 149 1_ARD_DIG_BTN 2 1, f 7;
+#X connect 0 0 7 0;
+#X connect 2 0 13 0;
+#X connect 3 0 9 0;
+#X connect 4 0 23 0;
+#X connect 5 0 28 0;
+#X connect 6 0 11 0;
+#X connect 7 1 6 0;
+#X connect 7 2 5 0;
+#X connect 7 3 4 0;
+#X connect 7 4 3 0;
+#X connect 7 5 2 0;
+#X connect 9 0 8 0;
+#X connect 9 0 12 0;
+#X connect 11 1 25 0;
+#X connect 13 1 26 0;
+#X connect 14 0 15 0;
+#X connect 14 0 20 1;
+#X connect 16 0 14 0;
+#X connect 17 0 14 0;
+#X connect 20 0 18 0;
+#X connect 20 0 21 0;
+#X connect 20 1 19 0;
+#X connect 23 0 22 0;
+#X connect 28 1 27 0;
+#X restore 758 154 pd dig_seq_ctrl;
+#X obj 275 61 1_SEQ_PATCH_LOGIC \$1;
+#X obj 947 69 print;
+#X obj 947 47 spigot;
+#X obj 986 26 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 210 209 print;
+#X obj 210 180 spigot;
+#X obj 249 159 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 49 75 r SEQ_CTRL_16;
+#X obj 759 101 r dig_val2, f 15;
+#X text 444 65 ONLY FEW PARAMETERS USED \, IF WE WANT MORE - ADD THEM
+IN SUBPATCH;
+#X obj 670 213 tgl 15 0 empty RNDM_CLCK_ON_SQ\$1 RNDM_CLCK_ON_SQ\$1
+17 7 0 10 -4034 -1 -1 1 1;
+#X obj 452 190 bng 15 250 50 0 empty BANG_SQ\$1 BANG_SQ\$1 17 7 0 10
+-4034 -1 -1;
+#X obj 22 212 r RNDM_CLCK_SQ\$1;
+#X floatatom 22 237 5 0 0 0 - - -;
+#X obj 546 191 bng 15 250 50 0 empty SUB_SEQ_MODE_SQ\$1 SUB_SEQ_MODE_SQ\$1
+17 7 0 10 -4034 -1 -1;
+#X obj 545 218 nbx 1 20 -1e+37 1e+37 0 0 empty POLY_SQ\$1 poly_sq\$1
+25 11 0 15 -4034 -1 -1 7 256;
+#X obj 669 190 tgl 15 0 empty LOOP_SQ\$1 LOOP_SQ\$1 17 7 0 18 -4034
+-4160 -1 1 1;
+#X obj 320 230 r SEQ_SWING_SQ\$1;
+#X floatatom 320 255 5 0 0 0 - - -;
+#X obj 483 290 bng 15 250 50 0 empty T_T_SQ\$1 TAP_T_SQ\$1 17 7 0 10
+-4034 -1 -1;
+#X obj 481 270 tgl 15 0 empty T_T_SQ\$1 TAP_T_SQ\$1 17 7 0 10 -4034
+-1 -1 1 1;
+#X connect 2 0 16 0;
+#X connect 4 0 13 0;
+#X connect 7 0 8 0;
+#X connect 9 0 10 0;
+#X connect 11 0 12 0;
+#X connect 14 0 17 0;
+#X connect 15 0 4 1;
+#X connect 15 1 2 1;
+#X connect 17 0 3 0;
+#X connect 17 0 15 0;
+#X connect 19 0 18 0;
+#X connect 20 0 19 1;
+#X connect 22 0 21 0;
+#X connect 23 0 22 1;
+#X connect 24 0 22 0;
+#X connect 24 0 4 0;
+#X connect 25 0 2 0;
+#X connect 29 0 30 0;
+#X connect 34 0 35 0;

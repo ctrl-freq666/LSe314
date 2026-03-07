@@ -1,0 +1,28 @@
+#N canvas 1005 297 450 300 10;
+#X obj 63 34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 64 71 metro 1000;
+#X obj 60 110 f 0;
+#X obj 102 111 + 1;
+#X obj 63 141 / 2;
+#X obj 64 170 int;
+#X obj 63 201 change;
+#X floatatom 6 172 5 0 0 0 - - -;
+#X floatatom 5 204 5 0 0 0 - - -;
+#X floatatom 17 231 5 0 0 0 - - -;
+#X text 153 55 Fig. 3.12 we see a counter that has been stopped after
+reaching 3 The components below it are designed to divide the timebase
+in half. That is to say \, for a sequence 1 \, 2 \, 3 \, 4 \, 5 \,
+6 ... we will get 1 \, 2 \, 3 .... … In other words the output changes
+half as often as the input. … Without using change we would get 1
+\, 1 \, 2 \, 2 \, 3 \, 3 ... as output.;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 1;
+#X connect 4 0 5 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;

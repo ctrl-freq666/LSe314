@@ -1,0 +1,128 @@
+#N canvas 150 259 620 475 10;
+#X obj -157 -113 metro;
+#X obj -157 -84 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 6 -148 loadbang;
+#X msg 7 -128 100;
+#X obj -41 -148 * 1000;
+#X obj -41 -125 + 10;
+#X obj -38 -212 i;
+#X obj -74 -297 r MANUALmetroONoff;
+#X obj -108 -153 gate;
+#X obj -159 -364 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg -126 -392 0;
+#X msg -159 -392 1;
+#X obj -41 -169 r LEDdelFACTOR;
+#X obj -159 -412 sel \$1;
+#X obj -159 -433 inlet;
+#X text -441 -474 start metro;
+#X text -465 -461 based on external in;
+#X text -467 -446 1=start 0 = stop;
+#X obj -196 -432 inlet;
+#X obj -39 -234 inlet;
+#X text -123 -477 which metro conotrlling???;
+#X text -538 -90 arguments to abstraction: \$1 which metro are we contorlling
+(1-16);
+#X text -69 -251 tempo of this metro;
+#X text -536 -62 \$2 - which led are we switching on of 1-16;
+#X obj -190 -26 outlet;
+#X text -219 -27 bang;
+#X text -534 -269 switch on manual contorl of this metro!!!;
+#X text -490 -76 switch on manual contorl of this metro!!!;
+#X obj -196 -381 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -196 -306 &&;
+#X obj -154 -279 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -159 -334 t b f;
+#X obj -240 -432 inlet;
+#X obj -240 -404 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -240 -306 &&;
+#X obj -232 -332 t b f;
+#X obj -240 -278 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text -276 -454 main pacz=5;
+#X text -205 -454 subpacz=2;
+#X obj -196 -280 t b f;
+#X obj -196 -258 &&;
+#X obj -196 -237 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text -536 -257 jak te wszystkie warunki sa spelnione to mozemy sterowac
+wybrane metro - on/off + tempo;
+#X text -125 -464 input from gate \$1: 1-16;
+#X text -507 -427 na starcie nic nie wysylamy;
+#X text -524 -429 0;
+#X text -525 -405 1 if main seq patch is selected first toggle ON;
+#X text -526 -383 2 if manual sub seq patch is selected second toggle
+ON;
+#X text -54 -318 metro ON/OFF;
+#X obj -47 -272 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg -104 -51 255;
+#X obj -132 -72 t b b;
+#X obj -132 -25 OneLed 7 2;
+#X obj -157 -151 gate;
+#X obj -89 -187 i;
+#X text -259 -185 store last value of SWITCH;
+#X text -125 -452 has to match the \$1 arg;
+#X obj -184 -134 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text -20 -189 delay;
+#X text -387 -221 send stored value when gate opened;
+#X text -538 -49 poprawic jeszcze tlko pamiec z subpacza tak jak w
+4poly mode DONE;
+#X text -526 -363 3 if arg \$1 equals the incoming value - then third
+toggle ON;
+#X obj -62 -103 gate;
+#X obj -167 -221 t b f f f;
+#X text -87 -87 del contrl also individual;
+#X connect 0 0 1 0;
+#X connect 0 0 24 0;
+#X connect 0 0 51 0;
+#X connect 2 0 3 0;
+#X connect 3 0 52 2;
+#X connect 4 0 5 0;
+#X connect 5 0 62 1;
+#X connect 6 0 8 1;
+#X connect 7 0 49 0;
+#X connect 7 0 53 1;
+#X connect 7 0 54 1;
+#X connect 8 0 0 1;
+#X connect 9 0 31 0;
+#X connect 10 0 9 0;
+#X connect 11 0 9 0;
+#X connect 12 0 4 0;
+#X connect 13 0 11 0;
+#X connect 13 1 10 0;
+#X connect 14 0 13 0;
+#X connect 18 0 28 0;
+#X connect 19 0 6 0;
+#X connect 28 0 35 0;
+#X connect 28 0 29 0;
+#X connect 29 0 30 0;
+#X connect 29 0 39 0;
+#X connect 31 0 29 0;
+#X connect 31 1 29 1;
+#X connect 32 0 33 0;
+#X connect 33 0 34 0;
+#X connect 34 0 36 0;
+#X connect 34 0 40 0;
+#X connect 35 0 34 0;
+#X connect 35 1 34 1;
+#X connect 39 0 40 0;
+#X connect 39 1 40 1;
+#X connect 40 0 41 0;
+#X connect 40 0 63 0;
+#X connect 50 0 52 1;
+#X connect 51 0 52 0;
+#X connect 51 1 50 0;
+#X connect 53 0 0 0;
+#X connect 53 0 57 0;
+#X connect 54 0 53 1;
+#X connect 62 0 52 2;
+#X connect 63 0 54 0;
+#X connect 63 1 53 0;
+#X connect 63 2 8 0;
+#X connect 63 3 62 0;

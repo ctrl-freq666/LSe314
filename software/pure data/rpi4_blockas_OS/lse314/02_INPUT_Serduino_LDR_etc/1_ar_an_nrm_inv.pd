@@ -1,0 +1,17 @@
+#N canvas 645 199 282 226 10;
+#X obj 26 17 inlet;
+#X obj 26 180 outlet;
+#X text 84 180 scaled out value;
+#X text 90 70 normalize it to 0-1;
+#X text 86 19 incoming value;
+#X obj 26 71 * -0.001;
+#X obj 26 94 + 1;
+#X text 90 96 back to 0-1 range;
+#X msg 26 140 0;
+#X obj 26 117 moses 0.005;
+#X connect 0 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 9 0;
+#X connect 8 0 1 0;
+#X connect 9 0 8 0;
+#X connect 9 1 1 0;

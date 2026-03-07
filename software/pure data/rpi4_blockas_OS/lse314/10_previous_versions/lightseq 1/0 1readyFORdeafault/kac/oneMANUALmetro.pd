@@ -1,0 +1,185 @@
+#N canvas 963 51 729 531 10;
+#X obj -157 -113 metro;
+#X obj -157 -84 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 18 -64 loadbang;
+#X msg 19 -44 100;
+#X obj -11 -125 + 10;
+#X obj -12 -215 i;
+#X obj -74 -297 r MANUALmetroONoff;
+#X obj -108 -153 gate;
+#X obj -109 -364 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg -76 -392 0;
+#X msg -109 -392 1;
+#X obj -11 -169 r LEDdelFACTOR;
+#X obj -109 -412 sel \$1;
+#X obj -109 -433 inlet;
+#X text -441 -474 start metro;
+#X text -465 -461 based on external in;
+#X text -467 -446 1=start 0 = stop;
+#X obj -13 -237 inlet;
+#X text -110 -477 which metro conotrlling???;
+#X text -538 -90 arguments to abstraction: \$1 which metro are we contorlling
+(1-16);
+#X text -43 -254 tempo of this metro;
+#X text -536 -62 \$2 - which led are we switching on of 1-16;
+#X obj -190 -26 outlet;
+#X text -219 -27 bang;
+#X text -534 -254 switch on manual contorl of this metro!!!;
+#X text -490 -76 switch on manual contorl of this metro!!!;
+#X obj -196 -381 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -196 -306 &&;
+#X obj -154 -279 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -159 -334 t b f;
+#X obj -240 -404 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj -240 -306 &&;
+#X obj -232 -332 t b f;
+#X obj -240 -278 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text -276 -484 main pacz=5;
+#X text -205 -484 subpacz=2;
+#X obj -196 -280 t b f;
+#X obj -196 -258 &&;
+#X obj -196 -237 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text -536 -242 jak te wszystkie warunki sa spelnione to mozemy sterowac
+wybrane metro - on/off + tempo;
+#X text -112 -464 input from gate \$1: 1-16;
+#X text -507 -427 na starcie nic nie wysylamy;
+#X text -524 -429 0;
+#X text -525 -405 1 if main seq patch is selected first toggle ON;
+#X text -526 -383 2 if manual sub seq patch is selected second toggle
+ON;
+#X text -54 -318 metro ON/OFF;
+#X obj -47 -272 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj -132 -72 t b b;
+#X obj -157 -151 gate;
+#X obj -89 -187 i;
+#X text -259 -185 store last value of SWITCH;
+#X text -112 -452 has to match the \$1 arg;
+#X text -20 -189 delay;
+#X text -363 -207 send stored value when gate opened;
+#X text -538 -49 poprawic jeszcze tlko pamiec z subpacza tak jak w
+4poly mode DONE;
+#X text -526 -363 3 if arg \$1 equals the incoming value - then third
+toggle ON;
+#X obj -69 -103 gate;
+#X obj -167 -221 t b f f f;
+#X text -87 -87 del contrl also individual;
+#X obj -198 -468 r SUBseqMODE;
+#X obj -198 -446 sel 2;
+#X msg -198 -427 1;
+#X msg -171 -428 0;
+#X obj -268 -468 r seqMODE;
+#X msg -268 -430 1;
+#X msg -242 -429 0;
+#X obj -268 -449 sel 5;
+#X msg -105 -37 255;
+#X obj -115 -107 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text -504 -177 stop all metros and ctrl data;
+#X msg -323 -158 0;
+#X obj -370 -124 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -295 -157 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -338 -338 == 0;
+#X obj -283 -338 == 0;
+#X obj -314 -308 t b f;
+#X obj -267 -312 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj -338 -308 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -303 -262 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X text -529 -331 This is basically reversed of;
+#X text -529 -319 the input conditions: if both;
+#X text -528 -308 main and sub patch are differnt;
+#X text -530 -283 send stop message to metros and gates;
+#X obj -322 -177 sel 1;
+#X obj -232 -136 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -303 -282 ||;
+#X obj -132 0 OneLed \$1 2;
+#X obj -11 -148 * 4000;
+#X connect 0 0 1 0;
+#X connect 0 0 22 0;
+#X connect 0 0 47 0;
+#X connect 2 0 3 0;
+#X connect 3 0 86 2;
+#X connect 4 0 56 1;
+#X connect 4 0 86 2;
+#X connect 5 0 7 1;
+#X connect 6 0 46 0;
+#X connect 6 0 48 1;
+#X connect 6 0 49 1;
+#X connect 7 0 0 1;
+#X connect 8 0 29 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 0;
+#X connect 11 0 87 0;
+#X connect 12 0 10 0;
+#X connect 12 1 9 0;
+#X connect 13 0 12 0;
+#X connect 17 0 5 0;
+#X connect 26 0 32 0;
+#X connect 26 0 27 0;
+#X connect 27 0 28 0;
+#X connect 27 0 36 0;
+#X connect 29 0 27 0;
+#X connect 29 1 27 1;
+#X connect 30 0 31 0;
+#X connect 31 0 33 0;
+#X connect 31 0 37 0;
+#X connect 32 0 31 0;
+#X connect 32 1 31 1;
+#X connect 36 0 37 0;
+#X connect 36 1 37 1;
+#X connect 37 0 38 0;
+#X connect 37 0 57 0;
+#X connect 47 0 86 0;
+#X connect 47 1 67 0;
+#X connect 48 0 0 0;
+#X connect 49 0 48 1;
+#X connect 57 0 49 0;
+#X connect 57 1 48 0;
+#X connect 57 2 7 0;
+#X connect 57 3 56 0;
+#X connect 59 0 60 0;
+#X connect 60 0 61 0;
+#X connect 60 1 62 0;
+#X connect 61 0 26 0;
+#X connect 61 0 74 0;
+#X connect 62 0 26 0;
+#X connect 62 0 74 0;
+#X connect 63 0 66 0;
+#X connect 64 0 30 0;
+#X connect 64 0 73 0;
+#X connect 65 0 30 0;
+#X connect 65 0 73 0;
+#X connect 66 0 64 0;
+#X connect 66 1 65 0;
+#X connect 67 0 86 1;
+#X connect 68 0 47 0;
+#X connect 70 0 84 0;
+#X connect 73 0 77 0;
+#X connect 73 0 85 0;
+#X connect 74 0 75 0;
+#X connect 74 0 76 0;
+#X connect 75 0 85 0;
+#X connect 75 1 85 1;
+#X connect 78 0 83 0;
+#X connect 83 0 71 0;
+#X connect 83 0 70 0;
+#X connect 83 1 72 0;
+#X connect 84 0 0 0;
+#X connect 84 0 48 0;
+#X connect 84 0 7 0;
+#X connect 84 0 56 0;
+#X connect 85 0 78 0;
+#X connect 87 0 4 0;

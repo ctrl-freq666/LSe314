@@ -1,0 +1,272 @@
+#N canvas 52 84 1162 753 10;
+#N canvas 0 50 450 300 (subpatch) 0;
+#X array kac_sample1 7680 float 0;
+#X coords 0 1 7679 -1 200 64 1 0 0;
+#X restore 111 75 graph;
+#X floatatom 54 310 5 0 0 0 - - -, f 5;
+#X msg 38 416 44100;
+#X floatatom 424 420 5 0 0 0 - - -, f 5;
+#X floatatom 146 363 6 0 0 0 - - -, f 6;
+#X floatatom 285 392 6 0 0 0 - - -, f 6;
+#X obj 20 418 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X text 341 369 loopend;
+#X text 421 378 startpos;
+#X obj 112 141 hsl 200 15 0 1 0 0 empty empty loop_start 10 8 0 8 -195568
+-33289 -33289 0 0;
+#X obj 112 156 hsl 200 15 0 1 0 0 empty empty loop_end 10 8 0 8 -233017
+-1 -1 19900 0;
+#X obj 110 186 *;
+#X obj 183 186 *;
+#X obj 183 210 int;
+#X obj 110 210 int;
+#X obj 112 171 hsl 200 15 0 1 0 0 empty empty start 10 8 0 8 -262144
+-1 -1 0 0;
+#X obj 238 186 *;
+#X obj 238 210 int;
+#X obj 7 373 bsaylor/mtosr 44100;
+#X obj 7 444 bsaylor/susloop~ 4000 12000, f 60;
+#X obj 51 126 hsl 50 15 0 1 0 0 empty 01_L_4 TOP_R 2 8 0 10 -261234
+-258113 -262144 0 1;
+#X obj 34 126 tgl 15 0 empty LG_L_4 empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 51 171 hsl 50 15 0 1 0 0 empty 01_L_1 BTM_R 2 8 0 10 -261234
+-258113 -262144 0 1;
+#X obj 34 171 tgl 15 0 empty LG_L_1 empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 51 156 hsl 50 15 0 1 0 0 empty 01_L_2 3RD_R 2 8 0 10 -261234
+-258113 -262144 0 1;
+#X obj 34 156 tgl 15 0 empty LG_L_2 empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 51 141 hsl 50 15 0 1 0 0 empty 01_L_3 2ND_R 2 8 0 10 -261234
+-258113 -262144 0 1;
+#X obj 34 141 tgl 15 0 empty LG_L_3 empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 76 184 658 582 load_samples 0;
+#X obj 23 217 soundfiler;
+#X obj 23 145 openpanel;
+#X obj 23 123 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X text 47 121 <- load a sample;
+#X text 235 194 Ben Saylor - bsaylor@macalester.edu;
+#X floatatom 23 242 5 0 0 0 - - -, f 5;
+#X obj 43 71 loadbang;
+#X obj 47 514 soundfiler;
+#X floatatom 47 539 5 0 0 0 - - -, f 5;
+#X obj 98 539 s filesize2;
+#X msg 47 425 read -resize ../../sample/KIKS/KC_SMPL0116.wav kac_sample2
+;
+#X obj 47 396 loadbang;
+#X text 56 33 LOAD SAMPLE TO FIRST BUFFER;
+#X text 64 370 LOAD SAMPLE TO 2ND BUFFER;
+#X obj 74 242 s filesize1;
+#X msg 44 95 read -resize /home/ccrma/pd/sample/Rim2.wav kac_sample1
+;
+#X msg 33 167 read -resize ../../sample/Rim2.wav kac_sample1;
+#X msg 23 191 read -resize \$1 kac_sample1;
+#X msg 79 472 read -resize ../../sample/FX/FX_SMPL0105.wav kac_sample2
+;
+#X connect 0 0 5 0;
+#X connect 0 0 14 0;
+#X connect 1 0 17 0;
+#X connect 2 0 1 0;
+#X connect 6 0 15 0;
+#X connect 7 0 8 0;
+#X connect 7 0 9 0;
+#X connect 10 0 7 0;
+#X connect 11 0 10 0;
+#X connect 15 0 0 0;
+#X connect 16 0 0 0;
+#X connect 17 0 0 0;
+#X connect 18 0 7 0;
+#X restore 189 21 pd load_samples;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array kac_sample2 10656 float 2;
+#X coords 0 1 10656 -1 200 70 1 0 0;
+#X restore 673 77 graph;
+#X floatatom 17 395 9 0 0 0 - - -, f 9;
+#X msg 7 347 type \$1;
+#X obj 7 279 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X text 27 278 frwd/ping;
+#X text 89 309 spd-60=norm;
+#X obj 146 341 r lstart1;
+#X obj 110 237 s lstart1;
+#X obj 183 237 s lend1;
+#X obj 238 236 s start1;
+#X obj 285 368 r lend1;
+#X obj 424 396 r start1;
+#X text 216 340 loop1start;
+#X obj 325 169 r filesize1;
+#X obj 8 610 tabread4~ kac_sample1;
+#N canvas 848 269 555 269 info 0;
+#X text 20 38 optional creation args:;
+#X text 205 38 [loopstart loopend [looptype [startpos]]];
+#X text 21 103 <looptype> is 0 for a forward loop (default) and 1 for
+a pingpong loop.;
+#X text 23 132 Playback speed is in samples/sec - send a float or signal
+to the left inlet.;
+#X text 20 27 susloop~ - another phase generator for sample looping
+;
+#X text 21 52 When the left inlet gets a bang \, the phase output will
+start at <startpos> (defaults to 0) \, continue until it reaches <loopend>
+\, and then start looping between <loopstart> and <loopend>.;
+#X restore 122 21 pd info;
+#X msg 39 570 set kac_sample1;
+#X obj 39 493 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 39 513 t b b;
+#X obj 107 492 r filesize1;
+#X obj 89 514 f;
+#X obj 89 541 s filesize1;
+#X floatatom 325 191 5 0 0 0 - - -, f 5;
+#X obj 249 711 dac~;
+#X floatatom 267 597 5 0 0 0 - - -, f 5;
+#X obj 267 621 / 100;
+#X obj 249 679 *~;
+#X floatatom 555 348 5 0 0 0 - - -, f 5;
+#X msg 539 454 44100;
+#X floatatom 925 458 5 0 0 0 - - -, f 5;
+#X floatatom 647 401 6 0 0 0 - - -, f 6;
+#X floatatom 786 430 6 0 0 0 - - -, f 6;
+#X obj 521 456 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 324 567 loadbang;
+#X text 842 407 loopend;
+#X text 922 416 startpos;
+#X obj 508 411 bsaylor/mtosr 44100;
+#X obj 508 482 bsaylor/susloop~ 4000 12000, f 60;
+#X floatatom 518 433 9 0 0 0 - - -, f 9;
+#X msg 508 385 type \$1;
+#X obj 508 317 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 528 316 frwd/ping;
+#X text 590 347 spd-60=norm;
+#X text 717 378 loop1start;
+#X obj 540 531 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 540 551 t b b;
+#X obj 590 552 f;
+#X obj 647 379 r lstart2;
+#X obj 786 406 r lend2;
+#X obj 925 434 r start2;
+#X obj 608 530 r filesize2;
+#X obj 590 579 s filesize2;
+#X msg 540 608 set kac_sample2;
+#X obj 509 648 tabread4~ kac_sample2;
+#X obj 675 152 hsl 200 15 0 1 0 0 empty empty loop_start 10 8 0 8 -195568
+-33289 -33289 0 0;
+#X obj 675 167 hsl 200 15 0 1 0 0 empty empty loop_end 10 8 0 8 -233017
+-1 -1 0 0;
+#X obj 673 197 *;
+#X obj 746 197 *;
+#X obj 746 221 int;
+#X obj 673 221 int;
+#X obj 675 182 hsl 200 15 0 1 0 0 empty empty start 10 8 0 8 -262144
+-1 -1 0 0;
+#X obj 801 197 *;
+#X obj 801 221 int;
+#X obj 614 137 hsl 50 15 0 1 0 0 empty 01_L_4 TOP_R 2 8 0 10 -261234
+-258113 -262144 0 1;
+#X obj 597 137 tgl 15 0 empty LG_L_4 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 614 182 hsl 50 15 0 1 0 0 empty 01_L_1 BTM_R 2 8 0 10 -261234
+-258113 -262144 0 1;
+#X obj 597 182 tgl 15 0 empty LG_L_1 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 614 167 hsl 50 15 0 1 0 0 empty 01_L_2 3RD_R 2 8 0 10 -261234
+-258113 -262144 0 1;
+#X obj 597 167 tgl 15 0 empty LG_L_2 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 614 152 hsl 50 15 0 1 0 0 empty 01_L_3 2ND_R 2 8 0 10 -261234
+-258113 -262144 0 1;
+#X obj 597 152 tgl 15 0 empty LG_L_3 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X floatatom 888 202 5 0 0 0 - - -, f 5;
+#X obj 673 248 s lstart2;
+#X obj 746 248 s lend2;
+#X obj 801 247 s start2;
+#X obj 888 180 r filesize2;
+#X msg 322 587 85;
+#X msg 471 109 \; pd dsp \$1;
+#X obj 471 83 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X connect 1 0 18 0;
+#X connect 2 0 19 0;
+#X connect 3 0 19 3;
+#X connect 4 0 19 1;
+#X connect 5 0 19 2;
+#X connect 6 0 19 0;
+#X connect 9 0 11 0;
+#X connect 10 0 12 0;
+#X connect 11 0 14 0;
+#X connect 12 0 13 0;
+#X connect 13 0 37 0;
+#X connect 14 0 36 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 17 0 38 0;
+#X connect 18 0 19 0;
+#X connect 18 0 30 0;
+#X connect 19 0 43 0;
+#X connect 20 0 9 0;
+#X connect 26 0 10 0;
+#X connect 31 0 19 0;
+#X connect 32 0 31 0;
+#X connect 35 0 4 0;
+#X connect 39 0 5 0;
+#X connect 40 0 3 0;
+#X connect 42 0 11 1;
+#X connect 42 0 12 1;
+#X connect 42 0 16 1;
+#X connect 42 0 51 0;
+#X connect 43 0 55 0;
+#X connect 45 0 43 0;
+#X connect 46 0 47 0;
+#X connect 47 0 45 0;
+#X connect 47 1 49 0;
+#X connect 48 0 49 1;
+#X connect 49 0 50 0;
+#X connect 53 0 54 0;
+#X connect 54 0 55 1;
+#X connect 55 0 52 0;
+#X connect 55 0 52 1;
+#X connect 56 0 65 0;
+#X connect 57 0 66 0;
+#X connect 58 0 66 3;
+#X connect 59 0 66 1;
+#X connect 60 0 66 2;
+#X connect 61 0 66 0;
+#X connect 62 0 105 0;
+#X connect 65 0 66 0;
+#X connect 65 0 67 0;
+#X connect 66 0 82 0;
+#X connect 68 0 66 0;
+#X connect 69 0 68 0;
+#X connect 73 0 74 0;
+#X connect 74 0 81 0;
+#X connect 74 1 75 0;
+#X connect 75 0 80 0;
+#X connect 76 0 59 0;
+#X connect 77 0 60 0;
+#X connect 78 0 58 0;
+#X connect 79 0 75 1;
+#X connect 81 0 82 0;
+#X connect 82 0 55 0;
+#X connect 83 0 85 0;
+#X connect 84 0 86 0;
+#X connect 85 0 88 0;
+#X connect 86 0 87 0;
+#X connect 87 0 102 0;
+#X connect 88 0 101 0;
+#X connect 89 0 90 0;
+#X connect 90 0 91 0;
+#X connect 91 0 103 0;
+#X connect 92 0 83 0;
+#X connect 98 0 84 0;
+#X connect 104 0 85 1;
+#X connect 104 0 86 1;
+#X connect 104 0 90 1;
+#X connect 104 0 100 0;
+#X connect 105 0 54 0;
+#X connect 107 0 106 0;

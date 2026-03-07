@@ -1,0 +1,172 @@
+#N canvas 1684 54 1115 682 12;
+#X obj 511 635 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 925 382 i;
+#X obj 664 529 gate, f 12;
+#X obj 338 148 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 375 122 0;
+#X msg 338 120 1;
+#X obj 338 100 sel \$1;
+#X obj 338 79 inlet;
+#X text 23 135 start metro;
+#X text -1 148 based on external in;
+#X text -3 163 1=start 0 = stop;
+#X obj 924 360 inlet;
+#X text 337 35 which metro conotrlling???;
+#X text 894 343 tempo of this metro;
+#X obj 548 633 outlet;
+#X text -70 355 switch on manual contorl of this metro!!!;
+#X text 452 5 switch on manual contorl of this metro!!!;
+#X obj 657 226 &&, f 5;
+#X obj 699 263 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 804 211 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 658 177 t b f;
+#X obj 539 313 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 657 262 t b f;
+#X obj 616 313 &&;
+#X obj 587 359 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text -72 367 jak te wszystkie warunki sa spelnione to mozemy sterowac
+wybrane metro - on/off + tempo;
+#X text 335 48 input from gate \$1: 1-16;
+#X text -43 182 na starcie nic nie wysylamy;
+#X text 0 180 0;
+#X text -81 204 1 if main seq patch is selected first toggle ON;
+#X text -62 226 2 if manual sub seq patch is selected second toggle
+ON;
+#X text 765 362 metro ON/OFF;
+#X obj 772 408 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 590 496 gate;
+#X obj 417 494 i;
+#X text 20 415 store last value of SWITCH;
+#X text 335 60 has to match the \$1 arg;
+#X text -79 391 send stored value when gate opened;
+#X text -62 246 3 if arg \$1 equals the incoming value - then third
+toggle ON;
+#X msg 758 155 1;
+#X msg 804 156 0;
+#X text -1 431 stop all metros and ctrl data;
+#X msg 358 490 0;
+#X obj 311 474 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 394 564 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 359 320 == 0;
+#X obj 403 320 == 0;
+#X obj 371 382 t b f;
+#X obj 419 346 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 369 350 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 359 447 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text -65 278 This is basically reversed of;
+#X text -65 290 the input conditions: if both;
+#X text -64 301 main and sub patch are differnt;
+#X text -94 326 send stop message to metros and gates;
+#X obj 359 471 sel 1;
+#X obj 357 527 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 359 417 ||;
+#X floatatom 795 403 5 0 0 0 - - -;
+#X obj 765 381 r LOOP_SQ6;
+#X floatatom 710 564 5 0 0 0 - - -;
+#X obj 713 100 1_SEQ_PATCH_LOGIC \$3;
+#X text 41 29 \$2 - which led are we switching on of 1;
+#X text 42 42 \$3 number of SEQ MODE from ROT SWITCH;
+#X text 772 67 main pacz;
+#X text 43 4 arg to abstraction:;
+#X text 40 17 \$1 which metro are we contorlling 1-8;
+#X obj 616 395 t b f f;
+#X obj 713 50 hradio 15 1 0 8 empty SEQ_MODE SEQ_MODE 0 -8 0 10 -258113
+-1 -4160 4;
+#X obj 638 630 1_LED_MAN_314_B \$2 1 100;
+#X floatatom 723 70 5 0 0 0 - - -;
+#X obj 713 148 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 531 49 r SSM_6;
+#X obj 531 98 1_SEQ_PATCH_LOGIC \$4;
+#X obj 531 140 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X text 42 56 \$4 numbe SUB SEQ MODE from BTN;
+#X obj 590 563 metro 1000;
+#X obj 469 342 r SQ\$3_B_STOP;
+#X msg 469 367 0;
+#X obj 645 436 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 521 479 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 338 168 t f f;
+#X obj 528 403 t f f f;
+#X msg 512 520 stop;
+#X connect 1 0 2 1;
+#X connect 2 0 60 0;
+#X connect 2 0 76 1;
+#X connect 3 0 81 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 0;
+#X connect 6 0 5 0;
+#X connect 6 1 4 0;
+#X connect 7 0 6 0;
+#X connect 11 0 1 0;
+#X connect 17 0 18 0;
+#X connect 17 0 22 0;
+#X connect 20 0 17 0;
+#X connect 20 1 17 1;
+#X connect 22 0 23 0;
+#X connect 22 1 23 1;
+#X connect 23 0 24 0;
+#X connect 23 0 67 0;
+#X connect 33 0 76 0;
+#X connect 39 0 19 0;
+#X connect 40 0 19 0;
+#X connect 42 0 56 0;
+#X connect 45 0 49 0;
+#X connect 45 0 57 0;
+#X connect 46 0 47 0;
+#X connect 46 0 48 0;
+#X connect 47 0 57 0;
+#X connect 47 1 57 1;
+#X connect 50 0 55 0;
+#X connect 55 0 42 0;
+#X connect 55 0 43 0;
+#X connect 55 0 34 0;
+#X connect 55 1 44 0;
+#X connect 56 0 33 0;
+#X connect 56 0 2 0;
+#X connect 56 0 76 0;
+#X connect 57 0 50 0;
+#X connect 59 0 58 0;
+#X connect 59 0 32 0;
+#X connect 59 0 33 1;
+#X connect 61 0 71 0;
+#X connect 61 1 39 0;
+#X connect 61 2 40 0;
+#X connect 61 2 83 0;
+#X connect 67 0 34 0;
+#X connect 67 1 33 0;
+#X connect 67 1 79 0;
+#X connect 67 2 2 0;
+#X connect 68 0 61 0;
+#X connect 68 0 70 0;
+#X connect 71 0 20 0;
+#X connect 72 0 73 0;
+#X connect 73 0 74 0;
+#X connect 74 0 17 0;
+#X connect 76 0 0 0;
+#X connect 76 0 14 0;
+#X connect 76 0 69 0;
+#X connect 77 0 78 0;
+#X connect 77 0 83 0;
+#X connect 78 0 82 0;
+#X connect 81 0 23 0;
+#X connect 81 1 20 0;
+#X connect 82 0 80 0;
+#X connect 82 0 76 0;
+#X connect 82 2 67 0;
+#X connect 83 0 76 0;

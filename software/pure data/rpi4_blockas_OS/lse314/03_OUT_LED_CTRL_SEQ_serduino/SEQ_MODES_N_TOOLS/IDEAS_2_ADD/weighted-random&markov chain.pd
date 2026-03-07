@@ -1,0 +1,213 @@
+#N canvas 155 368 1582 575 10;
+#X msg 93 135 bang;
+#X text 34 59 You can generate weighted random numbers from uniformly
+distributed ones. If you just want two possible outcomes with a varying
+probability for each one \, you can do as shown:;
+#X obj 93 161 random 100;
+#X obj 92 214 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 159 214 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X floatatom 195 188 3 0 100 0 - - -;
+#X text 240 188 <-- change probablilty;
+#X obj 93 189 moses 80;
+#X text 142 133 <-- click to test;
+#X text 51 259 This outputs a number at left 80% of the time \, otherwise
+at right \, unless you override the "80" using the number box. You
+may extend this to more than two possible outcomes \, for instance
+like this:;
+#X msg 96 345 bang;
+#X obj 96 371 random 100;
+#X obj 95 424 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 185 427 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X text 145 343 <-- click to test;
+#X obj 96 399 moses 10;
+#X obj 186 400 moses 30;
+#X obj 253 427 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X text 93 449 10%;
+#X text 183 450 20%;
+#X text 255 449 70%;
+#X obj 523 289 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 520 374 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 601 373 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 638 375 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X msg 520 396 1;
+#X msg 601 398 2;
+#X msg 638 399 3;
+#X obj 520 424 s state;
+#X obj 505 211 bng 20 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 544 202 r state;
+#X obj 522 263 sel 1 2 3;
+#X obj 694 291 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 691 376 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 773 378 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 812 381 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X msg 691 399 1;
+#X msg 768 404 2;
+#X msg 812 405 3;
+#X obj 691 432 s state;
+#X obj 858 292 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 858 377 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 938 376 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X obj 977 379 bng 15 250 50 0 empty empty empty 20 8 0 8 -262144 -1
+-1;
+#X msg 858 400 1;
+#X msg 938 401 2;
+#X msg 977 402 3;
+#X obj 857 433 s state;
+#X msg 675 224 \; state 1;
+#X obj 522 237 f 1;
+#X obj 523 317 random 100;
+#X obj 522 346 moses 30;
+#X obj 601 347 moses 60;
+#X obj 694 318 random 100;
+#X obj 694 348 moses 10;
+#X obj 773 349 moses 60;
+#X obj 858 319 random 100;
+#X obj 858 348 moses 70;
+#X obj 938 348 moses 80;
+#X floatatom 573 226 3 0 0 0 - - -;
+#X text 675 204 reset;
+#X text 488 190 STEP;
+#X text 533 58 Here is how to construct a simple \, three-valued Markov
+chain using "random." Each time you click on "step" the previous output
+("state") determines which of three random networks to invoke \, each
+having a different probability distribution for the next value of "state."
+For instance if the state was 3 \, the next state will be 1 70% of
+the time \, state 2 10% \, and state 3 20%.;
+#X text 130 35 weighted random;
+#X text 628 28 markov chain;
+#X text 317 -36 to moze mi sie przydac w tym co robilem do lightseqa
+na wybieranie nastepnej dlugosci nutki a raczej swiatelka;
+#X floatatom 1159 215 5 0 0 0 - - -;
+#X obj 1169 110 f;
+#X obj 1150 195 random 4;
+#X obj 1072 194 random 2;
+#X floatatom 1081 216 5 0 0 0 - - -;
+#X obj 1169 135 t b b f;
+#X obj 1072 250 sel 0 1;
+#X obj 1205 325 +;
+#X obj 1169 84 metro 100;
+#X obj 1169 62 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 1150 249 + 1;
+#X floatatom 1288 150 5 0 0 0 - - -;
+#X obj 1128 306 *;
+#X msg 1072 279 -1;
+#X obj 1288 80 moses 0;
+#X obj 1362 80 moses 100;
+#X obj 1288 104 * -1;
+#X obj 1453 83 * -1;
+#X obj 1453 108 + 200;
+#X msg 1106 279 1;
+#X text 1085 6 Random walk generator;
+#X text 1189 61 on/off;
+#X text 1344 149 output;
+#X text 1068 372 A random walk is a special case of a Markov chain
+\, in which the states are integers and the transitions add or subtract
+a small amount from the previous state to get a new one. Here the "f"
+holds the state. When it gets a bang \, the previous state is added
+to a random number (from 1 to 4) multiplied by a random sign (-1 or
+1). The new value is then coerced into the range from 0 to 100;
+#X text 1081 232 sign;
+#X text 1159 231 magnitude;
+#X text 1249 310 add prev value;
+#X text 1246 327 to random increment;
+#X text 1302 27 coercion to range 0-100 \; if out of range \, reflect
+;
+#X text 1301 57 us back in.;
+#X text 1369 489 updated for Pd version 0.37-1;
+#X connect 0 0 2 0;
+#X connect 2 0 7 0;
+#X connect 5 0 7 1;
+#X connect 7 0 3 0;
+#X connect 7 1 4 0;
+#X connect 10 0 11 0;
+#X connect 11 0 15 0;
+#X connect 15 0 12 0;
+#X connect 15 1 16 0;
+#X connect 16 0 13 0;
+#X connect 16 1 17 0;
+#X connect 21 0 50 0;
+#X connect 22 0 25 0;
+#X connect 23 0 26 0;
+#X connect 24 0 27 0;
+#X connect 25 0 28 0;
+#X connect 26 0 28 0;
+#X connect 27 0 28 0;
+#X connect 29 0 49 0;
+#X connect 30 0 49 1;
+#X connect 30 0 59 0;
+#X connect 31 0 21 0;
+#X connect 31 1 32 0;
+#X connect 31 2 40 0;
+#X connect 32 0 53 0;
+#X connect 33 0 36 0;
+#X connect 34 0 37 0;
+#X connect 35 0 38 0;
+#X connect 36 0 39 0;
+#X connect 37 0 39 0;
+#X connect 38 0 39 0;
+#X connect 40 0 56 0;
+#X connect 41 0 44 0;
+#X connect 42 0 45 0;
+#X connect 43 0 46 0;
+#X connect 44 0 47 0;
+#X connect 45 0 47 0;
+#X connect 46 0 47 0;
+#X connect 49 0 31 0;
+#X connect 50 0 51 0;
+#X connect 51 0 22 0;
+#X connect 51 1 52 0;
+#X connect 52 0 23 0;
+#X connect 52 1 24 0;
+#X connect 53 0 54 0;
+#X connect 54 0 33 0;
+#X connect 54 1 55 0;
+#X connect 55 0 34 0;
+#X connect 55 1 35 0;
+#X connect 56 0 57 0;
+#X connect 57 0 41 0;
+#X connect 57 1 58 0;
+#X connect 58 0 42 0;
+#X connect 58 1 43 0;
+#X connect 67 0 71 0;
+#X connect 68 0 66 0;
+#X connect 68 0 76 0;
+#X connect 69 0 70 0;
+#X connect 69 0 72 0;
+#X connect 71 0 69 0;
+#X connect 71 1 68 0;
+#X connect 71 2 73 1;
+#X connect 72 0 79 0;
+#X connect 72 1 85 0;
+#X connect 73 0 80 0;
+#X connect 74 0 67 0;
+#X connect 75 0 74 0;
+#X connect 76 0 78 1;
+#X connect 77 0 67 1;
+#X connect 78 0 73 0;
+#X connect 79 0 78 0;
+#X connect 80 0 82 0;
+#X connect 80 1 81 0;
+#X connect 81 0 77 0;
+#X connect 81 1 83 0;
+#X connect 82 0 77 0;
+#X connect 83 0 84 0;
+#X connect 84 0 77 0;
+#X connect 85 0 78 0;

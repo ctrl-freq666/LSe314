@@ -1,0 +1,59 @@
+#N canvas 467 229 623 492 10;
+#X msg -56 66 enable 1;
+#X msg -46 90 enable 0;
+#X msg 207 151 output 1;
+#X msg -114 150 output 0;
+#X msg 142 60 open 1;
+#X msg 149 85 open 0;
+#X obj 208 200 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 205 130 to output;
+#X text -61 32 Create or uncreate pin file;
+#X text -61 45 under /sys/class/gpio;
+#X text 138 32 Open or close pin file;
+#X text 205 117 Set pin file direction;
+#X text -118 117 Set pin file direction;
+#X text -118 130 to input;
+#X obj -114 200 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text -117 169 Bang gpio object to;
+#X text 205 169 Send float 0 or 1 to;
+#X text -118 181 read input;
+#X text 154 241 Print input that was read \, after bang;
+#X text 205 181 gpio object to set pin output level;
+#X obj 61 215 gpio 19;
+#X obj 61 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text -53 -168 First thing to do is edit the [gpio 18] box to choose
+which GPIO pin \,;
+#X text -54 -136 Then click [enable 1]. This should create a file for
+the pin on disk called /sys/class/gpio;
+#X text -56 -104 Then click the [open 1] box to open the pin file.
+;
+#X text -57 -81 Then either click [output 0] to set the pin to input
+mode and bang the [gpio] to make it read the pin and emit the current
+value \,;
+#X text -58 -31 or click [output 1] to set the pin to output mode and
+send 0 or 1 to the [gpio] to set the pin to that output level.;
+#X obj 61 271 sel 1;
+#X obj 43 275 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 107 276 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 152 277 print;
+#X obj 61 243 change;
+#X obj 61 164 metro 10;
+#X connect 0 0 20 0;
+#X connect 1 0 20 0;
+#X connect 2 0 20 0;
+#X connect 3 0 20 0;
+#X connect 4 0 20 0;
+#X connect 5 0 20 0;
+#X connect 6 0 20 0;
+#X connect 14 0 20 0;
+#X connect 20 0 31 0;
+#X connect 21 0 32 0;
+#X connect 27 0 28 0;
+#X connect 27 1 29 0;
+#X connect 31 0 27 0;
+#X connect 32 0 20 0;

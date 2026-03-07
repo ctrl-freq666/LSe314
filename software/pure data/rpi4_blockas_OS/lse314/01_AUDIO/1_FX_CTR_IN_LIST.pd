@@ -1,0 +1,123 @@
+#N canvas 33 325 1414 444 12;
+#X text 193 48 0-1;
+#X text 55 17 INPUT CTRL LIST NORMALIZED;
+#X obj 254 80 vsl 10 50 0 1 0 0 FX\$1_PAR_A1 empty FX_A1 0 -9 0 10
+-128992 -258113 -1 1432 1;
+#X obj 370 80 vsl 10 50 0 1 0 0 FX\$1_PAR_A2 empty FX_A2 0 -9 0 10
+-128992 -258113 -1 1480 1;
+#X text 76 96 PROPERTIES SEND;
+#X text 43 116 PTCH\$1_PAR_A1 \, A2 \, D1 \, D2...;
+#X obj 487 79 vsl 10 50 0 1 0 0 FX\$1_PAR_A3 empty FX_A3 0 -9 0 10
+-128992 -258113 -1 2625 1;
+#X obj 754 125 bng 15 250 50 0 PTCH\$1_PAR_D1B empty D1B 17 7 0 10
+-128992 -258113 -1;
+#X obj 687 75 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X floatatom 723 124 1 0 0 0 D1 - FX#1_PAR_D1;
+#X obj 603 78 vsl 10 50 0 1 0 0 FX\$1_PAR_A4 empty FX_A4 0 -9 0 10
+-128992 -258113 -1 2534 1;
+#X obj 900 123 bng 15 250 50 0 FX\$1_PAR_D2B empty D2B 17 7 0 10 -128992
+-258113 -1;
+#X obj 820 72 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X floatatom 840 121 1 0 0 0 D2 - FX#1_PAR_D2;
+#X obj 989 111 bng 15 250 50 0 FX\$1_PAR_D3B empty D3B 17 7 0 10 -128992
+-258113 -1;
+#X obj 940 72 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X floatatom 960 117 1 0 0 0 D3 - FX#1_PAR_D3;
+#X obj 254 6 r FX\$1_CTRL_LIST;
+#X obj 254 45 unpack f f f f f f f, f 101;
+#X text 513 13 TEMPLATE FOR SND FX PATCHES-INPUT=LIST 4 POTS \, 2 BTN
+\, 1 SW;
+#X text 194 203 0-1;
+#X floatatom 309 213 5 0 0 0 - - -;
+#X floatatom 404 213 5 0 0 0 - - -;
+#X floatatom 520 203 5 0 0 0 - - -;
+#X floatatom 634 203 5 0 0 0 - - -;
+#X obj 716 249 bng 15 250 50 0 empty empty D1B 17 7 0 10 -128992 -258113
+-1;
+#X obj 841 247 bng 15 250 50 0 empty empty D2B 17 7 0 10 -128992 -258113
+-1;
+#X obj 1022 201 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X obj 993 243 bng 15 250 50 0 empty empty D3B 17 7 0 10 -128992 -258113
+-1;
+#X text 109 254 RENAME \, REMAP;
+#X obj 22 115 print;
+#X obj 22 93 spigot;
+#X obj 61 72 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 723 79 1_ARD_DIG_SW 0, f 9;
+#X text 91 276 CTRL AUDIOFX PATCH;
+#X obj 708 180 r FX\$1_PAR_D1;
+#X obj 831 180 r FX\$1_PAR_D2;
+#X obj 841 224 r FX\$1_PAR_D2B;
+#X obj 716 226 r FX\$1_PAR_D1B;
+#X obj 962 177 r FX\$1_PAR_D3;
+#X obj 993 219 r FX\$1_PAR_D3B;
+#X obj 249 180 r FX\$1_PAR_A1;
+#X obj 364 180 r FX\$1_PAR_A2;
+#X obj 479 180 r FX\$1_PAR_A3;
+#X obj 594 180 r FX\$1_PAR_A4;
+#X text 1070 24 arguments:;
+#X text 1070 44 \$1 = fx patch number;
+#X text 1070 64 \$2-\$5 = scale factor A1-A4;
+#X text 1070 84 \$6-\$7 = counter D2 \, D3;
+#X obj 249 283 outlet a1;
+#X obj 249 225 * \$2;
+#X obj 364 228 * \$3;
+#X obj 364 286 outlet a2;
+#X obj 479 232 * \$4;
+#X obj 594 235 * \$5;
+#X obj 958 75 1_ARD_DIG_BTN \$7 0, f 9;
+#X obj 479 290 outlet a3;
+#X obj 594 293 outlet a4;
+#X obj 708 296 outlet d1;
+#X obj 831 300 outlet d2;
+#X obj 962 300 outlet d3;
+#X floatatom 708 202 5 0 0 0 - - -;
+#X floatatom 831 202 5 0 0 0 - - -;
+#X floatatom 962 202 5 0 0 0 - - -;
+#X obj 840 82 1_ARD_DIG_BTN \$6 1, f 9;
+#X connect 17 0 18 0;
+#X connect 18 0 2 0;
+#X connect 18 1 3 0;
+#X connect 18 2 6 0;
+#X connect 18 3 10 0;
+#X connect 18 4 8 0;
+#X connect 18 4 33 0;
+#X connect 18 5 12 0;
+#X connect 18 5 64 0;
+#X connect 18 6 15 0;
+#X connect 18 6 55 0;
+#X connect 31 0 30 0;
+#X connect 32 0 31 1;
+#X connect 33 0 9 0;
+#X connect 35 0 61 0;
+#X connect 36 0 62 0;
+#X connect 37 0 26 0;
+#X connect 38 0 25 0;
+#X connect 39 0 27 0;
+#X connect 39 0 63 0;
+#X connect 40 0 28 0;
+#X connect 41 0 21 0;
+#X connect 41 0 50 0;
+#X connect 41 0 31 0;
+#X connect 42 0 22 0;
+#X connect 42 0 51 0;
+#X connect 43 0 23 0;
+#X connect 43 0 53 0;
+#X connect 44 0 24 0;
+#X connect 44 0 54 0;
+#X connect 50 0 49 0;
+#X connect 51 0 52 0;
+#X connect 53 0 56 0;
+#X connect 54 0 57 0;
+#X connect 55 0 16 0;
+#X connect 55 1 14 0;
+#X connect 61 0 58 0;
+#X connect 62 0 59 0;
+#X connect 63 0 60 0;
+#X connect 64 0 13 0;
+#X connect 64 1 11 0;

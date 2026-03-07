@@ -1,0 +1,56 @@
+#N canvas 148 266 613 513 10;
+#X obj 315 197 inlet;
+#X obj 157 342 +;
+#X floatatom 229 419 5 0 0 0 - - -, f 5;
+#X text 194 267 get new time interval related;
+#X obj 75 388 metro;
+#X obj 124 420 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 71 186 metro on off;
+#X obj 78 115 r MASTERclockFINE;
+#X obj 157 363 i;
+#X text 185 355 force int \, to avoid changes;
+#X obj 75 206 inlet;
+#X obj 75 420 outlet;
+#X obj 157 420 outlet;
+#X text 165 400 scaled value;
+#X text 72 24 TAKES INCOMING VALUE AND ADDS A VALUE FROM ANOTHER SOURCE
+\, KEEPING THE RATIO BETWEEN THEM THE SAME;
+#X text 75 440 FOR ADDING OFFSETS TO MULTIPLE METROS WITH SAME RATIO
+;
+#X obj 78 137 * \$1;
+#X obj 157 279 * \$1;
+#X text 53 94 CLOCK FINE -50 - 50;
+#X text 79 404 BANGS OUT;
+#X text 71 46 ARGS: \$1 - RELATION TO THE INPUT: 0.25 - 2 (BUT COULD
+BE OTHER);
+#X obj 205 136 r MASTERclockCOARSE;
+#X obj 236 243 +;
+#X obj 206 156 / 1000;
+#X obj 206 176 * 200;
+#X obj 206 195 - 100;
+#X text 205 94 add main clock;
+#X text 204 107 it shifts the central tempo;
+#X text 208 119 of all metros;
+#X text 244 177 time interval rndm;
+#X obj 157 300 i;
+#X obj 157 321 t b 0;
+#X connect 0 0 22 1;
+#X connect 1 0 8 0;
+#X connect 4 0 5 0;
+#X connect 4 0 11 0;
+#X connect 7 0 16 0;
+#X connect 8 0 4 1;
+#X connect 8 0 12 0;
+#X connect 8 0 2 0;
+#X connect 10 0 4 0;
+#X connect 16 0 1 0;
+#X connect 17 0 30 0;
+#X connect 21 0 23 0;
+#X connect 22 0 17 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 25 0 22 0;
+#X connect 30 0 31 0;
+#X connect 31 0 1 0;
+#X connect 31 1 1 1;

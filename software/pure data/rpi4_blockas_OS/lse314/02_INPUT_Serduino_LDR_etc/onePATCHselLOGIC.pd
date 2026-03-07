@@ -1,0 +1,47 @@
+#N canvas 253 289 418 373 10;
+#X msg 39 235 1;
+#X obj 60 187 change;
+#X floatatom 106 212 1 0 0 0 - - -, f 1;
+#X obj 68 236 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 115 235 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 39 283 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 93 234 0;
+#X obj 60 131 inlet;
+#X text 97 128 from rotary switch / patch selector;
+#X text 28 57 helps organize data flow in coplex patches;
+#X obj 60 212 sel \$1;
+#X obj 39 305 outlet;
+#X text 29 45 if input == the argument \$1 out = 1 else out = 0;
+#X text 28 97 and outputs it from out 2 only if input == \$1;
+#X floatatom 67 154 1 0 0 0 - - -, f 1;
+#X obj 186 156 inlet;
+#X text 225 156 val to store;
+#X obj 171 274 i;
+#X floatatom 203 274 1 0 0 0 - - -, f 1;
+#X text 28 86 also stores the last input to right inlet;
+#X obj 171 305 outlet;
+#X floatatom 221 306 1 0 0 0 - - -, f 1;
+#X obj 83 305 outlet;
+#X obj 126 304 outlet;
+#X text 35 321 output also bang if matched and if not;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 1 0 10 0;
+#X connect 3 0 17 0;
+#X connect 5 0 11 0;
+#X connect 6 0 5 0;
+#X connect 7 0 1 0;
+#X connect 7 0 14 0;
+#X connect 10 0 0 0;
+#X connect 10 0 3 0;
+#X connect 10 0 22 0;
+#X connect 10 1 4 0;
+#X connect 10 1 6 0;
+#X connect 10 1 23 0;
+#X connect 15 0 17 1;
+#X connect 15 0 18 0;
+#X connect 17 0 20 0;
+#X connect 17 0 21 0;

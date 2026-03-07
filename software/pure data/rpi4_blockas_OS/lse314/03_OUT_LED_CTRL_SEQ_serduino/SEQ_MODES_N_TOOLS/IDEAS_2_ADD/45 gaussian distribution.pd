@@ -1,0 +1,108 @@
+#N canvas 452 96 739 589 12;
+#X msg 429 276 200;
+#X obj 429 300 until;
+#X obj 429 323 random 100;
+#X obj 429 442 t f f;
+#X obj 429 466 tabread dist;
+#X obj 429 490 + 1;
+#X obj 429 514 tabwrite dist;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array dist 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 100 100 0 200 140 1 0 0;
+#X restore 426 54 graph;
+#X msg 514 275 200;
+#X obj 514 299 until;
+#X obj 514 323 t b b;
+#X obj 514 346 random 100;
+#X obj 514 390 +;
+#X obj 514 414 / 2;
+#X obj 546 369 random 100;
+#X msg 429 209 \; dist const 0;
+#X text 427 258 random;
+#X text 512 257 gaussian;
+#X obj 42 422 osc~ 220;
+#X obj 122 486 *~;
+#X obj 195 402 vline~;
+#X msg 195 375 \$1 10 \, 0 200 10;
+#X obj 119 524 dac~;
+#X obj 23 126 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 23 148 \; pd dsp \$1;
+#X obj 195 245 random 100;
+#X obj 195 269 / 100;
+#X obj 272 244 random 100;
+#X obj 272 268 / 100;
+#X obj 195 296 +;
+#X obj 195 323 / 2;
+#X floatatom 208 349 5 0 0 0 - - -;
+#X obj 195 215 t b b;
+#X obj 195 193 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 14 45 TO GET GAUSSIAN FROM LINEAR RANDOM WE TAKE THE AVERAGE
+OF TWO RANDOM VALUES!!! WE get more values from the middle of the range
+;
+#X text 16 101 to get even more close to center add another;
+#X obj 42 271 +;
+#X obj 42 298 / 2;
+#X obj 42 217 t b b;
+#X obj 42 195 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 42 247 random 24;
+#X obj 119 246 random 24;
+#X obj 42 384 mtof;
+#X obj 42 328 + 48;
+#X obj 127 171 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 85 381 5 0 0 0 - - -;
+#X text 87 361 aaround C mostly;
+#X obj 42 356 int;
+#X text 32 11 GAUSSIAN DIST IS CLOSER TO 'HUMAN' PERFORMANCE;
+#X text 329 538 OVERLAY ARRAYS TOGETHER ON top of each other;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 1 6 1;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 10 1 14 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 13 0 3 0;
+#X connect 14 0 12 1;
+#X connect 18 0 19 0;
+#X connect 19 0 22 0;
+#X connect 19 0 22 1;
+#X connect 20 0 19 1;
+#X connect 21 0 20 0;
+#X connect 23 0 24 0;
+#X connect 25 0 26 0;
+#X connect 26 0 29 0;
+#X connect 27 0 28 0;
+#X connect 28 0 29 1;
+#X connect 29 0 30 0;
+#X connect 30 0 21 0;
+#X connect 30 0 31 0;
+#X connect 32 0 25 0;
+#X connect 32 1 27 0;
+#X connect 33 0 32 0;
+#X connect 36 0 37 0;
+#X connect 37 0 43 0;
+#X connect 38 0 40 0;
+#X connect 38 1 41 0;
+#X connect 39 0 38 0;
+#X connect 40 0 36 0;
+#X connect 41 0 36 1;
+#X connect 42 0 18 0;
+#X connect 43 0 45 0;
+#X connect 43 0 47 0;
+#X connect 44 0 33 0;
+#X connect 44 0 39 0;
+#X connect 47 0 42 0;

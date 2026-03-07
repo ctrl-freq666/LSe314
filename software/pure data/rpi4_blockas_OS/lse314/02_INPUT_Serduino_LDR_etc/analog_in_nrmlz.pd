@@ -1,0 +1,12 @@
+#N canvas 830 427 450 292 10;
+#X obj 26 17 inlet;
+#X obj 26 240 outlet;
+#X text 84 240 scaled out value;
+#X obj 26 71 / 1024;
+#X text 90 70 normalize it to 0-1;
+#X text 100 116 averaging filter of last 2 values / low pass;
+#X text 86 19 incoming value;
+#X obj 26 215 change;
+#X connect 0 0 3 0;
+#X connect 3 0 7 0;
+#X connect 7 0 1 0;

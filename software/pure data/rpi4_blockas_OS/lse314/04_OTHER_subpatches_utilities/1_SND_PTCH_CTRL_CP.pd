@@ -1,0 +1,74 @@
+#N canvas 255 290 812 366 12;
+#X text 194 233 0-1;
+#X text 193 48 0-1;
+#X obj 63 253 print;
+#X obj 63 228 spigot;
+#X obj 96 199 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 254 15 r PTCH\$1_CTRL_LIST;
+#X text 55 17 INPUT CTRL LIST NORMALIZED;
+#X text 76 96 PROPERTIES SEND;
+#X text 43 116 PTCH\$1_PAR_A1 \, A2 \, D1 \, D2...;
+#X obj 249 210 r PTCH\$1_PAR_A1;
+#X obj 364 210 r PTCH\$1_PAR_A2;
+#X floatatom 249 233 5 0 0 0 - - -;
+#X floatatom 364 233 5 0 0 0 - - -;
+#X obj 488 210 r PTCH\$1_PAR_D1;
+#X obj 488 231 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X obj 488 249 r PTCH\$1_PAR_D1B;
+#X obj 488 272 bng 15 250 50 0 empty empty D1B 17 7 0 10 -128992 -258113
+-1;
+#X obj 621 231 tgl 15 0 empty empty empty 17 7 0 10 -128992 -258113
+-1 0 1;
+#X obj 621 272 bng 15 250 50 0 empty empty D2B 17 7 0 10 -128992 -258113
+-1;
+#X obj 621 210 r PTCH\$1_PAR_D2;
+#X obj 621 249 r PTCH\$1_PAR_D2B;
+#X text 213 90 0-1;
+#X obj 257 97 hsl 50 10 0 1 0 0 PTCH\$1_PAR_A1 empty A1 -2 -8 0 10
+-162280 -258113 -4160 4900 1;
+#X obj 361 100 hsl 50 10 0 1 0 0 PTCH\$1_PAR_A2 empty A2 -2 -8 0 10
+-162280 -258113 -4160 4900 1;
+#X obj 254 45 unpack f f f f, f 60;
+#X obj 713 129 bng 15 250 50 0 PTCH\$1_PAR_D1B empty D1B 17 7 0 10
+-258113 -33289 -1;
+#X obj 532 71 1_ARD_DIG_BTN 2 0, f 18;
+#X obj 450 68 tgl 20 0 empty SHIFT_SND_CTRL Shift 20 11 0 20 -4034
+-1 -262144 0 1;
+#X obj 479 96 gate 2, f 8;
+#X obj 450 93 + 1;
+#X obj 479 128 tgl 15 0 PTCH\$1_PAR_D1 empty D1 17 7 0 10 -258113 -1
+-1 0 1;
+#X obj 532 128 tgl 15 0 PTCH\$1_PAR_D2 empty D2 17 7 0 10 -258113 -1
+-1 0 1;
+#X text 401 14 TEMPLATE FOR SND PATCHES INPUT CTRL= LIST (2 POTS \,
+1 BTN);
+#X obj 713 44 tgl 20 0 empty SHIFT_SND_CTRL Shift 20 11 0 20 -4034
+-1 -262144 0 1;
+#X obj 713 102 gate 2, f 8;
+#X obj 713 69 + 1;
+#X obj 766 129 bng 15 250 50 0 PTCH\$1_PAR_D2B empty D1B 17 7 0 10
+-258113 -33289 -1;
+#X connect 3 0 2 0;
+#X connect 4 0 3 1;
+#X connect 5 0 24 0;
+#X connect 9 0 11 0;
+#X connect 10 0 12 0;
+#X connect 13 0 14 0;
+#X connect 15 0 16 0;
+#X connect 19 0 17 0;
+#X connect 20 0 18 0;
+#X connect 24 0 22 0;
+#X connect 24 1 23 0;
+#X connect 24 2 26 0;
+#X connect 26 0 28 1;
+#X connect 26 1 34 1;
+#X connect 27 0 29 0;
+#X connect 28 0 30 0;
+#X connect 28 1 31 0;
+#X connect 29 0 28 0;
+#X connect 33 0 35 0;
+#X connect 34 0 25 0;
+#X connect 34 1 36 0;
+#X connect 35 0 34 0;

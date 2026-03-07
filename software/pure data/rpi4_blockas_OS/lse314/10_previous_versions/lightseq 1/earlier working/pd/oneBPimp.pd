@@ -1,0 +1,149 @@
+#N canvas 212 168 903 581 10;
+#X obj -337 198 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -50 67 mtof;
+#X floatatom -47 145 5 0 0 0 - - -;
+#X obj -68 257 + 1;
+#X text 76 61 Q;
+#X obj -119 282 *~;
+#X obj -120 312 *~;
+#X obj -350 220 tabplay~ impulse;
+#X floatatom 319 161 5 0 0 0 - - -;
+#X obj -69 -49 loadbang;
+#X obj -120 250 bp~;
+#X obj 270 137 / 100;
+#X text -211 376 useful filter settings on bpass q of 17 - poltonowy
+filter q of 4 - third octave filter q of 100 - speed of fluctuation
+gts around 4 hz at 440 centre freq q of 1 = 1 octave band width for
+white noise making an impulse - make a table with 1 points - 1 sample
+will be 1 the rest 0 q describes the amount if times that filter rings
+before dying out;
+#X text 123 -61 CREATE ARGUMENTS -FILTER FREQ \, Q \,;
+#X msg 267 43 100;
+#X text 129 -78 INLETS - BANG;
+#X obj -121 358 throw~ 1imp;
+#X obj 60 81 f \$2;
+#X text 294 40 level;
+#X text -52 17 MIDI freq;
+#X text -359 -2 impulse;
+#X obj -50 42 f \$1;
+#X obj -351 21 inlet;
+#X obj 146 281 outlet;
+#X floatatom -33 309 5 0 0 0 - - -;
+#X obj -224 285 *~;
+#X obj -225 253 bp~;
+#X floatatom 75 165 5 0 0 0 - - -;
+#X obj -191 124 random 50;
+#X obj -186 83 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom -173 174 5 0 0 0 - - -;
+#X obj -117 1 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom -92 123 5 0 0 0 - - -;
+#X obj -123 123 / 2;
+#X text -537 90 Generate second freq of impulse from the first one
+which is a fraction of the frequency (10%) this can be + or -;
+#X floatatom -122 149 5 0 0 0 - - -;
+#X obj -217 215 +;
+#X obj -173 340 +~;
+#X floatatom -282 275 5 0 0 0 - - -;
+#X floatatom 13 38 5 0 0 0 - - -;
+#X obj -190 149 -;
+#X obj -284 17 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -237 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -219 312 *~;
+#X obj 115 -1 f \$1;
+#X text 130 61 change q depending on frequency - the higher frequency
+the higher the q;
+#X obj -69 -23 t b b b b b;
+#X floatatom 154 88 5 0 0 0 - - -;
+#X obj 100 115 *;
+#X obj 59 34 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj -171 258 + 1;
+#X obj -329 52 t b b b;
+#X obj 146 255 pack f f f f f;
+#X text 49 311 OUTLETS - FREQ \, Q \, LEVEL and offset freq and scaled
+Q as list?;
+#X obj -370 52 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 77 -39 r impQ;
+#X obj -123 95 * 0.25;
+#X floatatom 191 -6 5 0 0 0 - - -;
+#X obj 98 89 t b f;
+#X obj 126 25 / 60;
+#X obj 91 50 *;
+#X obj 150 -44 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X connect 0 0 7 0;
+#X connect 1 0 2 0;
+#X connect 1 0 10 1;
+#X connect 1 0 36 1;
+#X connect 1 0 52 0;
+#X connect 1 0 56 0;
+#X connect 3 0 5 1;
+#X connect 3 0 24 0;
+#X connect 5 0 6 0;
+#X connect 6 0 16 0;
+#X connect 7 0 10 0;
+#X connect 7 0 26 0;
+#X connect 9 0 46 0;
+#X connect 10 0 5 0;
+#X connect 11 0 6 1;
+#X connect 11 0 8 0;
+#X connect 11 0 43 1;
+#X connect 11 0 52 2;
+#X connect 14 0 11 0;
+#X connect 17 0 3 0;
+#X connect 17 0 48 0;
+#X connect 17 0 50 0;
+#X connect 17 0 52 1;
+#X connect 21 0 1 0;
+#X connect 22 0 51 0;
+#X connect 22 0 54 0;
+#X connect 25 0 43 0;
+#X connect 26 0 25 0;
+#X connect 28 0 40 0;
+#X connect 29 0 28 0;
+#X connect 31 0 21 0;
+#X connect 33 0 35 0;
+#X connect 33 0 40 1;
+#X connect 36 0 26 1;
+#X connect 36 0 38 0;
+#X connect 37 0 16 0;
+#X connect 39 0 1 0;
+#X connect 40 0 30 0;
+#X connect 40 0 36 0;
+#X connect 40 0 52 3;
+#X connect 41 0 51 0;
+#X connect 42 0 36 0;
+#X connect 43 0 16 0;
+#X connect 44 0 59 0;
+#X connect 46 0 28 0;
+#X connect 46 0 14 0;
+#X connect 46 1 21 0;
+#X connect 46 2 17 0;
+#X connect 46 3 44 0;
+#X connect 48 0 27 0;
+#X connect 48 0 10 2;
+#X connect 48 0 26 2;
+#X connect 48 0 52 4;
+#X connect 49 0 17 0;
+#X connect 50 0 25 1;
+#X connect 51 0 7 0;
+#X connect 51 1 28 0;
+#X connect 51 2 21 0;
+#X connect 52 0 23 0;
+#X connect 55 0 57 0;
+#X connect 55 0 60 0;
+#X connect 56 0 28 1;
+#X connect 56 0 32 0;
+#X connect 56 0 33 0;
+#X connect 58 0 48 0;
+#X connect 58 1 48 1;
+#X connect 59 0 47 0;
+#X connect 59 0 60 1;
+#X connect 60 0 58 0;
+#X connect 61 0 44 0;

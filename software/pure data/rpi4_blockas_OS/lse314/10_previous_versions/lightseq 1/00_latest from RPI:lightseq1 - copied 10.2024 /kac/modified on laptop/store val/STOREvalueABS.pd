@@ -1,0 +1,102 @@
+#N canvas 97 22 1204 831 10;
+#X floatatom 700 587 5 0 0 0 - - -;
+#X text 762 -11 outputs 1 if true \, 0 otherwise;
+#X text -38 55 musza byc spelnione dwa warunki:;
+#X text -39 73 1: numer podmenu sie zgadza;
+#X text -38 97 2: liczba ktora zapamietalismy jest rowna wartosci jaka
+otrzymujemy;
+#X floatatom 454 -121 5 0 0 0 - - -;
+#X obj 424 -79 change;
+#X obj 400 7 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 424 -56 t f f;
+#X obj 717 12 sel 1;
+#X obj 409 327 &&;
+#X obj 510 213 f;
+#X obj 475 161 gate;
+#X floatatom 522 183 5 0 0 0 - - -;
+#X obj 510 93 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 518 236 5 0 0 0 - - -;
+#X obj 475 266 ==;
+#X obj 452 289 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 424 32 t f f b;
+#X obj 409 366 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 680 408 onebang;
+#X msg 680 432 1;
+#X obj 430 367 sel 1;
+#X obj 700 498 gate;
+#X msg 744 403 0;
+#X obj 717 48 t b b;
+#X text 535 212 store last val;
+#X text 519 162 stop storing val when submenu != 1;
+#X text 494 -124 first czeck if number corresponds to our submenu (only
+when sub menu changed);
+#X text -37 7 zapamietuj ostatnia wartosc potencjometra;
+#X text -38 33 jesli nowa wartosc w potencjometra = wartosci przechowanej
+;
+#X text -36 20 wysylaj nowa wartosc tylko;
+#X text -33 -29 zeby unikac skokow w wartosci \, wzorowane na BASTL
+granpa;
+#X text 430 6 if submenu val changed and correspnds to X;
+#X text 429 48 first bang to czek if stored val == new value;
+#X text 429 64 then close gate for saving value;
+#X text 473 287 czek if stored value = new incoming value;
+#X text 337 347 if incoming new value == stored value and submenu 1
+selected;
+#X text 736 495 open gate for sending new value;
+#X text 764 10 if submenu changed & != then X;
+#X text 768 41 close gate for sending value;
+#X text 770 57 and reset onebang;
+#X text 557 236 last value stored;
+#X obj 991 69 inlet;
+#X obj 424 -143 inlet;
+#X text 1045 69 value in;
+#X floatatom 1050 99 5 0 0 0 - - -;
+#X obj 991 99 t f f;
+#X text -32 -125 arguments to abstraction:;
+#X text -34 -88 how many submenus;
+#X obj 664 621 outlet;
+#X floatatom 368 -116 5 0 0 0 - - -;
+#X obj 423 -18 == \$1;
+#X obj 717 -10 != \$1;
+#X obj 700 529 vsl 25 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X connect 6 0 8 0;
+#X connect 8 0 52 0;
+#X connect 8 1 53 0;
+#X connect 9 0 25 0;
+#X connect 10 0 19 0;
+#X connect 10 0 22 0;
+#X connect 11 0 15 0;
+#X connect 11 0 16 1;
+#X connect 12 0 11 1;
+#X connect 12 0 13 0;
+#X connect 12 0 16 0;
+#X connect 14 0 11 0;
+#X connect 16 0 17 0;
+#X connect 16 0 10 0;
+#X connect 18 0 10 1;
+#X connect 18 1 12 0;
+#X connect 18 2 14 0;
+#X connect 20 0 21 0;
+#X connect 21 0 23 0;
+#X connect 22 0 20 0;
+#X connect 23 0 54 0;
+#X connect 24 0 23 0;
+#X connect 25 0 20 1;
+#X connect 25 1 24 0;
+#X connect 43 0 47 0;
+#X connect 43 0 46 0;
+#X connect 44 0 5 0;
+#X connect 44 0 6 0;
+#X connect 47 0 23 1;
+#X connect 47 1 12 1;
+#X connect 51 0 6 0;
+#X connect 52 0 7 0;
+#X connect 52 0 18 0;
+#X connect 53 0 9 0;
+#X connect 54 0 0 0;
+#X connect 54 0 50 0;

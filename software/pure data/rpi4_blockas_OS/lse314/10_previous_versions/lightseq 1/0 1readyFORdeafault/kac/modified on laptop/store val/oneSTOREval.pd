@@ -1,0 +1,108 @@
+#N canvas 398 147 1298 767 10;
+#X text 764 -11 outputs 1 if true \, 0 otherwise;
+#X text 720 -149 musza byc spelnione dwa warunki:;
+#X text 719 -131 1: numer podmenu sie zgadza;
+#X text 720 -107 2: liczba ktora zapamietalismy jest rowna wartosci
+jaka otrzymujemy;
+#X obj 423 -79 change;
+#X obj 400 7 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 423 -56 t f f;
+#X obj 719 12 sel 1;
+#X obj 409 327 &&;
+#X obj 510 193 f;
+#X obj 475 161 gate;
+#X floatatom 438 185 5 0 0 0 - - -;
+#X obj 510 93 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 518 216 5 0 0 0 - - -;
+#X obj 475 266 ==;
+#X obj 480 287 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 424 32 t f f b;
+#X obj 409 349 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 680 408 onebang;
+#X msg 680 432 1;
+#X obj 680 369 sel 1;
+#X obj 736 458 gate;
+#X msg 736 433 0;
+#X obj 719 48 t b b;
+#X text 535 192 store last val;
+#X text 519 162 stop storing val when submenu != 1;
+#X text 721 -197 zapamietuj ostatnia wartosc potencjometra;
+#X text 722 -171 jesli nowa wartosc w potencjometra = wartosci przechowanej
+;
+#X text 722 -184 wysylaj nowa wartosc tylko;
+#X text 197 -222 zeby unikac skokow w wartosci \, wzorowane na BASTL
+granpa;
+#X text 429 48 first bang to czek if stored val == new value;
+#X text 429 64 then close gate for saving value;
+#X text 215 263 czek if stored value = new incoming value;
+#X text 40 324 if incoming new value == stored value and submenu 1
+selected;
+#X text 473 434 open gate for sending new value;
+#X text 766 10 if submenu changed & != then X;
+#X text 768 41 close gate for sending value;
+#X text 770 57 and reset onebang;
+#X text 557 216 last value stored;
+#X obj 430 -177 inlet;
+#X text 821 115 value in;
+#X obj 777 146 t f f;
+#X text 62 -171 arguments to abstraction:;
+#X obj 736 490 outlet;
+#X obj 423 -18 == \$1;
+#X obj 719 -10 != \$1;
+#X text 430 6 if submenu val changed and correspnds to arg \$1;
+#X text 63 -156 \$1 - which element of submenus;
+#X text 721 -214 how it works:;
+#X text 62 -104 first czeck if number corresponds to \$1 (only when
+changed);
+#X text 62 -65 if it doesn't then first close gate for sending output
+and reset onebang;
+#X text 61 27 if it does then first check if incoming val == stored
+value;
+#X text 62 41 then stop storing value;
+#X text 62 59 and czek if stored val = incoming val;
+#X text 43 339 open the output gate;
+#X obj 807 294 outlet;
+#X text 814 315 last value stored;
+#X obj 430 -156 unpack f f;
+#X floatatom 369 -130 5 0 0 0 - - -;
+#X floatatom 583 -132 5 0 0 0 - - -;
+#X text 401 -130 list in: value \, submenu number;
+#X connect 4 0 6 0;
+#X connect 6 0 44 0;
+#X connect 6 1 45 0;
+#X connect 7 0 23 0;
+#X connect 8 0 17 0;
+#X connect 8 0 20 0;
+#X connect 9 0 13 0;
+#X connect 9 0 14 1;
+#X connect 9 0 55 0;
+#X connect 10 0 9 1;
+#X connect 10 0 11 0;
+#X connect 10 0 14 0;
+#X connect 12 0 9 0;
+#X connect 14 0 15 0;
+#X connect 14 0 8 0;
+#X connect 16 0 8 1;
+#X connect 16 1 10 0;
+#X connect 16 2 12 0;
+#X connect 18 0 19 0;
+#X connect 19 0 21 0;
+#X connect 20 0 18 0;
+#X connect 21 0 43 0;
+#X connect 22 0 21 0;
+#X connect 23 0 18 1;
+#X connect 23 1 22 0;
+#X connect 39 0 57 0;
+#X connect 41 0 21 1;
+#X connect 41 1 10 1;
+#X connect 44 0 5 0;
+#X connect 44 0 16 0;
+#X connect 45 0 7 0;
+#X connect 57 0 58 0;
+#X connect 57 0 41 0;
+#X connect 57 1 59 0;
+#X connect 57 1 4 0;

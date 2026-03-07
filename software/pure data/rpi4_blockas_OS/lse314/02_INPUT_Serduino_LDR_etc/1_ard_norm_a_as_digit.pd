@@ -1,0 +1,11 @@
+#N canvas 185 469 401 146 10;
+#X obj 111 65 change;
+#X obj 111 14 inlet;
+#X text 180 16 incoming sensor value;
+#X obj 111 100 outlet;
+#X text 159 99 scaled out value;
+#X text 164 65 out only if input changed;
+#X obj 111 36 > 0.5;
+#X connect 0 0 3 0;
+#X connect 1 0 6 0;
+#X connect 6 0 0 0;

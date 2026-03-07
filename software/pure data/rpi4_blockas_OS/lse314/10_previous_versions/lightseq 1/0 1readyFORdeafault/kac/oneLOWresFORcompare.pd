@@ -1,0 +1,26 @@
+#N canvas 114 510 462 203 10;
+#X obj -736 -1260 int;
+#X obj -736 -1283 / 10;
+#X obj -781 -1361 inlet;
+#X obj -781 -1196 outlet;
+#X obj -621 -1362 r valTEST;
+#X floatatom -621 -1334 5 0 0 0 - - -;
+#X obj -781 -1328 t f f;
+#X floatatom -727 -1239 5 0 0 0 - - -;
+#X text -700 -1288 lower resultion of received number - from 1024 down
+to 102 T;
+#X text -700 -1274 use this scaled down version for comparing with
+stored value;
+#X text -694 -1250 if value is the same we let full resolution number
+go throug...;
+#X text -730 -1363 Ard input 0-1023;
+#X obj -781 -1217 pack f f;
+#X text -736 -1197 list with full res and lower res;
+#X connect 0 0 7 0;
+#X connect 0 0 12 1;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 4 0 5 0;
+#X connect 6 0 12 0;
+#X connect 6 1 1 0;
+#X connect 12 0 3 0;

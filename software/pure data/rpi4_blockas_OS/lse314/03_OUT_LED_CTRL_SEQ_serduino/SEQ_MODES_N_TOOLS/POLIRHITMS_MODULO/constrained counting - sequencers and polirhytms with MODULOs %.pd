@@ -1,0 +1,69 @@
+#N canvas 1042 151 497 298 10;
+#X obj 42 20 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 42 73 f;
+#X obj 93 72 + 1;
+#X obj 42 106 mod 8;
+#X obj 42 138 trigger f f f;
+#X obj 42 174 mod 4;
+#X obj 79 174 mod 3;
+#X floatatom 42 214 5 0 0 0 - - -;
+#X floatatom 79 215 5 0 0 0 - - -;
+#X floatatom 117 216 5 0 0 0 - - -;
+#X obj 42 42 metro 500;
+#X obj 40 239 sel 0;
+#X obj 79 239 sel 0;
+#X obj 117 239 sel 0;
+#X obj 40 267 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 79 269 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 118 269 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 173 137 trigger f f f;
+#X floatatom 173 213 5 0 0 0 - - -;
+#X floatatom 210 214 5 0 0 0 - - -;
+#X floatatom 248 215 5 0 0 0 - - -;
+#X obj 171 238 sel 0;
+#X obj 210 238 sel 0;
+#X obj 248 238 sel 0;
+#X obj 171 266 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 210 268 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 249 268 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 173 173 % 4;
+#X obj 210 173 % 3;
+#X text 129 22 By inserting mod into the feedback path before the increment
+we can ensure the counter stays bounded. Further mod units can be added
+to the number stream to generate polyrhythmic sequences.;
+#X connect 0 0 10 0;
+#X connect 1 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 1 1;
+#X connect 3 0 4 0;
+#X connect 3 0 17 0;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;
+#X connect 4 2 9 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 7 0 11 0;
+#X connect 8 0 12 0;
+#X connect 9 0 13 0;
+#X connect 10 0 1 0;
+#X connect 11 0 14 0;
+#X connect 12 0 15 0;
+#X connect 13 0 16 0;
+#X connect 17 0 27 0;
+#X connect 17 1 28 0;
+#X connect 17 2 20 0;
+#X connect 18 0 21 0;
+#X connect 19 0 22 0;
+#X connect 20 0 23 0;
+#X connect 21 0 24 0;
+#X connect 22 0 25 0;
+#X connect 23 0 26 0;
+#X connect 27 0 18 0;
+#X connect 28 0 19 0;

@@ -1,0 +1,33 @@
+#N canvas 890 194 639 480 10;
+#X obj 34 46 metro 500;
+#X obj 34 72 random 100;
+#X obj 34 104 moses 10;
+#X obj 79 131 moses 50;
+#X obj 34 19 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 79 170 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 34 169 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 124 170 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 38 -74 Weighted random selection - using random and moses;
+#X text 37 -56 A simple way to get a bunch of events with a certain
+probability distribution is to generate uniformly distributed numbers
+and stream them with moses.;
+#X text 157 42 For example moses 10 sends integers greater than 9 to
+its right outlet. A cascade of moses objects will distribute them in
+a ratio over the combined outlets when the sum of all ratios equals
+the range of random numbers. The outlets of moses 10 distribute the
+numbers in the ratio 1 : 9 When the right outlet is further split by
+moses 50 numbers in the range 0 to 100 are split in the ratio 10 :
+40 : 50 \, and since the distribution of input numbers is uniform they
+are sent to one of three outlets with 10% \, 40% and 50% probability.
+;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 6 0;
+#X connect 2 1 3 0;
+#X connect 3 0 5 0;
+#X connect 3 1 7 0;
+#X connect 4 0 0 0;
